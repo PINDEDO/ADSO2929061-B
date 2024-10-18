@@ -5,32 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Página de Artículos</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Título Principal -->
     <header>
         <h1>ESTEROIDES INYECTABLES</h1>
-        <img src="images/ESTEROIDES.jpg" alt="">
+        <img src="images/RETO RESPONSIVE/ESTEROIDES.jpg" alt="">
        <h2>son versiones sintéticas (artificiales) de testosterona, la principal hormona sexual en los hombres. Es necesaria para desarrollar y mantener las características sexuales masculinas, como el vello facial, la voz profunda y el crecimiento muscular.</h2> 
     </header>
 
     <!-- Categoría de Imágenes con Títulos -->
     <section class="category-section">
         <div class="category-item">
-            <a href="#articulo1"><img src="images/TESTOSTERONA.jpg" alt="Imagen 1"></a>
+            <a href="#articulo1"><img src="images/RETO RESPONSIVE/TESTOSTERONA.jpg" alt="Imagen 1"></a>
             <h2>TESTOSTERONA</h2>
         </div>
         <div class="category-item">
-            <a href="#articulo2"><img src="images/NANDROLONA.jpg" alt="Imagen 2"></a>
+            <a href="#articulo2"><img src="images/RETO RESPONSIVE/NANDROLONA.jpg" alt="Imagen 2"></a>
             <h2>NANDROLONA</h2>
         </div>
         <div class="category-item">
-            <a href="#articulo3"><img src="images/BOLDENONA.jpg" alt="Imagen 3"></a>
+            <a href="#articulo3"><img src="images/RETO RESPONSIVE/BOLDENONA.jpg" alt="Imagen 3"></a>
             <h2>BOLDENONA</h2>
         </div>
         <div class="category-item">
-            <a href="#articulo4"><img src="images/TREMBOLONA.jpg" alt="Imagen 4"></a>
+            <a href="#articulo4"><img src="images/RETO RESPONSIVE/TREMBOLONA.jpg" alt="Imagen 4"></a>
             <h2>TREMBOLONA</h2>
         </div>
     </section>
@@ -39,7 +38,7 @@
     <main>
         <article id="articulo1">
             <div class="article-container">
-                <img src="images/TESTOSTERONA.jpg" alt="Imagen 1">
+                <img src="images/RETO RESPONSIVE/TESTOSTERONA.jpg" alt="Imagen 1">
                 <div class="article-content">
                     <h2>Testosterona</h2>
                     <p>La testosterona es una hormona producida por los testículos. Es importante para el deseo sexual y la apariencia física de un hombre. Ciertas afecciones, medicamentos o lesiones pueden llevar a niveles bajos de testosterona. Los niveles de testosterona también disminuyen naturalmente con la edad.</p>
@@ -49,7 +48,7 @@
 
         <article id="articulo2">
             <div class="article-container">
-                <img src="images/NANDROLONA.jpg" alt="Imagen 2">
+                <img src="images/RETO RESPONSIVE/NANDROLONA.jpg" alt="Imagen 2">
                 <div class="article-content">
                     <h2>Nandrolona</h2>
                     <p>La nandrolona es un anabolizante androgénico esteroideo que se encuentra en pequeñas cantidades de forma natural en el cuerpo humano. Sus efectos positivos incluyen crecimiento muscular, estimulación del apetito y aumento de la producción de glóbulos rojos y de la densidad ósea.</p>
@@ -59,7 +58,7 @@
 
         <article id="articulo3">
             <div class="article-container">
-                <img src="images/BOLDENONA.jpg" alt="Imagen 3">
+                <img src="images/RETO RESPONSIVE/BOLDENONA.jpg" alt="Imagen 3">
                 <div class="article-content">
                     <h2>Boldenona</h2>
                     <p>Estimula el desarrollo de los caracteres sexuales masculinos (potencia androgénica). El efecto anabólico se debe a la retención de Nitrógeno, Potasio, Fósforo y Calcio, que en dosis terapéuticas se traduce en un aumento de peso, por incremento de la síntesis de proteínas y mayor desarrollo óseo y muscular.</p>
@@ -69,7 +68,7 @@
 
         <article id="articulo4">
             <div class="article-container">
-                <img src="images/TREMBOLONA.jpg" alt="Imagen 4">
+                <img src="images/RETO RESPONSIVE/TREMBOLONA.jpg" alt="Imagen 4">
                 <div class="article-content">
                     <h2>Trembolona</h2>
                     <p>La trembolona es un andrógeno y un esteroide anabólico del grupo de la nandrolona que nunca se comercializó. Los profármacos de éster de trembolona, ​​incluidos el acetato de trembolona y el hexahidrobencilcarbonato de trembolona, ​​se comercializan o se han comercializado para uso veterinario y clínico.</p>
@@ -79,3 +78,112 @@
     </main>
 </body>
 </html>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    padding: 10px;
+}
+
+/* Título Principal */
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Categoría de Imágenes */
+.category-section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.category-item {
+    text-align: center;
+    flex: 1 1 calc(25% - 20px);
+    margin: 10px;
+}
+
+.category-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.category-item h2 {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+/* Artículos */
+main {
+    margin-top: 20px;
+}
+
+.article-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.article-container img {
+    width: 35%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.article-content {
+    padding: 10px;
+    flex: 1;
+}
+
+.article-content h2 {
+    margin-bottom: 10px;
+}
+
+.article-content p {
+    text-align: justify;
+}
+
+
+@media (max-width: 828px) {
+    .category-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+
+    .article-container {
+        flex-direction: column;
+    }
+
+    .article-container img {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-item {
+        flex: 1 1 100%;
+    }
+}
+
+
+</style>
