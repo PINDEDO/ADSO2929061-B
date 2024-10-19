@@ -1,125 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challegue Grid</title>
+    <title>Challenge Grid</title>
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/custom.css">
     <style>
-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ajusta el número de columnas automáticamente */
-    grid-gap: 0.4rem;
-    grid-auto-rows: 120px; /* Cada fila tiene al menos 120px */
-}
+        /* General settings for both sections */
+        .section-1 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 0.4rem;
+            grid-auto-rows: minmax(100px, auto);
+            grid-auto-flow: dense;
+            margin: 0; /* Remove margins between sections */
+            padding: 0;
+        }
 
-section div.box {
-    position: relative; /* Para controlar mejor la imagen dentro del div */
-    overflow: hidden; /* Asegura que las imágenes no salgan de la caja */
-}
 
-/* Ajuste de imagen para que se adapte al tamaño de las cajas */
-section div.box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Hace que la imagen se ajuste sin distorsionarse */
-}
+       .section-2 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 0.4rem;
+            grid-auto-rows: minmax(100px, auto);
+            grid-auto-flow: dense;
+            margin: 0; /* Remove margins between sections */
+            padding: 0;
+        }
 
-/* Personaliza cada caja según el diseño */
-.box1 {
-    grid-column: span 2;
-    grid-row: span 2;
-}
 
-.box2 {
-    grid-column: span 1;
-    grid-row: span 1;
-}
+        /* General styles for each box */
+        .grid-section div.box {
+            position: relative;
+            overflow: hidden;
+        }
 
-.box3 {
-    grid-column: span 1;
-    grid-row: span 1;
-}
+        .grid-section div.box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-.box4 {
-    grid-column: span 2;
-    grid-row: span 2;
-}
+        /* Specific styles for section 1 */
+        .section-1 .box1 {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
 
-.box5 {
-    grid-column: span 1;
-    grid-row: span 1;
-}
+        .section-1 .box2 {
+            grid-column: span 1;
+            grid-row: span 2;
+        }
 
-.box6 {
-    grid-column: span 2;
-    grid-row: span 1;
-}
+        .section-1 .box3 {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
 
-.box7 {
-    grid-column: span 1;
-    grid-row: span 1;
-}
+        .section-1 .box4 {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
 
-.box8 {
-    grid-column: span 1;
-    grid-row: span 2;
-}
+        .section-1 .box5 {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
 
-.box9 {
-    grid-column: span 2;
-    grid-row: span 1;
-}
+        .section-1 .box6 {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
 
+        .section-1 .box7 {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+
+        /* Specific styles for section 2 */
+        .section-2 .box10 {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .section-2 .box11 {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .section-2 .box12 {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .section-2 .box13 {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .section-2 .box14 {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .section-2 .box15 {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        main {
+            margin: 0;
+            padding: 0;
+        }
     </style>
 </head>
 <body>
     <nav class="controls">
-        <a href="index.html"> <!-- ../para devolverme  -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        <a href="index.html"> <!-- ../para devolverme -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome --><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
         </a>
     </nav>
     <main>
         <header>
-            <h1>Challegue Grid</h1>
+            <h1>Challenge Grid</h1>
             <h2>Irregular Gallery</h2>
         </header>
-        <section>
-            <div class="box box1">
-                <img src="images/challengue grid/FERXXO 19.jpg" alt="FEID Wallpaper">
-            </div>
-            <div class="box box2">
-                <img src="images/challengue grid/FERXXO BAHIA DUCATI.jpg" alt="FERXXO">
-            </div>
-            <div class="box box3">
-                <img src="images/challengue grid/FERXXO FELIZ CUMPLEAÑOS.jfif" alt="Imagen 3">
-            </div>
-            <div class="box box4">
-                <img src="images/challengue grid/FERXXO FERXXOCALIPSIS.jfif" alt="Imagen 4">
-            </div>
-            <div class="box box5">
-                <img src="images/challengue grid/FERXXO INTER SHIBUYA FERXXO EDITION.jpg" alt="Imagen 5">
-            </div>
-            <div class="box box5">
-                <img src="images/challengue grid/FERXXO INTER SHIBUYA FERXXO EDITION.jpg" alt="Imagen 5">
-            </div>
-            <div class="box box6">
-                <img src="images/challengue grid/FERXXO MOR NO LE TEMAS A LA OSCURIDAD.jfif" alt="Imagen 6">
-            </div>
-            <div class="box box7">
-                <img src="images/challengue grid/FERXXO SIXDO.jpg" alt="Imagen 7">
-            </div>
-            <div class="box box8">
-                <img src="images/challengue grid/FERXXO MOR VOL. 1.jpg" alt="Imagen 8">
-            </div>
-            <div class="box box9">
-                <img src="images/challengue grid/FERXXO INTER SHIBUYA.jpg" alt="Imagen 9">
-            </div>
-            <div class="box box6">
-                <img src="images/challengue grid/FERXXO MOR NO LE TEMAS A LA OSCURIDAD.jfif" alt="Imagen 6">
-            </div>
-        </section>  
-    </main>  
+        <section class="grid-section section-1">
+            <div class="box box1"><img src="images/challengue grid/FERXXO 19.jpg" alt="imagen 1"></div>
+            <div class="box box2"><img src="images/challengue grid/FERXXO SIXDO.jpg" alt="imagen 2"></div>
+            <div class="box box3"><img src="images/challengue grid/FERXXO FELIZ CUMPLEAÑOS.jfif" alt="Imagen 3"></div>
+            <div class="box box4"><img src="images/challengue grid/FERXXO MOR VOL. 1.jpg" alt="Imagen 4"></div>
+            <div class="box box5"><img src="images/challengue grid/FERXXO BAHIA DUCATI.jpg" alt="Imagen 5"></div>
+            <div class="box box6"><img src="images/challengue grid/FERXXO INTER SHIBUYA FERXXO EDITION.jpg" alt="Imagen 6"></div>
+            <div class="box box7"><img src="images/challengue grid/FERXXO 19.jpg" alt="Imagen 7"></div>
+        </section>
+
+        <section class="grid-section section-2">
+            <div class="box box10"><img src="images/challengue grid/FERXXO INTER SHIBUYA.jpg" alt="imagen 10"></div>
+            <div class="box box11"><img src="images/challengue grid/FERXXO BAHIA DUCATI.jpg" alt="imagen 11"></div>
+            <div class="box box12"><img src="images/challengue grid/FERXXO FELIZ CUMPLEAÑOS.jfif" alt="Imagen 12"></div>
+            <div class="box box13"><img src="images/challengue grid/FERXXO FERXXOCALIPSIS.jfif" alt="Imagen 13"></div>
+            <div class="box box14"><img src="images/challengue grid/FERXXO MOR VOL. 1.jpg" alt="Imagen 14"></div>
+            <div class="box box15"><img src="images/challengue grid/FERXXO FELIZ CUMPLEAÑOS.jfif" alt="Imagen 15"></div>
+        </section>
+    </main>
 </body>
 </html>
