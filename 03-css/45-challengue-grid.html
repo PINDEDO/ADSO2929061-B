@@ -6,25 +6,72 @@
     <title>Challegue Grid</title>
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/custom.css">
-    <style> 
-        section {
-            border: 2px red solid;            /* Pensiente terminar */
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-gap: 0.4rem;
-            grid-template-areas: "one two three"
-                                 "four two five"
-                                 "six six seven";
-        }
-        section div.box {
-            border: 2px solid #0006;
-            background-color: #fff6;
-            height: 120px;
-            width: 120px;
-        }
-    
-     
- 
+    <style>
+section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ajusta el número de columnas automáticamente */
+    grid-gap: 0.4rem;
+    grid-auto-rows: 120px; /* Cada fila tiene al menos 120px */
+}
+
+section div.box {
+    position: relative; /* Para controlar mejor la imagen dentro del div */
+    overflow: hidden; /* Asegura que las imágenes no salgan de la caja */
+}
+
+/* Ajuste de imagen para que se adapte al tamaño de las cajas */
+section div.box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que la imagen se ajuste sin distorsionarse */
+}
+
+/* Personaliza cada caja según el diseño */
+.box1 {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.box2 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.box3 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.box4 {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.box5 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.box6 {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.box7 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.box8 {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.box9 {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
     </style>
 </head>
 <body>
@@ -36,16 +83,42 @@
     <main>
         <header>
             <h1>Challegue Grid</h1>
-            <h2>Irregular galery</h2>
+            <h2>Irregular Gallery</h2>
         </header>
         <section>
-            <div class="box box1"><link rel="stylesheet" href="images/challengue grid/Feid.jpg"></div>
-            <div class="box box2"><link rel="stylesheet" href="images/challengue grid/FERXXO.jpg"></div>
-            <div class="box box3"></div>
-            <div class="box box4"></div>
-            <div class="box box5"></div>
-            <div class="box box6"></div>
-            <div class="box box7"></div>
+            <div class="box box1">
+                <img src="images/challengue grid/FERXXO 19.jpg" alt="FEID Wallpaper">
+            </div>
+            <div class="box box2">
+                <img src="images/challengue grid/FERXXO BAHIA DUCATI.jpg" alt="FERXXO">
+            </div>
+            <div class="box box3">
+                <img src="images/challengue grid/FERXXO FELIZ CUMPLEAÑOS.jfif" alt="Imagen 3">
+            </div>
+            <div class="box box4">
+                <img src="images/challengue grid/FERXXO FERXXOCALIPSIS.jfif" alt="Imagen 4">
+            </div>
+            <div class="box box5">
+                <img src="images/challengue grid/FERXXO INTER SHIBUYA FERXXO EDITION.jpg" alt="Imagen 5">
+            </div>
+            <div class="box box5">
+                <img src="images/challengue grid/FERXXO INTER SHIBUYA FERXXO EDITION.jpg" alt="Imagen 5">
+            </div>
+            <div class="box box6">
+                <img src="images/challengue grid/FERXXO MOR NO LE TEMAS A LA OSCURIDAD.jfif" alt="Imagen 6">
+            </div>
+            <div class="box box7">
+                <img src="images/challengue grid/FERXXO SIXDO.jpg" alt="Imagen 7">
+            </div>
+            <div class="box box8">
+                <img src="images/challengue grid/FERXXO MOR VOL. 1.jpg" alt="Imagen 8">
+            </div>
+            <div class="box box9">
+                <img src="images/challengue grid/FERXXO INTER SHIBUYA.jpg" alt="Imagen 9">
+            </div>
+            <div class="box box6">
+                <img src="images/challengue grid/FERXXO MOR NO LE TEMAS A LA OSCURIDAD.jfif" alt="Imagen 6">
+            </div>
         </section>  
     </main>  
 </body>
