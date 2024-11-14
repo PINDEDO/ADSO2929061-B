@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap");
+
 header {
   align-items: center;
   border-bottom: 2px solid #333;
@@ -24,7 +25,7 @@ header ul li.small_box {
   width: 100px;
 }
 
-header ul li:is(:hover) {
+header ul li:hover {
   background-color: rgb(234, 127, 255);
   transition: 0.5s ease-in;
 }
@@ -45,23 +46,29 @@ header ul li:is(:hover) {
     background-color: #f2f2f2;
     padding: 20px;
   }
+
   .toggle-menu:checked ~ .menu {
     display: flex;
   }
+
   .toggle-menu-label {
     display: block;
   }
+
   header ul li {
     margin: 10px 0;
     width: 700px;
   }
-  header ul li:is(:hover) {
+
+  header ul li:hover {
     background-color: aquamarine;
     transition: 0.5s ease-in;
   }
+
   header ul li a {
     width: 900px;
   }
+
   header ul li.small_box {
     width: 100%;
   }

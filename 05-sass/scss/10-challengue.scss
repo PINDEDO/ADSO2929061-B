@@ -1,46 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arimo', sans-serif;
+  background-color: #121212;
+  color: white;
+}
+
 header {
-  align-items: center;
-  border-bottom: 2px solid #333;
   display: flex;
-  font-family: "Arimo", sans-serif;
   justify-content: space-between;
+  align-items: center;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.8);
-  color: white;
+  border-bottom: 2px solid #333;
 
   h2 a {
+    color: #ffffff;
     text-decoration: none;
-    color: white;
+    font-size: 1.5rem;
   }
 }
 
 .menu {
   display: flex;
   list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
-.small_box {
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  height: 50px;
-  width: 120px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-
-  a {
-    color: white;
-    text-decoration: none;
-    width: 100%;
+  .small_box {
+    width: 100px;
+    margin: 0 10px;
     text-align: center;
-  }
+    transition: all 0.3s ease;
+    background-color: transparent;
 
-  &:hover {
-    background-color: #ea7fff;
-    transform: scale(1.1);
+    a {
+      color: #ffffff;
+      text-decoration: none;
+      display: block;
+      padding: 10px 0;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    &:hover {
+      background-color: #ea7fff;
+      transform: scale(1.1);
+      border-radius: 5px;
+    }
   }
 }
 
@@ -54,12 +67,12 @@ header {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 80px;
+    top: 70px;
     left: 0;
     width: 100%;
     background-color: #333;
+    animation: slideDown 0.5s ease-in-out;
     padding: 20px;
-    animation: fadeIn 0.3s ease-in-out;
   }
 
   .toggle-menu:checked ~ .menu {
@@ -68,31 +81,31 @@ header {
 
   .toggle-menu-label {
     display: block;
-    color: white;
-    font-size: 24px;
+    font-size: 2rem;
     cursor: pointer;
+    color: white;
   }
 
   .small_box {
     width: 100%;
+    margin: 5px 0;
     padding: 10px;
-    text-align: center;
+    background-color: transparent;
 
     &:hover {
-      background-color: aquamarine;
-    }
-
-    a {
-      width: 100%;
+      background-color: #33cc99;
+      transform: scale(1.05);
     }
   }
 }
 
-@keyframes fadeIn {
-  from {
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
     opacity: 0;
   }
-  to {
+  100% {
+    transform: translateY(0);
     opacity: 1;
   }
 }
