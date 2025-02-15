@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challengue Tailwind</title>
+    <!-- <link rel="stylesheet" href="css/master.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Busqueda: 
+            Como realizar por css y html una pagina que pase de paginaciones sin tener que hacer varias paginas 
+        */ 
+        /* #content {     Es lo mismo usando: class="flex flex-col"
+            display: flex;
+            flex-direction: column;    Como empezar desde el inicio OFAC
+        } */
+        .page-target {
+            display: none;
+        }
+
+        .page-target:target {
+            display: block;
+        }
+    </style>
+    
+</head>
+<body class="bg-[url(images/God_of_war_img_fondo_3.jpg)] bg-no-repeat bg-cover ">
+     <!-- <a href="#page1-Home">Vamos a navegar</a>    Arreglo temporal consultar con Master Ofac: Solucionado ofac -->
+    <main id="content" class="flex flex-col">
+        <div id="page1-Home" class="page-target
+                        container 
+                        m-auto
+                        h-auto 
+                        w-96
+                        rounded-3xl
+                        my-3
+                        bg-stone-800
+                        p-10
+                      text-white           
+                        ">
+                        <div class="rounded-3xl h-72 w-96 relative bottom-10 right-10 ">
+                            <img src="images/God Of War_1.jpg" class="rounded-t-3xl object-cover h-72 w-96">
+                        </div>
+                        <div class="rounded-full h-14 w-14 relative bottom-8 left-[119px] ">
+                            <img src="images/Logo_GodOfWar.png" class="rounded-t-3xl object-cover h-14 w-14">
+                        </div>
+                        <p class="uppercase
+                                  relative
+                                  bottom-8
+                                  tracking-widest 
+                                  text-4xl
+                                  font-serif
+                                  font-semibold
+                                  text-amber-400
+                                  text-center
+                                  ">
+                            God Of War  
+                        </p>
+                        <p class="lowercase
+                                  relative
+                                  bottom-6
+                                  font-serif hover:font-black
+                                  text-lg 
+                                  text-center
+                                  
+                                  ">
+                            Kratos es un guerrero de crecia nacido en la ciudad de sparta, convirtiendose en esclavo de ares, buscando su venganza a el y a los dioses del olimpo.
+                        </p>
+                        <a href="#page2-chronology" class="p-4 
+                                                           relative 
+                                                           top-1
+                                                           left-20 
+                                                         bg-black
+                                                         text-white 
+                                                           rounded-xl
+                                                           text-lg 
+                                                           font-semibold 
+                                                           font-serif 
+                                                         hover:bg-slate-200
+                                                         hover:text-black hover:font-semibold
+                                                           transition-all
+                                                           ">
+                            Chronology
+                        </a>             
+        </div>
+        <div id="page2-chronology" class="page-target 
+                    container 
+                    m-auto
+                    h-auto  
+                    w-96
+                    rounded-3xl
+                    my-3
+                    bg-stone-800
+                    p-10
+                  text-white 
+                                
+                    ">
+                    <a href="#page1-Home" class=" border 
+                                                    p-1
+                                                    relative 
+                                                    bottom-6
+                                                    right-7
+                                                    bg-black
+                                                    text-white 
+                                                    rounded-xl
+                                                    text-lg 
+                                                    font-semibold 
+                                                    font-serif 
+                                                    hover:bg-slate-200
+                                                    hover:text-black hover:font-semibold
+                                                    transition-all
+                                                           ">
+                            ⬅
+                    </a>  
+                    <p class="uppercase
+                                mb-5
+                                relative
+                                bottom-6
+                                tracking-widest 
+                                text-4xl
+                                font-serif
+                                font-semibold
+                                text-amber-400
+                                text-center
+                                ">
+                        Chronology
+                    </p>
+                    <div class="mt-8 relative h-96 bottom-7 overflow-auto">
+                        <div class="relative rounded-xl p-4">   <!-- Se quita overflow-auto en cada uno -->
+                            <div class="border-2 overflow-visible relative max-w-sm mx-auto bg-black shadow-lg rounded-xl flex items-center gap-6">
+                                <img class="absolute -left-6 w-28 h-28 rounded-full shadow-lg" src="images/God_Of_War_1_Icon.jpg">
+                                <div class="flex flex-col py-5 pl-24">
+                                <strong class="text-gray-100 text-sm font-medium">God of war I</strong>
+                                <span class="text-indigo-400 text-sm font-medium">Revenge</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative rounded-xl p-4">
+                            <div class="border-2 overflow-visible relative max-w-sm mx-auto bg-black shadow-lg rounded-xl flex items-center gap-6">
+                                <img class="absolute -left-6 w-28 h-28 rounded-full shadow-lg" src="images/God_Of_War_2_Icon.png">
+                                <div class="flex flex-col py-5 pl-24">
+                                <strong class="text-gray-100 text-sm font-medium">God of war II</strong>
+                                <span class="text-indigo-400 text-sm font-medium">Revenge to the gods</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative rounded-xl p-4">
+                            <div class="border-2 overflow-visible relative max-w-sm mx-auto bg-black shadow-lg rounded-xl flex items-center gap-6">
+                                <img class="absolute -left-6 w-28 h-28 rounded-full shadow-lg" src="images/God_Of_War_3_Icon.png">
+                                <div class="flex flex-col py-5 pl-24">
+                                <strong class="text-gray-100 text-sm font-medium">God of war III</strong>
+                                <span class="text-indigo-400 text-sm font-medium">Final revenge</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative rounded-xl p-4">
+                            <div class="border-2 overflow-visible relative max-w-sm mx-auto bg-black shadow-lg rounded-xl flex items-center gap-6">
+                                <img class="absolute -left-6 w-28 h-28 rounded-full shadow-lg" src="images/God_Of_War_4_Icon.png">
+                                <div class="flex flex-col py-5 pl-24">
+                                <strong class="text-gray-100 text-sm font-medium">God of war IV</strong>
+                                <span class="text-indigo-400 text-sm font-medium">Nordic</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative rounded-xl p-4">
+                            <div class="border-2 overflow-visible relative max-w-sm mx-auto bg-black shadow-lg rounded-xl flex items-center gap-6">
+                                <img class="absolute -left-6 w-28 h-28 rounded-full shadow-lg" src="images/God_Of_War_5_Icon.png">
+                                <div class="flex flex-col py-5 pl-24">
+                                <strong class="text-gray-100 text-sm font-medium">God of war V</strong>
+                                <span class="text-indigo-400 text-sm font-medium">Ragnarok</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#page3-characters" class=" p-4 
+                                                       relative 
+                                                       top-1
+                                                       left-24
+                                                     bg-black
+                                                     text-white 
+                                                       rounded-xl
+                                                       text-lg 
+                                                       font-semibold 
+                                                       font-serif 
+                                                     hover:bg-slate-200
+                                                     hover:text-black hover:font-semibold
+                                                       transition-all
+                                                     ">
+                            Characters
+                    </a> 
+        </div>
+        <div id="page3-characters" class="page-target 
+                    container 
+                    m-auto
+                    h-auto  
+                    w-96
+                    rounded-3xl
+                    my-3
+                    bg-stone-800
+                    p-10
+                  text-white 
+                                
+                    ">
+                    <a href="#page2-chronology" class=" border 
+                                                    p-1
+                                                    relative 
+                                                    bottom-6
+                                                    right-7
+                                                    bg-black
+                                                    text-white 
+                                                    rounded-xl
+                                                    text-lg 
+                                                    font-semibold 
+                                                    font-serif 
+                                                    hover:bg-slate-200
+                                                    hover:text-black hover:font-semibold
+                                                    transition-all
+                                                           ">
+                            ⬅
+                    </a>  
+                    <p class="uppercase
+                                mb-5
+                                relative
+                                bottom-6
+                                tracking-widest 
+                                text-4xl
+                                font-serif
+                                font-semibold
+                                text-amber-400
+                                text-center
+                                ">
+                        Characters
+                    </p>
+                    <div class="snap-x relative bottom-6 h-[480px] overflow-auto">
+                        <div class="border mb-3 snap-center">
+                          <img src="images/Kratos.jpeg" />
+                          <p class="text-center">Kratos</p>
+                        </div>
+                        <div class="border mb-3 snap-center hover:w-[740px] transition-all duration-500">
+                          <img src="images/Atreus.png" class="hover:w-[740px] transition-all duration-500" />
+                          <p class="text-center">Atreus</p>
+                        </div>
+                        <div class="border mb-3 snap-center ...">
+                          <img src="images/Zeus.jpg" />
+                          <p class="text-center">Zeus</p>
+                        </div>
+                        <div class="border mb-3 snap-center ...">
+                          <img src="images/Ares.png" />
+                          <p class="text-center">Ares</p>
+                        </div>
+                        <div class="border mb-3 snap-center ...">
+                          <img src="images/Atenea.png" />
+                          <p class="text-center">Atenea</p>
+                        </div>
+                        <div class="border mb-3 snap-center ...">
+                          <img src="images/Thor .png" />
+                          <p class="text-center">Thor</p>
+                        </div>
+                    </div>
+                    <a href="#page3-platforms" class=" p-4 
+                                                       relative 
+                                                       top-0
+                                                       left-20
+                                                     bg-black
+                                                     text-white 
+                                                       rounded-xl
+                                                       text-lg 
+                                                       font-semibold 
+                                                       font-serif 
+                                                     hover:bg-slate-200
+                                                     hover:text-black hover:font-semibold
+                                                       transition-all
+                                                     ">
+                            Plataform
+                    </a> 
+        </div>
+        <div id="page3-platforms" class="page-target 
+                    container 
+                    m-auto
+                    h-auto    
+                    w-96
+                    rounded-3xl
+                    my-3
+                    bg-stone-800
+                    p-10
+                  text-white
+                    
+                    
+                    ">
+                    <a href="#page3-characters" class=" border 
+                                                        p-1
+                                                        relative 
+                                                        bottom-6
+                                                        right-7
+                                                        bg-black
+                                                        text-white 
+                                                        rounded-xl
+                                                        text-lg 
+                                                        font-semibold 
+                                                        font-serif 
+                                                        hover:bg-slate-200
+                                                        hover:text-black hover:font-semibold
+                                                        transition-all
+                                                           ">
+                            ⬅
+                    </a>  
+                    <p class="uppercase
+                                mb-5
+                                relative
+                                bottom-6
+                                tracking-widest 
+                                text-4xl
+                                font-serif
+                                font-semibold
+                                text-amber-400
+                                text-center
+                                ">
+                        Platforms  
+                    </p>
+                    <div class="relative bottom-7 rounded-xl overflow-auto">
+                        <div class="border-2 h-80 shadow-sm overflow-auto my-4">
+                            <table class="border-collapse table-auto w-full text-sm">
+                            <thead class="bg-indigo-800">
+                                <tr>
+                                <th class="border-b font-medium p-4 pl-8 pt-3 pb-3 text-slate-100 text-left ">Game</th>
+                                <th class="border-b font-medium p-4 pt-3 pb-3 text-slate-100 text-left">Console</th>
+                                <th class="border-b font-medium p-4 pr-8 pt-3 pb-3 text-slate-100 text-left">Year</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white/80">
+                                <tr>
+                                <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">God Of War I </td>
+                                <td class="border-b border-indigo-500 p-4 text-indigo-800">PS2 - PC</td>
+                                <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">2005</td>
+                                </tr>
+                                <tr>
+                                <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">God Of War II</td>
+                                <td class="border-b border-indigo-500 p-4 text-indigo-800">PS2 - PC</td>
+                                <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">2007</td>
+                                </tr>
+                                <tr>
+                                <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">God Of War III</td>
+                                <td class="border-b border-indigo-500 p-4 text-indigo-800">PS3 - PS4 - PC</td>
+                                <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">2010</td>
+                                </tr>
+                                <tr>
+                                <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">God Of War IV</td>
+                                <td class="border-b border-indigo-500 p-4 text-indigo-800">PS4 - PS5 - PC</td>
+                                <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">2018</td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">God Of War V</td>
+                                    <td class="border-b border-indigo-500 p-4 text-indigo-800">PS4 - PS5 - PC</td>
+                                    <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">2022</td>
+                                </tr>     
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <p class="  relative
+                                bottom-8
+                                my-3
+                                text-sm
+                                text-center
+                                ">
+                        God of War es un videojuego de acción-aventura hack and slash en tercera persona desarrollado por SCE Santa Monica Studio y publicado por Sony Interactive Entertainment.
+                    </p>
+                    <a href="#page1-Home" class=" p-4 
+                                                  relative 
+                                                  top-1
+                                                  left-28
+                                                bg-black
+                                                text-white 
+                                                  rounded-xl
+                                                  text-lg 
+                                                  font-semibold 
+                                                  font-serif 
+                                                hover:bg-slate-200
+                                                hover:text-black hover:font-semibold
+                                                  transition-all
+                                                        ">
+                            Home
+                    </a>    
+        </div>
+    </main>  
+</body>
+</html>
