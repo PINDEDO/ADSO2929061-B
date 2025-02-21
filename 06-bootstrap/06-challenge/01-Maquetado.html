@@ -1,453 +1,358 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Curriculum Vitae</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">   <!-- Se llama libreria de Bootstrap  -->
-    <!-- <link rel="stylesheet" href="../css/master.css"> -->
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        * {
-            transition: all 0.3s ease-in;
-        }
-        body {
-            background-color: #fff;
-        }
-        /**********************Header Seccion#1*************************/
-        header div.image-substract {
-            /* border: solid red 2px;     Para ver border en bootstrap le ponemos: border border-danger*/
-            margin: 5px auto;        /*Dar margen en todos los lados y Este margin auto es para centrar pero solo se centra cuando usamos  background: url NO funciona con img como en la siguiente seccion abajo*/  
-            background: url(../images/Seccion_1.png) no-repeat center;
-            height: 650px;
-            width: 1320px;
-            background-size: 1320px 650px;
+    <title>Portafolio - Miguel Angel Pineda Lopez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <button class="menu-toggle">☰</button>
+        <div class="logo">Miguel Angel Pineda Lopez</div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hello, I am <span>Miguel Angel Pineda Lopez</span></h1>
+            <p>Software Analysis and Development Student</p>
+            <button>Hire Me</button>
+        </div>
+        <img src="/06-bootstrap/images/BLESSD_EMOJI-removebg-preview 2.png" alt="Avatar">
+    </section>
+    <section id="about" class="about">
+        <h2>Why You Hire Me?</h2>
+        <p>Software developer focused on design, testing, and maintenance. Skilled in front-end and back-end technologies.</p>
+        <div class="skills">
+            <div class="skill"><span>Front-end</span><div class="bar front-end"></div></div>
+            <div class="skill"><span>Back-end</span><div class="bar back-end"></div></div>
+            <div class="skill"><span>MERN</span><div class="bar mern"></div></div>
+            <div class="skill"><span>PERN</span><div class="bar pern"></div></div>
+        </div>
+    </section>
+    <section id="services" class="services">
+        <h2>Service / Provider</h2>
+        <div class="service-container">
+            <div class="service-box"><img src="/06-bootstrap/images/skill-icons_html.png" alt=""> HTML5</div>
+            <div class="service-box"><img src="/06-bootstrap/images/skill-icons_javascript.png" alt=""> JavaScript</div>
+            <div class="service-box"><img src="/06-bootstrap/images/devicon_css3.png" alt="">CSS</div>
+            <div class="service-box"><img src="/06-bootstrap/images/skill-icons_bootstrap.png" alt=""> bootstrap</div>
+        </div>
+    </section>
+    <section id="portfolio" class="portfolio">
+        <h2>Latest Projects</h2>
+        <div class="portfolio-gallery">
+            <img src="/06-bootstrap/images/HECHO EN MEDELLIN.png" alt="Project 1">
+            <img src="/06-bootstrap/images/SIEMPRE BLESSD.png" alt="Project 2">
+            <img src="/06-bootstrap/images/SI SABE.png" alt="Project 3">
+        </div>
+    </section>
+    <footer>
+        <p>Miguel Angel Pineda Lopez</p>
+        <p>pineda07@gmail.com</p>
+        <div class="social-icons">
+            <img src="/06-bootstrap/images/devicon_facebook-1.png" alt="Facebook">
+            <img src="/06-bootstrap/images/skill-icons_instagram.png" alt="Instagram">
+            <img src="/06-bootstrap/images/linkedin-logo.png" alt="LinkedIn">
+        </div>
+    </footer>
+</body>
+<style>
+/* Estilos globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-                nav.nav-seccion1 {
-                    position: relative;
-                    left: 750px;
-                    width: 500px;
+body {
+    background-color: #00AEEF;
+    color: #fff;
+}
 
-                        a:is(:link, :visited) {
-                            background-color: #0008;
-                            /* border-bottom: 5px white solid; */
-                            color: #fff;
-                            /* font-size: 1.2rem; */
-                            /* padding: 20px; */
-                            text-decoration: none;
-                            text-align: center; 
-                            transition: all 0.4s ease-in;
-                            width: 20%;
-                        }
+/* Encabezado */
+header {
+    background-color: #007bb5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
 
-                        a:is(:hover) {
-                            background-color: #000;
-                            color: #ccc;
-                            /* border-bottom: 5px green solid; */
-                        }
-                }
-                img.img-logo-nombre {
-                    position:relative;
-                    bottom: 65px;
-                    height: 30px;
-                }
-                h6.title-hello {
-                    position: relative;     /*Position relative nos permite mover las letras */
-                    top: 120px;
-                    color: #48A48F;
-                }
-                p.title-nombre {
-                    position: relative;
-                    color: #000b;
-                    top: 80px;
-                    font-family: Verdana, Geneva, Tahoma, sans-serif;
-                }
-                p.title-profesional {
-                    position: relative;
-                    color: #000;
-                    top: 45px;
-                }
-                div.box-text {
-                    /* border: solid red 1px;   Para ver border en bootstrap le ponemos: border border-danger */
-                    position: relative;
-                    width: 625px;
-                    top: 20px;  
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+}
 
-                        /* p.text-descripcion {  Letra aplicada con css
-                            color:#000b;
-                            font-weight: 600;
-                        } */
-                }
-                button.button-hireme {
-                    position: relative;    /*Position relative nos permite mover el button*/
-                    bottom: 40px;
-                }
-        }
-        /**********************Seccion#2*************************/
-        section div.container-abilitys {
-            position: relative;       /*Usamos Position Relative y left 80px para centrar todo la caja, ya que NO lo hicimoa con el background: url y margin auto*/
-            left: 0px;               /* Ya no usamos en este caso left se deja por explicacion*/
-            width: 1320px;
-            height: 700px;
-            
-                h1.title-about {
-                    position: relative;
-                    color: #48A48F;
-                    left: 730px;
-                    bottom: 600px;
-                }
-                h2.title-why {
-                    position: relative;
-                    color: #000;
-                    left: 730px;
-                    bottom: 590px;
-                }
-                div.box-text2 {
-                    /* border: solid red 1px;   Para ver border en bootstrap le ponemos: border border-danger */
-                    position: relative;
-                    left: 730px;
-                    bottom: 580px;  
-                    width: 550px;
-                }
-                img.img-abilitys {
-                    position: relative;
-                    left: 730px;
-                    bottom: 550px;
-                    height: 250px;
-                }
-        }
-        /**********************Seccion#3*************************/
-        section div.container-services {
-            position: relative;       /*Usamos Position Relative y left 80px para centrar todo la caja, ya que NO lo hicimoa con el background: url y margin auto*/
-            left: 0px;                /* Ya no usamos en este caso left se deja por explicacion*/
-            width: 1320px;
-            height: 700px;
+/* Menú de navegación */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
 
-                h1.title-services {
-                    position: relative;
-                    color: #48A48F;
-                    left: 600px;
-                }
-                h1.title-service-provide {
-                    position: relative;
-                    color: #000;
-                    left: 515px;
-                }
-                img.img-mini-seccion {
-                    height: 214px;
-                }
-        }
-        /**********************Seccion#4*************************/
-        section div.container-portfolio {
-            width: 1320px;
-            height: 800px;
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-                h1.title-portfolio {
-                    position: relative;
-                    left: 50px;
-                    color: #48A48F;
-                }
-                h1.title-latest-proyects {
-                    position: relative;
-                    left: 50px;
-                    bottom: 35px;
-                    color: #000;
-                }
-                img.img-portfolio {
-                    height: 400px;
-                    width: 280px;
-                }
-        }
-        /**********************Footer*************************/
-        /* footer {           Aqui un ejemplo de lo que hacemos con bootstrap: bg-black bg-opacity-10, lo cual es lo mismo
-            background-color: #0005;
-        } */
-        footer div.container-footer {
-            width: 1320px;
-            height: 450px;
+/* Botón del menú hamburguesa */
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+}
 
-                img.img-logo-nombre {
-                    position: relative;
-                    left: 500px;
-                    height: 30px;
-                }
-                img.img-logo-redes {
-                    position: relative;
-                    left: 250px;
-                    height: 30px;
-                    top: 50px;
-                }
-                h1.img-title-email {
-                    position: relative;
-                    left: 425px;
-                   
-                }
-                nav.nav-footer {
-                    position:relative;
-                    left: 250px;
-                    width: 800px;
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
 
-                        a:is(:link, :visited) {
-                            /* background-color: #0008; */
-                            /* border-bottom: 5px white solid; */
-                            color: #000;
-                            /* font-size: 1.2rem; */
-                            /* padding: 20px; */
-                            text-decoration: none;
-                            text-align: center; 
-                            transition: all 0.4s ease-in;
-                            width: 20%;
-                        }
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: #007bb5;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        border-radius: 5px;
+        padding: 10px 0;
+    }
 
-                        a:is(:hover) {
-                            background-color: #000;
-                            color: #fff;
-                            /* border-bottom: 5px green solid; */
-                        }
-                }
-                img.img-logo-copyright {
-                    position: relative;
-                    left: 555px;
-                    height: 20px;
-                    top: 70px;
-                }
-        }
+    nav ul.open {
+        display: flex;
+    }
 
-        /****************MEDIA QUERIES-RESPONSIVE***********************/
-        /*--------------------------------------------------------------*/   /*---El rsponsive se va repitiendo y modificamos la que que se toca primero para volver pequeño o correr---*/
-        /**********************Header Seccion#1*************************/
-        @media (max-width: 1350px) {             /* --------Puedo hacer el responsive con tres medias para tirame menos codigo ------ Pendiente ------*/
-            header div.image-substract {
-                /* border: solid red 2px;     Para ver border en bootstrap le ponemos: border border-danger*/
-                margin: 5px auto;        /*Dar margen en todos los lados y Este margin auto es para centrar pero solo se centra cuando usamos  background: url NO funciona con img como en la siguiente seccion abajo*/  
-                background: url(../images/Seccion_1.png) no-repeat center;
-                height: 450px;     /*---Se modifica esta---*/
-                width: 1000px;     /*---Se modifica esta---*/
-                background-size: 1000px 450px;      /*---Se modifica esta---*/
+    nav ul li {
+        text-align: center;
+        padding: 10px;
+    }
 
-                    nav.nav-seccion1 {
-                        position: relative;
-                        left: 450px;         /*---Se modifica esta---*/
-                        width: 500px;
+    nav ul li a {
+        display: block;
+        padding: 10px;
+    }
+}
 
-                            a:is(:link, :visited) {
-                                background-color: #0008;
-                                /* border-bottom: 5px white solid; */
-                                color: #fff;
-                                /* font-size: 1.2rem; */
-                                /* padding: 20px; */
-                                text-decoration: none;
-                                text-align: center; 
-                                transition: all 0.4s ease-in;
-                                width: 20%;
-                            }
+/* Sección Hero */
+.hero {
+    background: linear-gradient(to right, #ddd 50%, #00AEEF 50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px 50px 50px;
+    height: 400px;
+    margin-top: 60px;
+}
 
-                            a:is(:hover) {
-                                background-color: #000;
-                                color: #ccc;
-                                /* border-bottom: 5px green solid; */
-                            }
-                    }
-                    img.img-logo-nombre {
-                        position:relative;
-                        bottom: 70px;       /*---Se modifica esta---*/
-                        height: 30px;
-                    }
-                    h6.title-hello {
-                        position: relative;     /*Position relative nos permite mover las letras */
-                        top: 120px;
-                        color: #48A48F;
-                    }
-                    p.title-nombre {
-                        position: relative;
-                        color: #000b;
-                        top: 80px;
-                        font-family: Verdana, Geneva, Tahoma, sans-serif;
-                    }
-                    p.title-profesional {
-                        position: relative;
-                        color: #000;
-                        top: 45px;
-                    }
-                    div.box-text {
-                        /* border: solid red 1px;   Para ver border en bootstrap le ponemos: border border-danger */
-                        position: relative;
-                        width: 625px;
-                        top: 20px;  
+.hero-content {
+    color: #000;
+}
 
-                            /* p.text-descripcion {  Letra aplicada con css
-                                color:#000b;
-                                font-weight: 600;
-                            } */
-                    }
-                    button.button-hireme {
-                        position: relative;    /*Position relative nos permite mover el button*/
-                        bottom: 40px;
-                    }
-            }
-        }
-            
-                
-                          
-                    
+.hero-content h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
 
+.hero-content span {
+    color: #007bb5;
+}
 
+button {
+    background-color: #007bb5;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Sección About */
+.about {
+    background-color: #f0f0f0;
+    color: #000;
+    padding: 50px;
+    text-align: center;
+}
+
+.skills {
+    margin-top: 20px;
+}
+
+.skill {
+    margin-bottom: 10px;
+}
+
+.bar {
+    width: 100%;
+    height: 10px;
+    background: #ddd;
+    border-radius: 5px;
+    position: relative;
+}
+
+.front-end { width: 80%; background: #007bb5; }
+.back-end { width: 70%; background: #007bb5; }
+.mern { width: 85%; background: #007bb5; }
+.pern { width: 75%; background: #007bb5; }
+
+/* Servicios */
+.services {
+    background: #00AEEF;
+    padding: 50px;
+    text-align: center;
+}
+
+.service-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.service-box {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Portafolio */
+.portfolio {
+    background: #f0f0f0;
+    padding: 50px;
+    color: #000;
+    text-align: center;
+}
+
+.portfolio-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.portfolio img {
+    width: 200px;
+    border-radius: 10px;
+}
+
+/* Sección Why You Hire Me? */
+.hire-me {
+    background-color: #fff;
+    color: #000;
+    padding: 50px;
+    text-align: center;
+}
+
+.hire-me-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.hire-me-text {
+    max-width: 50%;
+    text-align: left;
+}
+
+.hire-me img {
+    width: 50%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .hire-me-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hire-me-text, .hire-me img {
+        max-width: 100%;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #007bb5;
+    padding: 20px;
+    text-align: center;
+}
+
+.social-icons img {
+    width: 30px;
+    margin: 0 10px;
+    cursor: pointer;
+}
 
     </style>
-</head>
-<body class="">    <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
-    <main class="d-flex flex-column justify-content-center align-items-center">        <!-- Para poder centrar todo la pagina: Profe Masater Ofac -->
-        <header>     <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
-            <a name="home"></a>
-            <div class="image-substract m-1">     <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
-                <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">    BOOTSTRAP NAVBAR MENU HAMBURGUESA
-                    <div class="container-fluid">
-                        <img class=" m-2" src="../images/Logo_Jeferson.png" alt="">
-                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
-                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                          <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                          </li>
-                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Dropdown
-                            </a>
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="#">Action</a></li>
-                              <li><a class="dropdown-item" href="#">Another action</a></li>
-                              <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                          </li>
-                        </ul>
-                        <form class="d-flex" role="search">
-                          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                          <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                      </div>
-                    </div>
-                </nav> -->
-                <nav class="nav-seccion1 nav m-3 justify-content-end gap-2">    <!-- Para ver border en bootstrap le ponemos: border border-danger -->
-                    <a class="nav-link text-light fw-bold my-3" href="#home">Home</a>      <!-- Realizar menu hamburguesa con bootstrap doc navbar para responsive -->
-                    <a class="nav-link text-light fw-bold my-3" href="#about">About</a>
-                    <a class="nav-link text-light fw-bold my-3" href="#services">Services</a>
-                    <a class="nav-link text-light fw-bold my-3" href="#portfolio">Portfolio</a>
-                </nav>
-                <img class="img-logo-nombre m-2" src="../images/Logo_Jeferson.png" alt="">   <!-- Para ver border en bootstrap le ponemos: border border-danger -->
-                <h6 class="title-hello m-5 fs-4">Hello I am</h6>    <!-- Para ver border en bootstrap le ponemos: border border-danger -->
-                <p class="title-nombre m-5 fs-2 fw-bolder">Jeferson Hernandez Ladino</p>
-                <p class="title-profesional m-5 fw-bold">Professional Frelance Web Designer</p>
-                <div class="box-text m-5"> <!-- Para ver border en bootstrap le ponemos: border border-danger -->
-                    <p class="text-descripcion text-secondary fw-medium">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit ducimus minima dolorem tempora nobis debitis mollitia illum cumque dignissimos quisquam.</p>
-                </div>
-                <button type="button" class="button-hireme btn btn-success btn-lg m-5">Hire Me</button>
-            </div>
-        </header>
-        <section class="m-1">  <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
-            <a name="about"></a>
-            <div class="container-abilitys m-1">  <!-- Ponemos toda esta caja para poder centrar toda. Para ver border en bootstrap le ponemos: m-1 border border-dark -->
-                <img class="img-foto-marco m-5" src="../images/Foto y Marco.png" alt="">
-                <h1 class="title-about fs-5 fw-bold">About:</h1> 
-                <h2 class="title-why fw-bold">Why You Hire Me? </h2>
-                <div class="box-text2">      <!-- Para ver border en bootstrap le ponemos: border border-danger -->
-                    <p class="text-secondary fw-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iusto maiores possimus laboriosam quas debitis tempore itaque veritatis, delectus est rerum et, consequatur sunt laudantium dolor a iure, voluptates magnam dolores ut corporis fuga quos!</p>
-                </div>
-                <img class="img-abilitys" src="../images/Habilidades.png" alt="">
-            </div>
-        </section>  
-        <section class="m-1">    <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
-            <a name="services"></a>
-            <div class="container-services m-1">  <!-- Ponemos toda esta caja para poder centrar toda. Para ver border en bootstrap le ponemos: m-1 border border-dark -->
-                <h1 class="title-services m-3 fs-5 fw-bold">Services</h1> 
-                <h1 class="title-service-provide m-3 fs-2 fw-bold">Service | Provide</h1>
-                <div class="container text-center">
-                    <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-3 my-5">    <!-- Para ver border en bootstrap le ponemos: border border-dark -->
-                      <div class="col">
-                        <div class="p-3 border p-2 bg-dark-subtle text-light bg-opacity-75">
-                            <img class="img-mini-seccion" src="../images/Mini secciones 1.png" alt="">
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="p-3 border p-2 bg-dark-subtle text-light bg-opacity-75">
-                            <img class="img-mini-seccion" src="../images/Mini secciones 2.png" alt="">
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="p-3 border p-2 bg-dark-subtle text-light bg-opacity-75">
-                            <img class="img-mini-seccion" src="../images/Mini secciones 3.png" alt="">
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="p-3 border p-2 bg-dark-subtle text-light bg-opacity-75">
-                            <img class="img-mini-seccion" src="../images/Mini secciones 4.png" alt="">
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="p-3 border p-2 bg-dark-subtle text-light bg-opacity-75">
-                            <img class="img-mini-seccion" src="../images/Mini secciones 5.png" alt="">
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="p-3 border p-2 bg-dark-subtle text-light bg-opacity-75">
-                            <img class="img-mini-seccion" src="../images/Mini secciones 6.png" alt="">
-                        </div>
-                      </div>
-                    </div>
-                </div>  
-            </div>
-        </section>
-        <section class="m-1">       <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
-            <a name="portfolio"></a>
-            <div class="container-portfolio m-1">     <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
-                <h1 class="title-portfolio m-5 fs-5 fw-bold">Services</h1> 
-                <h1 class="title-latest-proyects m-5 fs-3 fw-bold">Latest Proyects</h1>
-                <div class="container text-center">
-                    <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-2">    <!-- Para ver border en bootstrap le ponemos: border border-dark -->
-                      <div class="col">
-                        <div class="p-5 border p-5 bg-dark-subtle text-light bg-opacity-75">
-                            <img class="img-portfolio" src="../images/Marvel_1.png" alt="">
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="p-5 border p-5 bg-dark-subtle text-light bg-opacity-75">
-                            <img class="img-portfolio" src="../images/Marvel_2.png" alt="">
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="p-5 border p-5 bg-dark-subtle text-light bg-opacity-75">
-                            <img class="img-portfolio" src="../images/Marvel_3.png" alt="">
-                        </div>
-                      </div>
-                    </div>
-                </div>  
-            </div>
-        </section>
-        <footer class="bg-black bg-opacity-10 m-1">      <!-- Para ver border en bootstrap le ponemos: m-1 border border-black -->
-            <div class="container-footer m-1">         <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
-                <img class="img-logo-nombre my-4" src="../images/Logo_Jeferson.png" alt="">
-                <img class="img-logo-redes " src="../images/Logos-Redes.png" alt="">
-                <h1 class="img-title-email m-5 fs-3 fw-bold">jefer.hernandez1@gmail.com</h1>
-                <nav class="nav-footer nav m-3 justify-content-center gap-4">    <!-- Para ver border en bootstrap le ponemos: border border-danger -->
-                    <a class="nav-link fw-bold" href="#home">Home</a>
-                    <a class="nav-link fw-bold" href="#about">About</a>
-                    <a class="nav-link fw-bold" href="#services">Services</a>
-                    <a class="nav-link fw-bold" href="#portfolio">Portfolio</a>
-                </nav>
-                <img class="img-logo-copyright " src="../images/©_All_rights_reserved.png" alt="">
-            </div>
-        </footer>
-    </main> 
-    <script src="../js/bootstrap.min.js"></script>     <!-- BOOTSTRAP Se importa paraque pueda funcionar varias funcionabilidades como el navbar -->
-</body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector("nav ul");
+
+    // Función para abrir o cerrar el menú
+    function toggleMenu() {
+        navMenu.classList.toggle("open");
+    }
+
+    // Evento de clic en el botón hamburguesa
+    menuToggle.addEventListener("click", toggleMenu);
+
+    // Atajos de teclado
+    document.addEventListener("keydown", function (event) {
+        if (event.ctrlKey) {
+            switch (event.key.toLowerCase()) {
+                case "m":
+                    toggleMenu();
+                    event.preventDefault();
+                    break;
+                case "h":
+                    document.querySelector(".hero").scrollIntoView({ behavior: "smooth" });
+                    event.preventDefault();
+                    break;
+                case "a":
+                    document.querySelector("#about").scrollIntoView({ behavior: "smooth" });
+                    event.preventDefault();
+                    break;
+                case "s":
+                    document.querySelector("#services").scrollIntoView({ behavior: "smooth" });
+                    event.preventDefault();
+                    break;
+                case "p":
+                    document.querySelector("#portfolio").scrollIntoView({ behavior: "smooth" });
+                    event.preventDefault();
+                    break;
+            }
+        }
+    });
+});
+    </script>
 </html>
