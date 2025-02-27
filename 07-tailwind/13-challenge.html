@@ -3,17 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challengue Tailwind</title>
-    <!-- <link rel="stylesheet" href="css/master.css"> -->
+    <title>GTA V - Fan Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Busqueda: 
-            Como realizar por css y html una pagina que pase de paginaciones sin tener que hacer varias paginas 
-        */ 
-        /* #content {     Es lo mismo usando: class="flex flex-col"
-            display: flex;
-            flex-direction: column;    Como empezar desde el inicio OFAC
-        } */
+        /* Estilos personalizados */
         .page-target {
             display: none;
         }
@@ -21,367 +14,191 @@
         .page-target:target {
             display: block;
         }
+
+        /* Efecto neón para botones */
+        .neon-button {
+            background-color: #1a1a1a;
+            color: #00ffcc;
+            border: 2px solid #00ffcc;
+            box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+            transition: all 0.3s ease;
+        }
+
+        .neon-button:hover {
+            background-color: #00ffcc;
+            color: #1a1a1a;
+            box-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+        }
+
+        /* Fondo inspirado en GTA V */
+        body {
+            background: url('images/GTA\ V\ FONFO\ PROFUNDO.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* Estilo para las tarjetas de personajes */
+        .character-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #00ffcc;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+
+        .character-card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        /* Estilo para las tarjetas de golpes */
+        .heist-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #00ffcc;
+            box-shadow: 0 0 10px #00ffcc;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .heist-card:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
     </style>
-    
 </head>
-<body class="bg-[url(images/God_of_war_img_fondo_3.jpg)] bg-no-repeat bg-cover ">
-     <!-- <a href="#page1-Home">Vamos a navegar</a>    Arreglo temporal consultar con Master Ofac: Solucionado ofac -->
+<body class="bg-gray-900 text-white">
     <main id="content" class="flex flex-col">
-        <div id="page1-Home" class="page-target
-                        container 
-                        m-auto
-                        h-auto 
-                        w-96
-                        rounded-3xl
-                        my-3
-                        bg-stone-800
-                        p-10
-                      text-white           
-                        ">
-                        <div class="rounded-3xl h-72 w-96 relative bottom-10 right-10 ">
-                            <img src="images/God Of War_1.jpg" class="rounded-t-3xl object-cover h-72 w-96">
-                        </div>
-                        <div class="rounded-full h-14 w-14 relative bottom-8 left-[119px] ">
-                            <img src="images/Logo_GodOfWar.png" class="rounded-t-3xl object-cover h-14 w-14">
-                        </div>
-                        <p class="uppercase
-                                  relative
-                                  bottom-8
-                                  tracking-widest 
-                                  text-4xl
-                                  font-serif
-                                  font-semibold
-                                  text-amber-400
-                                  text-center
-                                  ">
-                            God Of War  
-                        </p>
-                        <p class="lowercase
-                                  relative
-                                  bottom-6
-                                  font-serif hover:font-black
-                                  text-lg 
-                                  text-center
-                                  
-                                  ">
-                            Kratos es un guerrero de crecia nacido en la ciudad de sparta, convirtiendose en esclavo de ares, buscando su venganza a el y a los dioses del olimpo.
-                        </p>
-                        <a href="#page2-chronology" class="p-4 
-                                                           relative 
-                                                           top-1
-                                                           left-20 
-                                                         bg-black
-                                                         text-white 
-                                                           rounded-xl
-                                                           text-lg 
-                                                           font-semibold 
-                                                           font-serif 
-                                                         hover:bg-slate-200
-                                                         hover:text-black hover:font-semibold
-                                                           transition-all
-                                                           ">
-                            Chronology
-                        </a>             
+        <!-- Página 1: Home -->
+        <div id="page1-Home" class="page-target container m-auto h-auto w-96 rounded-3xl my-3 bg-gray-800 p-10">
+            <div class="rounded-3xl h-72 w-96 relative bottom-10 right-10">
+                <img src="images/GTA V FONDO.jpg" class="rounded-t-3xl object-cover h-72 w-96">
+            </div>
+            <div class="rounded-full h-14 w-14 relative bottom-8 left-[119px]">
+                <img src="images/GTA V LOGO.png" class="rounded-t-3xl object-cover h-14 w-14">
+            </div>
+            <p class="uppercase relative bottom-8 tracking-widest text-4xl font-sans font-bold text-green-400 text-center">
+                GTA V
+            </p>
+            <p class="lowercase relative bottom-6 font-sans text-lg text-center">
+                Explora el mundo abierto de Los Santos y Blaine County, donde el crimen, la acción y la diversión nunca terminan.
+            </p>
+            <a href="#page2-characters" class="neon-button p-4 relative top-1 left-20 rounded-xl text-lg font-bold font-sans transition-all">
+                Personajes
+            </a>
         </div>
-        <div id="page2-chronology" class="page-target 
-                    container 
-                    m-auto
-                    h-auto  
-                    w-96
-                    rounded-3xl
-                    my-3
-                    bg-stone-800
-                    p-10
-                  text-white 
-                                
-                    ">
-                    <a href="#page1-Home" class=" border 
-                                                    p-1
-                                                    relative 
-                                                    bottom-6
-                                                    right-7
-                                                    bg-black
-                                                    text-white 
-                                                    rounded-xl
-                                                    text-lg 
-                                                    font-semibold 
-                                                    font-serif 
-                                                    hover:bg-slate-200
-                                                    hover:text-black hover:font-semibold
-                                                    transition-all
-                                                           ">
-                            ⬅
-                    </a>  
-                    <p class="uppercase
-                                mb-5
-                                relative
-                                bottom-6
-                                tracking-widest 
-                                text-4xl
-                                font-serif
-                                font-semibold
-                                text-amber-400
-                                text-center
-                                ">
-                        Chronology
-                    </p>
-                    <div class="mt-8 relative h-96 bottom-7 overflow-auto">
-                        <div class="relative rounded-xl p-4">   <!-- Se quita overflow-auto en cada uno -->
-                            <div class="border-2 overflow-visible relative max-w-sm mx-auto bg-black shadow-lg rounded-xl flex items-center gap-6">
-                                <img class="absolute -left-6 w-28 h-28 rounded-full shadow-lg" src="images/God_Of_War_1_Icon.jpg">
-                                <div class="flex flex-col py-5 pl-24">
-                                <strong class="text-gray-100 text-sm font-medium">God of war I</strong>
-                                <span class="text-indigo-400 text-sm font-medium">Revenge</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative rounded-xl p-4">
-                            <div class="border-2 overflow-visible relative max-w-sm mx-auto bg-black shadow-lg rounded-xl flex items-center gap-6">
-                                <img class="absolute -left-6 w-28 h-28 rounded-full shadow-lg" src="images/God_Of_War_2_Icon.png">
-                                <div class="flex flex-col py-5 pl-24">
-                                <strong class="text-gray-100 text-sm font-medium">God of war II</strong>
-                                <span class="text-indigo-400 text-sm font-medium">Revenge to the gods</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative rounded-xl p-4">
-                            <div class="border-2 overflow-visible relative max-w-sm mx-auto bg-black shadow-lg rounded-xl flex items-center gap-6">
-                                <img class="absolute -left-6 w-28 h-28 rounded-full shadow-lg" src="images/God_Of_War_3_Icon.png">
-                                <div class="flex flex-col py-5 pl-24">
-                                <strong class="text-gray-100 text-sm font-medium">God of war III</strong>
-                                <span class="text-indigo-400 text-sm font-medium">Final revenge</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative rounded-xl p-4">
-                            <div class="border-2 overflow-visible relative max-w-sm mx-auto bg-black shadow-lg rounded-xl flex items-center gap-6">
-                                <img class="absolute -left-6 w-28 h-28 rounded-full shadow-lg" src="images/God_Of_War_4_Icon.png">
-                                <div class="flex flex-col py-5 pl-24">
-                                <strong class="text-gray-100 text-sm font-medium">God of war IV</strong>
-                                <span class="text-indigo-400 text-sm font-medium">Nordic</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative rounded-xl p-4">
-                            <div class="border-2 overflow-visible relative max-w-sm mx-auto bg-black shadow-lg rounded-xl flex items-center gap-6">
-                                <img class="absolute -left-6 w-28 h-28 rounded-full shadow-lg" src="images/God_Of_War_5_Icon.png">
-                                <div class="flex flex-col py-5 pl-24">
-                                <strong class="text-gray-100 text-sm font-medium">God of war V</strong>
-                                <span class="text-indigo-400 text-sm font-medium">Ragnarok</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#page3-characters" class=" p-4 
-                                                       relative 
-                                                       top-1
-                                                       left-24
-                                                     bg-black
-                                                     text-white 
-                                                       rounded-xl
-                                                       text-lg 
-                                                       font-semibold 
-                                                       font-serif 
-                                                     hover:bg-slate-200
-                                                     hover:text-black hover:font-semibold
-                                                       transition-all
-                                                     ">
-                            Characters
-                    </a> 
+
+        <!-- Página 2: Personajes -->
+        <div id="page2-characters" class="page-target container m-auto h-auto w-96 rounded-3xl my-3 bg-gray-800 p-10">
+            <a href="#page1-Home" class="neon-button border p-1 relative bottom-6 right-7 rounded-xl text-lg font-bold font-sans transition-all">
+                ⬅
+            </a>
+            <p class="uppercase mb-5 relative bottom-6 tracking-widest text-4xl font-sans font-bold text-green-400 text-center">
+                Personajes
+            </p>
+
+            <!-- Personajes principales -->
+            <p class="text-xl font-bold text-green-400 mb-3">Personajes principales</p>
+            <div class="grid grid-cols-1 gap-4 mb-6">
+                <div class="character-card">
+                    <img src="images/MICHAEL.webp" class="w-full h-48 object-cover">
+                    <p class="text-center p-2">Michael</p>
+                </div>
+                <div class="character-card">
+                    <img src="images/FRANKLIN.jpg" class="w-full h-48 object-cover">
+                    <p class="text-center p-2">Franklin</p>
+                </div>
+                <div class="character-card">
+                    <img src="images/TREVOR.jpg" class="w-full h-48 object-cover">
+                    <p class="text-center p-2">Trevor</p>
+                </div>
+            </div>
+
+            <!-- Personajes secundarios -->
+            <p class="text-xl font-bold text-green-400 mb-3">Personajes secundarios</p>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="character-card">
+                    <img src="images/LAMAR.jpg" class="w-full h-48 object-cover">
+                    <p class="text-center p-2">Lamar</p>
+                </div>
+                <div class="character-card">
+                    <img src="images/AMANDA.jpg" class="w-full h-48 object-cover">
+                    <p class="text-center p-2">Amanda</p>
+                </div>
+                <div class="character-card">
+                    <img src="images/LESTER.jpg" class="w-full h-48 object-cover">
+                    <p class="text-center p-2">Lester</p>
+                </div>
+                <div class="character-card">
+                    <img src="images/DEVIN.jpg" class="w-full h-48 object-cover">
+                    <p class="text-center p-2">Devin Weston</p>
+                </div>
+            </div>
+
+            <a href="#page3-heists" class="neon-button p-4 relative top-4 left-24 rounded-xl text-lg font-bold font-sans transition-all">
+                Golpes
+            </a>
         </div>
-        <div id="page3-characters" class="page-target 
-                    container 
-                    m-auto
-                    h-auto  
-                    w-96
-                    rounded-3xl
-                    my-3
-                    bg-stone-800
-                    p-10
-                  text-white 
-                                
-                    ">
-                    <a href="#page2-chronology" class=" border 
-                                                    p-1
-                                                    relative 
-                                                    bottom-6
-                                                    right-7
-                                                    bg-black
-                                                    text-white 
-                                                    rounded-xl
-                                                    text-lg 
-                                                    font-semibold 
-                                                    font-serif 
-                                                    hover:bg-slate-200
-                                                    hover:text-black hover:font-semibold
-                                                    transition-all
-                                                           ">
-                            ⬅
-                    </a>  
-                    <p class="uppercase
-                                mb-5
-                                relative
-                                bottom-6
-                                tracking-widest 
-                                text-4xl
-                                font-serif
-                                font-semibold
-                                text-amber-400
-                                text-center
-                                ">
-                        Characters
-                    </p>
-                    <div class="snap-x relative bottom-6 h-[480px] overflow-auto">
-                        <div class="border mb-3 snap-center">
-                          <img src="images/Kratos.jpeg" />
-                          <p class="text-center">Kratos</p>
-                        </div>
-                        <div class="border mb-3 snap-center hover:w-[740px] transition-all duration-500">
-                          <img src="images/Atreus.png" class="hover:w-[740px] transition-all duration-500" />
-                          <p class="text-center">Atreus</p>
-                        </div>
-                        <div class="border mb-3 snap-center ...">
-                          <img src="images/Zeus.jpg" />
-                          <p class="text-center">Zeus</p>
-                        </div>
-                        <div class="border mb-3 snap-center ...">
-                          <img src="images/Ares.png" />
-                          <p class="text-center">Ares</p>
-                        </div>
-                        <div class="border mb-3 snap-center ...">
-                          <img src="images/Atenea.png" />
-                          <p class="text-center">Atenea</p>
-                        </div>
-                        <div class="border mb-3 snap-center ...">
-                          <img src="images/Thor .png" />
-                          <p class="text-center">Thor</p>
-                        </div>
-                    </div>
-                    <a href="#page3-platforms" class=" p-4 
-                                                       relative 
-                                                       top-0
-                                                       left-20
-                                                     bg-black
-                                                     text-white 
-                                                       rounded-xl
-                                                       text-lg 
-                                                       font-semibold 
-                                                       font-serif 
-                                                     hover:bg-slate-200
-                                                     hover:text-black hover:font-semibold
-                                                       transition-all
-                                                     ">
-                            Plataform
-                    </a> 
+
+        <!-- Página 3: Golpes -->
+        <div id="page3-heists" class="page-target container m-auto h-auto w-96 rounded-3xl my-3 bg-gray-800 p-10">
+            <a href="#page2-characters" class="neon-button border p-1 relative bottom-6 right-7 rounded-xl text-lg font-bold font-sans transition-all">
+                ⬅
+            </a>
+            <p class="uppercase mb-5 relative bottom-6 tracking-widest text-4xl font-sans font-bold text-green-400 text-center">
+                Golpes
+            </p>
+
+            <!-- Lista de golpes -->
+            <div class="space-y-4">
+                <div class="heist-card">
+                    <p class="text-xl font-bold text-green-400">Golpe: El atraco al banco Fleeca</p>
+                    <p class="text-sm">El primer golpe importante en GTA V Online. Requiere planificación y un buen equipo.</p>
+                </div>
+                <div class="heist-card">
+                    <p class="text-xl font-bold text-green-400">Golpe: La prisión</p>
+                    <p class="text-sm">Un golpe complicado que implica infiltrarse en una prisión de alta seguridad.</p>
+                </div>
+                <div class="heist-card">
+                    <p class="text-xl font-bold text-green-400">Golpe: El atraco al Union Depository</p>
+                    <p class="text-sm">Uno de los golpes más lucrativos, pero también uno de los más difíciles.</p>
+                </div>
+                <div class="heist-card">
+                    <p class="text-xl font-bold text-green-400">Golpe: El atraco al casino</p>
+                    <p class="text-sm">Un golpe moderno que requiere habilidades de hacking y sigilo.</p>
+                </div>
+            </div>
+
+            <a href="#page4-platforms" class="neon-button p-4 relative top-4 left-24 rounded-xl text-lg font-bold font-sans transition-all">
+                Plataformas
+            </a>
         </div>
-        <div id="page3-platforms" class="page-target 
-                    container 
-                    m-auto
-                    h-auto    
-                    w-96
-                    rounded-3xl
-                    my-3
-                    bg-stone-800
-                    p-10
-                  text-white
-                    
-                    
-                    ">
-                    <a href="#page3-characters" class=" border 
-                                                        p-1
-                                                        relative 
-                                                        bottom-6
-                                                        right-7
-                                                        bg-black
-                                                        text-white 
-                                                        rounded-xl
-                                                        text-lg 
-                                                        font-semibold 
-                                                        font-serif 
-                                                        hover:bg-slate-200
-                                                        hover:text-black hover:font-semibold
-                                                        transition-all
-                                                           ">
-                            ⬅
-                    </a>  
-                    <p class="uppercase
-                                mb-5
-                                relative
-                                bottom-6
-                                tracking-widest 
-                                text-4xl
-                                font-serif
-                                font-semibold
-                                text-amber-400
-                                text-center
-                                ">
-                        Platforms  
-                    </p>
-                    <div class="relative bottom-7 rounded-xl overflow-auto">
-                        <div class="border-2 h-80 shadow-sm overflow-auto my-4">
-                            <table class="border-collapse table-auto w-full text-sm">
-                            <thead class="bg-indigo-800">
-                                <tr>
-                                <th class="border-b font-medium p-4 pl-8 pt-3 pb-3 text-slate-100 text-left ">Game</th>
-                                <th class="border-b font-medium p-4 pt-3 pb-3 text-slate-100 text-left">Console</th>
-                                <th class="border-b font-medium p-4 pr-8 pt-3 pb-3 text-slate-100 text-left">Year</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white/80">
-                                <tr>
-                                <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">God Of War I </td>
-                                <td class="border-b border-indigo-500 p-4 text-indigo-800">PS2 - PC</td>
-                                <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">2005</td>
-                                </tr>
-                                <tr>
-                                <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">God Of War II</td>
-                                <td class="border-b border-indigo-500 p-4 text-indigo-800">PS2 - PC</td>
-                                <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">2007</td>
-                                </tr>
-                                <tr>
-                                <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">God Of War III</td>
-                                <td class="border-b border-indigo-500 p-4 text-indigo-800">PS3 - PS4 - PC</td>
-                                <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">2010</td>
-                                </tr>
-                                <tr>
-                                <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">God Of War IV</td>
-                                <td class="border-b border-indigo-500 p-4 text-indigo-800">PS4 - PS5 - PC</td>
-                                <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">2018</td>
-                                </tr>
-                                <tr>
-                                    <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">God Of War V</td>
-                                    <td class="border-b border-indigo-500 p-4 text-indigo-800">PS4 - PS5 - PC</td>
-                                    <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">2022</td>
-                                </tr>     
-                            </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <p class="  relative
-                                bottom-8
-                                my-3
-                                text-sm
-                                text-center
-                                ">
-                        God of War es un videojuego de acción-aventura hack and slash en tercera persona desarrollado por SCE Santa Monica Studio y publicado por Sony Interactive Entertainment.
-                    </p>
-                    <a href="#page1-Home" class=" p-4 
-                                                  relative 
-                                                  top-1
-                                                  left-28
-                                                bg-black
-                                                text-white 
-                                                  rounded-xl
-                                                  text-lg 
-                                                  font-semibold 
-                                                  font-serif 
-                                                hover:bg-slate-200
-                                                hover:text-black hover:font-semibold
-                                                  transition-all
-                                                        ">
-                            Home
-                    </a>    
+
+        <!-- Página 4: Plataformas -->
+        <div id="page4-platforms" class="page-target container m-auto h-auto w-96 rounded-3xl my-3 bg-gray-800 p-10">
+            <a href="#page3-heists" class="neon-button border p-1 relative bottom-6 right-7 rounded-xl text-lg font-bold font-sans transition-all">
+                ⬅
+            </a>
+            <p class="uppercase mb-5 relative bottom-6 tracking-widest text-4xl font-sans font-bold text-green-400 text-center">
+                Plataformas
+            </p>
+
+            <!-- Imágenes de plataformas -->
+            <div class="space-y-4">
+                <div class="character-card">
+                    <img src="images/PS5.jpg" class="w-full h-48 object-cover">
+                    <p class="text-center p-2">PlayStation 5</p>
+                </div>
+                <div class="character-card">
+                    <img src="images/XBOX.jpg" class="w-full h-48 object-cover">
+                    <p class="text-center p-2">Xbox Series X/S</p>
+                </div>
+                <div class="character-card">
+                    <img src="images/PC.jpg" class="w-full h-48 object-cover">
+                    <p class="text-center p-2">PC</p>
+                </div>
+            </div>
+
+            <a href="#page1-Home" class="neon-button p-4 relative top-4 left-28 rounded-xl text-lg font-bold font-sans transition-all">
+                Inicio
+            </a>
         </div>
-    </main>  
+    </main>
 </body>
 </html>
