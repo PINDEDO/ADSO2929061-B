@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-Vehicle Object</title>
+    <Link rel="stylesheet" href="css/master.css">
+    <style>
+         section {
+            background-color: #F77463;
+            position: relative;
+        }
+        section div.header {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            width: 380px;
+        }
+        section div.header button.btn-hidden {
+            visibility: hidden;
+        }
+        section div.header button {
+            border: none;
+            cursor: pointer;
+            height: 50px;
+            width: 51px;
+        }
+        section div.header button.btn-light {
+            background: transparent url(images/verhicule/Group\ 36.svg) no-repeat; /*boton noche y dia */
+
+        }
+        section button {
+            transition: all 0.2s ease-in;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        section div.attributes {
+            background: url(images/verhicule/atributtos.svg.svg) no-repeat; /*caja metodo*/
+            display: grid;
+            grid-template-columns: repeat(2, 120px) ;
+            height: 120px;
+            margin: 1rem auto;
+            width: 380px;
+            position: relative;
+        }
+        section div.attributes span {
+            position: absolute;
+        }
+        section div.attributes span.brand {
+            top: 45px;
+            left: 97px;
+        }
+
+        section div.attributes span.refer {
+            top: 48px;
+            left: 290px;
+        }
+        section div.attributes span.model {
+            top: 100px;
+            left: 97px;
+        }
+        section div.attributes span.color {
+            top: 92px;
+            left: 280px;
+        }
+        section div.landscape {
+            background-color: #fff9;
+            border: 3px solid #714eaa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            height: 260px;
+            margin: 0 auto;
+            width: 374px;
+        }
+        section div.landscape button {
+            border: none;
+            cursor: pointer;
+            height: 44px;
+            width: 44px;
+        }
+        section div.landscape button.btn-prev {
+            background: url(images/verhicule/btn.flecha2.svg.svg) no-repeat; /*fecha izquierda*/
+        }
+        section div.landscape button.btn-next {
+            background: url(images/verhicule/flecha-correcta\ 3\ \(1\).svg) no-repeat; /*flecha derecha*/
+        }
+
+        
+        section div.methods {
+            background: url(images/verhicule/metodosss.svg.svg) no-repeat; /*Caja atributtos*/
+            width: 390px;
+            height: 110px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem auto;
+        }
+        section div.methods button {
+            border: none;
+            cursor: pointer;
+            margin-top: 2.3rem;
+            height: 63px;
+            width: 65px;
+        }
+        section div.methods button.btn-on {
+            background: url(images/verhicule/metodos.svg.svg) no-repeat; /*atributos*/
+        }
+        section div.methods button.btn-fwd {
+            background: url(images/verhicule/metodos1.svg.svg) no-repeat; /*atributos*/
+        }
+        section div.methods button.btn-stop {
+            background: url(images/verhicule/metodos2.svg.svg) no-repeat;/*atributos */
+        }
+        section div.methods button.btn-bwd {
+            background: url(images/verhicule/metodos4.svg.svg) no-repeat;/*atributos*/
+        }
+        section div.methods button.btn-off {
+            background: url(images/verhicule/metodos5.svg.svg) no-repeat;/*atributos*/
+        }
+      
+        
+
+         section.dark {
+            background-color: #303837;
+
+            div.header {
+                background: url(../08-jscript/imagen/07-obj/obj2/velocista.svg) no-repeat;
+                align-items: center;
+                display: flex;
+            }
+
+            div.header button.btn-hidden {
+                visibility: hidden;
+            }
+
+            div.header button {
+                position: relative;
+                border: none;
+                cursor: pointer;
+                height: 50px;
+                width: 40px;
+                top: 5px;
+                left: 300px;
+            }
+
+            .titulo-velocistas {
+                position: relative;
+                left: -35px;
+
+            }
+
+            .btn-mode {
+                background: transparent url(imagen/07-obj/obj2/reloj.svg) no-repeat;
+            }
+
+
+            .attributes-contain {
+
+                position: relative;
+                width: 100%;
+                height: 175px;
+                margin-top: 5px;
+                top: -3px;
+                margin-bottom: 20px;
+                background-image: url('imagen/07-obj/obj2/rectangulo.svg');
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            .atributos {
+                background: url(imagen/07-obj/obj2/atributos.svg) no-repeat;
+                position: relative;
+                z-index: 1;
+                top: 13.5px;
+                left: 30px;
+            }
+
+            span {
+                position: absolute;
+                left: 60px;
+            }
+
+
+
+            .atributos .name {
+                background: url(imagen/07-obj/obj2/name.svg) no-repeat;
+            }
+
+            .atributos .age {
+                background: url(imagen/07-obj/obj2/age.svg) no-repeat;
+            }
+
+            .atributos .power {
+                background: url(imagen/07-obj/obj2/power.svg) no-repeat;
+            }
+
+            .atributos .vel {
+                background: url(imagen/07-obj/obj2/km.svg) no-repeat;
+            }
+
+
+
+            div.landscape {
+                background-color: #fff9;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-radius: 5px;
+                height: 260px;
+                margin: 0 auto;
+                width: 374px;
+            }
+
+            div.landscape button {
+                border: none;
+                cursor: pointer;
+                height: 44px;
+                width: 44px;
+            }
+
+            div.landscape button.btn-prev {
+                background: url(/08-jscript/imagen/07-obj/obj2/left.svg) no-repeat;
+                background-position: 5px;
+                background-color: #303837;
+                border-radius: 0 50px 50px 0;
+            }
+
+            div.landscape button.btn-next {
+                background: url(/08-jscript/imagen/07-obj/obj2/right.svg) no-repeat;
+                background-position: 5px;
+                background-color: #303837;
+                border-radius: 50px 0 0 50px;
+                align-items: center;
+            }
+
+            .img-metodos {
+                background: url(../08-jscript/imagen/07-obj/obj2/metodos.svg) no-repeat;
+                text-align: center;
+                margin: 5px;
+                height: 30px;
+                margin-left: 10px;
+            }
+
+            div.methods {
+                background-color: #7C4F8F;
+                width: 379px;
+                height: 67px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 0.5rem;
+                margin-left: 10px;
+                border-radius: 20px;
+            }
+
+            div.methods button {
+                border: none;
+                cursor: pointer;
+                margin-top: 1rem;
+                height: 47px;
+                width: 40px;
+            }
+
+            .botones {
+                margin-left: 20px;
+                margin-bottom: 8px;
+            }
+
+            div.methods button.btn-on {
+                background: url(imagen/07-obj/obj2/metodos/on.svg) no-repeat;
+                margin-right: 10px;
+            }
+
+            div.methods button.btn-fwd {
+                background: url(imagen/07-obj/obj2/metodos/go.svg) no-repeat;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            div.methods button.btn-stop {
+                background: url(imagen/07-obj/obj2/metodos/stop.svg) no-repeat;
+                margin: 10px;
+            }
+
+            div.methods button.btn-bwd {
+                background: url(imagen/07-obj/obj2/metodos/back.svg) no-repeat;
+                margin: 10px;
+            }
+
+            div.methods button.btn-off {
+                background: url(imagen/07-obj/obj2/metodos/off.svg) no-repeat;
+                margin: 10px;
+            }
+        }
+
+        /**************Methods****************/
+        .start{
+            animation: animStart 0.01s ease-in infinite;
+        }
+        @keyframes animStart {
+            100%{
+                bottom: 130px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <nav class="controls">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>07- Object</h1>
+            <h2>Vehicle</h2>
+        </header>
+        <section class="light">
+            <div class="header">
+                <button class="btn-hidden"></button>
+                <img src="images/verhicule/logo.svg.svg" alt="">
+                <button class="btn-light"></button>
+            </div>
+            <div class="attributes">
+                <span class="brand">Orbea</span>
+                <span class="refer"> MX 29</span>
+                <span class="model">2025</span>
+                <span class="color">White</span>
+            </div>
+           
+            <div class="landscape">
+                <button class="btn-prev"></button>
+                <button class="btn-next"></button>
+            </div>
+
+
+            <div class="methods">
+                <button class="btn-on"></button>
+                <button class="btn-fwd"></button>
+                <button class="btn-stop"></button>
+                <button class="btn-bwd"></button>
+                <button class="btn-off"></button>
+            </div>
+           
+
+        </section>
+     
+    </main> 
+    <script>
+        //values
+        var engine = false 
+        var index = 0
+        //darkmode
+        const darkMode = window.matchMedia('(prefers-color-scheme: dark)')
+        //elements
+        const btnMode = document.querySelector('.btn-mode');
+        const section = document.querySelector('section');
+        const btnNext = document.querySelector('.btn-next');
+        const btnPrev = document.querySelector('.btn-prev');
+        const btnOn = document.querySelector('.btn-on');
+        const btnOff = document.querySelector('.btn-off');
+
+
+        //attributes
+        const brand = document.querySelector('.brand');
+        const refer = document.querySelector('.refer');
+        const model = document.querySelector('.model');
+        const color = document.querySelector('.color');
+        const image = document.querySelector('.image');
+
+        //btns: events
+        btnMode.addEventListener('click', function () {
+            vehicle.mode()
+        })
+
+        btnOn.addEventListener('click', function(){
+            vehicle.start()
+        })
+        btnOff.addEventListener('click', function(){
+            vehicle.off()
+        })
+       
+        const vehicle = {
+            attributes: [
+                { brand: 'Barry A', refer: '25', model: 'Speed F.', color: '13 c', image: 'imagen/07-obj/flash-barry.svg' },
+                { brand: 'Walter W.', refer: '???', model: 'Speed F.', color: '13 c', image: 'imagen/07-obj/obj2/black-flash.svg' },
+
+            ],
+            mode: function () {
+                section.classList.toggle('dark')
+            },
+            showAttributes: function (i) {
+                brand.textContent = this.attributes[i].brand
+                refer.textContent = this.attributes[i].refer
+                model.textContent = this.attributes[i].model
+                color.textContent = this.attributes[i].color
+                image.setAttribute('src', this.attributes[i].image)
+            },
+
+            start: function(){
+                if (!engine) {
+                    image.classList.add('start')
+                    engine = true
+                }
+            },
+            off: function(){
+                if (engine) {
+                    image.classList.remove('start')
+                    engine=false
+                }
+            }
+
+        }
+
+        vehicle.showAttributes(0)
+        darkModeChange(darkMode)
+
+
+        btnNext.addEventListener('click', function () {
+            if (index <= (vehicle.attributes.length) + 1) {
+                btnPrev.style.opacity = '1'
+                vehicle.showAttributes(++index)
+                if (index == (vehicle.attributes.length)-1) {
+                    this.style.opacity = '0.2'
+                }
+            }
+        })
+
+
+        btnPrev.addEventListener('click', function () {
+            if (index >= 0) {
+                btnNext.style.opacity = '1'
+                vehicle.showAttributes(--index)
+                if (index == 0){
+                    this.style.opacity = '0.2'
+                }
+            }
+        })
+
+        
+
+        function darkModeChange(dmq) {
+            const isDarkMode = dmq.matches
+            if (isDarkMode) {
+                section.classList.add('dark')
+            } else {
+                section.classList.remove('dark')
+            }
+        }
+        darkMode.addListener(darkModeChange)
+
+    </script>
+      
+</body>
+</html>

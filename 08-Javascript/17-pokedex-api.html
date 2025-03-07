@@ -1,0 +1,316 @@
+
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <style>
+         body {
+            background-image: url('https://wallpaperaccess.com/full/3109738.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffa600;
+       
+        }
+
+        .landing-screen {
+            background-image: url('images/Group.png');
+            background-size: cover;
+            background-position: center;
+            width: 90%;
+            max-width: 400px;
+            height: 600px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 9px 9px rgba(248, 171, 3, 0.904);
+            text-align: center;
+        }
+
+        .landing-screen h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .next-button {
+            background-color: #ff73009c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-button:hover {
+            background-color: #ff6347;
+        }
+
+        .pokedex {
+            display: none;
+            background-image: url('images/pokemon.png'); 
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #ccc;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .pokemon-image {
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+        }
+
+        .pokemon-info {
+            margin-top: 10px;
+        }
+
+        .stat-bars {
+            margin-top: 20px;
+        }
+
+        .stat-bar {
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 5px 0;
+        }
+
+        .stat-bar-fill {
+            background-color: #4caf50;
+            height: 10px;
+            width: 0;
+        }
+
+        .controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls button {
+    margin: 0 10px;
+    padding: 12px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #6b1e83;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.controls button:hover {
+    background-color: #8735bd;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.controls button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search input {
+    padding: 10px 15px;
+    font-size: 18px;
+    border: 5px solid #501686;
+    border-radius: 6px;
+    margin-right: 10px;
+    width: 250px;
+    transition: border-color 0.3s ease;
+}
+
+.search input:focus {
+    outline: none;
+    border-color: #9635bd;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.search button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #581181;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search button:hover {
+    background-color: #bd35b2;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.search button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+    </style>
+</head>
+<body>
+    <div class="landing-screen">
+        <h1>Pokédex</h1>
+        <button class="next-button">Next</button>
+    </div>
+
+    <div class="pokedex">
+        <div class="pokemon-container">
+            <img class="pokemon-image" src="" alt="Pokemon">
+            <div class="pokemon-info">
+                <h2 class="pokemon-name">Nombre</h2>
+                <p class="pokemon-id">ID: #</p>
+                <p class="pokemon-type">Tipo:</p>
+            </div>
+        </div>
+
+        <div class="stat-bars">
+            <div class="stat-bar">
+                <div class="stat-bar-fill"></div>
+            </div>
+            <div class="stat-bar">
+                <div class="stat-bar-fill"></div>
+            </div>
+            <div class="stat-bar">
+                <div class="stat-bar-fill"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="prev">Anterior</button>
+            <button class="next">Siguiente</button>
+        </div>
+
+        <div class="search">
+            <input class="search-input" type="text" placeholder="Buscar por ID o nombre">
+            <button class="search-button">Buscar</button>
+        </div>
+    </div>
+
+    <script>
+        const landingScreen = document.querySelector('.landing-screen');
+        const pokedex = document.querySelector('.pokedex');
+        const nextButton = document.querySelector('.next-button');
+
+        nextButton.addEventListener('click', () => {
+            landingScreen.style.display = 'none';
+            pokedex.style.display = 'block';
+        });
+
+        // Rest of the previous JavaScript remains the same
+        const pokemonImage = document.querySelector('.pokemon-image');
+        const pokemonName = document.querySelector('.pokemon-name');
+        const pokemonId = document.querySelector('.pokemon-id');
+        const pokemonType = document.querySelector('.pokemon-type');
+        const prevButton = document.querySelector('.prev');
+        const nextPokemonButton = document.querySelector('.next');
+        const searchButton = document.querySelector('.search-button');
+        const searchInput = document.querySelector('.search-input');
+        const statBars = document.querySelectorAll('.stat-bar-fill');
+
+        let currentPokemon = 1;
+
+        const fetchPokemon = async (query) => {
+            try {
+                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`);
+                if (!response.ok) throw new Error('Pokémon no encontrado');
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error(error);
+                return null;
+            }
+        };
+
+        const updateUI = (data) => {
+            if (data) {
+                pokemonImage.src = data.sprites.front_default;
+                pokemonName.textContent = data.name;
+                pokemonId.textContent = `ID: #${data.id}`;
+                pokemonType.textContent = `Tipo: ${data.types.map(t => t.type.name).join(', ')}`;
+
+                const stats = data.stats.map(s => s.base_stat);
+                statBars[0].style.width = `${stats[0]}%`;
+                statBars[1].style.width = `${stats[1]}%`;
+                statBars[2].style.width = `${stats[2]}%`;
+            } else {
+                pokemonImage.src = '';
+                pokemonName.textContent = 'No encontrado';
+                pokemonId.textContent = '';
+                pokemonType.textContent = '';
+                statBars.forEach(bar => (bar.style.width = '0%'));
+            }
+        };
+
+        const renderPokemon = async (id) => {
+            const data = await fetchPokemon(id);
+            updateUI(data);
+        };
+
+        prevButton.addEventListener('click', () => {
+            if (currentPokemon > 1) {
+                currentPokemon--;
+                renderPokemon(currentPokemon);
+            }
+        });
+
+        nextPokemonButton.addEventListener('click', () => {
+            currentPokemon++;
+            renderPokemon(currentPokemon);
+        });
+
+        searchButton.addEventListener('click', async () => {
+            const query = searchInput.value.toLowerCase();
+            if (query) {
+                if (isNaN(query)) {
+                    // If the query is a name
+                    const data = await fetchPokemon(query);
+                    if (data) {
+                        updateUI(data);
+                        currentPokemon = data.id;
+                    } else {
+                        updateUI(null);
+                    }
+                } else {
+                    // If the query is an ID
+                    currentPokemon = parseInt(query, 10);
+                    renderPokemon(currentPokemon);
+                }
+            }
+        });
+
+        // Initial render
+        renderPokemon(currentPokemon);
+    </script>
+</body>
+</html>
