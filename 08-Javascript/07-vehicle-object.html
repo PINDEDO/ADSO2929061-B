@@ -5,28 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moto Flow Medellín</title>
     <style>
-/* 🎞️ Fondo animado Parallax */
-body {
-    --speed: 10s; /* Variable para la velocidad del fondo */
-}
+        /* 📏 Sección ocupa toda la pantalla */
+        section {
+            height: 100vh;
+            max-width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('images/moto/road.jpg') repeat-x;
-    background-size: cover;
-    animation: moveBackground var(--speed) linear infinite;
-    z-index: -1;
-}
+        /* 🎞️ Parallax */
+        .landscape {
+            position: relative;
+            overflow: hidden;
+            width: 80%;
+            height: 50vh;
+            background: url('images/moto/road.jpg') repeat-x;
+            background-size: cover;
+            animation: moveBackground 10s linear infinite;
+            animation-play-state: paused;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 10px;
+        }
 
-@keyframes moveBackground {
-    from { background-position: 0 0; }
-    to { background-position: -2000px 0; } /* Ajusta según el tamaño de tu imagen */
-}
+        @keyframes moveBackground {
+            from { background-position: 0 0; }
+            to { background-position: -2000px 0; }
+        }
 
         body {
             font-family: 'Arial', sans-serif;
@@ -50,8 +59,16 @@ body::before {
             color: #0f0;
         }
 
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
         .header img {
-            width: 100px;
+            width: 80px; /* Tamaño uniforme */
+            height: 80px;
         }
 
         .attributes {
@@ -62,10 +79,13 @@ body::before {
         }
 
         .landscape img {
-            width: 100%;
+            width: 250px; /* Uniformidad */
+            height: 150px;
+            object-fit: contain;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 255, 150, 0.6);
-        }
+    box-shadow: none;
+}
+
 
         .methods button, .nav-buttons button {
             background: #0f0;
@@ -81,10 +101,6 @@ body::before {
 
         .methods button:hover, .nav-buttons button:hover {
             transform: scale(1.1);
-        }
-
-        .nav-buttons {
-            margin-top: 10px;
         }
 
         .dark {
@@ -114,7 +130,8 @@ body::before {
 <body>
     <section>
         <div class="header">
-            <img src="images/moto/el-poderoso.png" alt="Logo Moto">
+            <img id="logo-national" src="images/moto/nacional.png" alt="Escudo Nacional">
+            <img id="logo-medellin" src="images/moto/medellin.png" alt="Escudo Medellín" style="display: none;">
             <button class="btn-mode">🌙</button>
         </div>
 
@@ -130,7 +147,7 @@ body::before {
         <div class="landscape">
             <img class="image" src="" alt="Moto">
         </div>
-
+        
         <div class="methods">
             <button class="btn-on">Encender 🔥</button>
             <button class="btn-fwd">Acelerar 🏁</button>
@@ -145,102 +162,109 @@ body::before {
     </section>
 
     <script>
-        let engine = false;
-        let index = 0; // Índice para navegar entre motos
-        const body = document.body;
-    
-        const section = document.querySelector('section');
+ 
+const landscape = document.querySelector('.landscape');
+const motoImage = document.querySelector('.image');
+
         const btnMode = document.querySelector('.btn-mode');
-        const btnOn = document.querySelector('.btn-on');
-        const btnOff = document.querySelector('.btn-off');
-        const btnFwd = document.querySelector('.btn-fwd');
-        const btnStop = document.querySelector('.btn-stop');
-        const btnPrev = document.querySelector('.btn-prev');
-        const btnNext = document.querySelector('.btn-next');
-    
+        const logoNational = document.getElementById('logo-national');
+        const logoMedellin = document.getElementById('logo-medellin');
+
         const brand = document.querySelector('.brand');
         const model = document.querySelector('.model');
         const cc = document.querySelector('.cc');
         const color = document.querySelector('.color');
         const image = document.querySelector('.image');
-    
+
         const motos = [
-            { brand: 'YAMAHA', model: 'DT 125', cc: '124cc', color: 'Azul', image: 'images/moto/yamaha-dt125.png' },
-            { brand: 'SUZUKI', model: 'DR 650', cc: '131cc', color: 'Amarillo y Morado', image: 'images/moto/suzuki-dr650.png' },
-            { brand: 'SUZUKI', model: '125', cc: '110cc', color: 'Rojo', image: 'images/moto/suzuki-125.png' },
-            { brand: 'KAWASAKI', model: '100', cc: '105cc', color: 'Negro', image: 'images/moto/kawasaki-100.png' },
-            { brand: 'YAMAHA', model: 'NMAX', cc: '158cc', color: 'Beige', image: 'images/moto/yamaha-nmax.png' }
-        ];
-    
+    { brand: 'YAMAHA', model: 'DT 125', cc: '124cc', color: 'Azul', image: 'images/moto/yamaha-dt125.png' },
+    { brand: 'SUZUKI', model: 'DR 650', cc: '131cc', color: 'Amarillo y Morado', image: 'images/moto/suzuki-dr650.png' },
+    { brand: 'KAWASAKI', model: '100', cc: '105cc', color: 'Negro', image: 'images/moto/kawasaki-100.png' },
+    { brand: 'SUZUKI', model: '125', cc: '125cc', color: 'Amarillo y Morado', image: 'images/moto/suzuki-125.png' },
+    { brand: 'YAMAHA', model: 'NMAX', cc: '155cc', color: 'Negro', image: 'images/moto/yamaha-nmax.png' }
+];
+
+
         function showMoto(i) {
             brand.textContent = motos[i].brand;
             model.textContent = motos[i].model;
             cc.textContent = motos[i].cc;
             color.textContent = motos[i].color;
-            image.setAttribute('src', motos[i].image);
+            image.src = motos[i].image;
         }
-    
-        // 🌙 Modo Oscuro / Claro
+
         btnMode.addEventListener('click', () => {
-            section.classList.toggle('dark');
-            btnMode.textContent = section.classList.contains('dark') ? '☀️' : '🌙';
+            document.querySelector('section').classList.toggle('dark');
+            const isDark = document.querySelector('section').classList.contains('dark');
+
+            logoNational.style.display = isDark ? 'none' : 'block';
+            logoMedellin.style.display = isDark ? 'block' : 'none';
+            btnMode.textContent = isDark ? '☀️' : '🌙';
         });
-    
-        // 🏍️ Encender Moto
-        btnOn.addEventListener('click', () => {
-            if (!engine) {
-                body.style.setProperty('--speed', '5s'); // Acelera al encender
-                image.classList.add('start');
-                engine = true;
-                alert("🔥 La moto está encendida, listo para rodar!");
-            }
-        });
-    
-        // ❌ Apagar Moto
-        btnOff.addEventListener('click', () => {
-            if (engine) {
-                body.style.setProperty('--speed', '10s'); // Vuelve a la velocidad normal
-                image.classList.remove('start');
-                engine = false;
-                alert("❌ Moto apagada.");
-            }
-        });
-    
-        // 🏁 Acelerar
-        btnFwd.addEventListener('click', () => {
-            if (engine) {
-                body.style.setProperty('--speed', '3s'); // Acelera más
-                alert("🏍️ Acelerando! Full gas 🔥");
-            } else {
-                alert("🚨 Enciende la moto primero!");
-            }
-        });
-    
-        // 🛑 Frenar
-        btnStop.addEventListener('click', () => {
-            if (engine) {
-                body.style.setProperty('--speed', '7s'); // Reduce la velocidad
-                alert("🛑 Frenando... cuidado en las curvas!");
-            } else {
-                alert("🚨 La moto está apagada!");
-            }
-        });
-    
-        // ⬅️ Moto Anterior
-        btnPrev.addEventListener('click', () => {
+
+        document.querySelector('.btn-prev').addEventListener('click', () => {
             index = (index - 1 + motos.length) % motos.length;
             showMoto(index);
         });
-    
-        // ➡️ Moto Siguiente
-        btnNext.addEventListener('click', () => {
+
+        document.querySelector('.btn-next').addEventListener('click', () => {
             index = (index + 1) % motos.length;
             showMoto(index);
         });
-    
-        // 🔥 Mostrar primera moto al cargar la página
-        showMoto(index);
+
+        let engine = false; // Estado de la moto
+let moving = false; // Estado de movimiento
+
+
+// Función para encender la moto
+document.querySelector('.btn-on').addEventListener('click', () => {
+    if (!engine) {
+        engine = true;
+        motoImage.classList.add('start'); // Aplica la vibración
+        alert('Moto encendida 🔥');
+    } else {
+        alert('La moto ya está encendida');
+    }
+});
+
+// Función para apagar la moto
+document.querySelector('.btn-off').addEventListener('click', () => {
+    if (engine) {
+        engine = false;
+        moving = false;
+        landscape.style.animationPlayState = 'paused'; // Detener parallax
+        motoImage.classList.remove('start'); // Detener vibración
+        alert('Moto apagada ❌');
+    } else {
+        alert('La moto ya está apagada');
+    }
+});
+
+// Función para acelerar
+document.querySelector('.btn-fwd').addEventListener('click', () => {
+    if (engine) {
+        moving = true;
+        landscape.style.animationPlayState = 'running'; // Iniciar parallax
+        alert('Acelerando 🏁');
+    } else {
+        alert('Primero enciende la moto');
+    }
+});
+
+// Función para frenar
+document.querySelector('.btn-stop').addEventListener('click', () => {
+    if (engine && moving) {
+        moving = false;
+        landscape.style.animationPlayState = 'paused'; // Pausar parallax
+        alert('Frenando 🛑');
+    } else {
+        alert('La moto ya está detenida o apagada');
+    }
+});
+
+let index = 0; // Índice de la moto actual
+showMoto(index);
+
     </script>
-    
 </body>
 </html>
