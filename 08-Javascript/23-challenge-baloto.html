@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barloto</title>
+    <link rel="stylesheet" href="css/master.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        .section1 .fondo {
+            background: url(./images/Barloto/FondoSection01.svg) no-repeat;
+            width: 100%;
+            height: 280px;
+            zoom: 2;
+            margin-left: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .section1 .title {
+            background: url(./images/Barloto/tittleBarloto.svg) no-repeat;
+            height: 30px;
+            width: 120px;
+            right: 32px;
+            bottom: 130px;
+            display: flex;
+            position: absolute;
+            transition: transform 0.9s ease;
+            transform: scale(1) rotateY(0);
+            &:hover {
+                transform: scale(1.1) rotateY(360deg);
+            }
+            
+        }
+
+        .section1 .text {
+            background: url(./images/Barloto/TextSection1.svg) no-repeat;
+            height: 50px;
+            width: 120px;
+            top: 60%;
+            left: 10%;
+            display: flex;
+            position: absolute;
+        }
+
+        .section1 .started {
+            position: absolute;
+            bottom: 150px;
+            padding: 20px 50px;
+            font-size: 15px;
+            border-radius: 10px;
+            border: none;
+            background-color: #CB0003;
+            color: #fff;
+            left: 40%;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+
+            &:hover {
+                background-color: #c03335;
+                transform: scale(1.1);
+            }
+
+        }
+
+        .section2 .fondo {
+            background: url(./images/Barloto/FondoSection02.svg) no-repeat;
+            width: 100%;
+            height: 280px;
+            zoom: 2;
+            margin-left: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+        }
+
+        .section2 .volver {
+            background: url(./images/Barloto/flechaVolver.svg) no-repeat;
+            width: 20px;
+            height: 12px;
+            top: 10px;
+            left: 8px;
+            display: flex;
+            position: absolute;
+            border: none;
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(1.2);
+            }
+
+
+        }
+
+        .section2 .eclipse {
+            background: url(./images/Barloto/eclipse.svg) no-repeat;
+            display: flex;
+            position: absolute;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+
+        }
+
+        .section2 .eclipseSuper {
+            background: url(./images/Barloto/super.svg) no-repeat;
+            display: flex;
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            top: 70%;
+            left: 60px;
+            justify-content: center;
+            color: #ffffff;
+
+        }
+
+        .eclipse1 {
+            top: 70%;
+            left: 10px;
+        }
+
+        .eclipse2 {
+            top: 60%;
+            left: 30px;
+        }
+
+        .eclipse3 {
+            top: 53%;
+            left: 65px;
+        }
+
+        .eclipse4 {
+            top: 60%;
+            left: 100px;
+        }
+
+        .eclipse5 {
+            top: 70%;
+            left: 120px;
+        }
+
+        .section2 .play {
+            position: absolute;
+            bottom: 130px;
+            padding: 15px 60px;
+            font-size: 15px;
+            border-radius: 10px;
+            border: none;
+            background-color: #CB0003;
+            color: #fff;
+            left: 42%;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+
+            &:hover {
+                background-color: #c03335;
+                transform: scale(1.1);
+            }
+
+        }
+
+        .number {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            font-size: 15px;
+            text-decoration: underline;
+        }
+
+
+        .esconder {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!------------ BOTON DE REGRESO ----------------->
+    <nav class="controls">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc-->
+                <path fill="#000000"
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>Challenge Barl⚾to</h1>
+            <h2>
+            </h2>
+        </header>
+        <section class="section1 " id="clase1">
+            <div class="fondo">
+                <div class="title">
+                </div>
+                <div class="text">
+                </div>
+            </div>
+            <button class="started">Get Started</button>
+        </section>
+        <!-- Sección 2 -->
+        <section class="section2 esconder" id="clase2">
+            <div class="fondo">
+                <button class="volver"></button>
+                <div class="eclipse eclipse1"></div>
+                <div class="eclipse eclipse2"></div>
+                <div class="eclipse eclipse3"></div>
+                <div class="eclipse eclipse4"></div>
+                <div class="eclipse eclipse5"></div>
+                <div class="eclipseSuper"></div>
+            </div>
+            <button class="play">Play</button>
+        </section>
+
+
+    </main>
+    <script>
+        const btnStart = document.querySelector('.started')
+        const btnVolver = document.querySelector('.volver')
+        const section1 = document.querySelector('.section1')
+        const section2 = document.querySelector('.section2')
+
+        const btnPlay = document.querySelector('.play')
+
+        const eclipse1 = document.querySelector('.eclipse1');
+        const eclipse2 = document.querySelector('.eclipse2');
+        const eclipse3 = document.querySelector('.eclipse3');
+        const eclipse4 = document.querySelector('.eclipse4');
+        const eclipse5 = document.querySelector('.eclipse5');
+        const eclipse6 = document.querySelector('.eclipseSuper')
+
+
+
+        btnStart.addEventListener("click", function () {
+            section1.classList.add('esconder')
+            section2.classList.remove('esconder')
+        })
+
+        btnVolver.addEventListener("click", function () {
+            section2.classList.add('esconder')
+            section1.classList.remove('esconder')
+        })
+
+        btnPlay.addEventListener("click", function () {
+            // Limpiar los números existentes
+            const existingNumbers = document.querySelectorAll('.number');
+            existingNumbers.forEach(number => number.remove());
+
+            const numbers = [];
+            for (let i = 0; i < 5; i++) {
+                let rand = Math.ceil(Math.random() * 43); // Generar número entre 1 y 99 para los primeros 5 eclipses
+                numbers.push(rand);
+            }
+
+            // Generar un número entre 1 y 6 para el eclipse 6
+            let eclipse6Number = Math.ceil(Math.random() * 16);
+            numbers.push(eclipse6Number);
+
+            const eclipses = [eclipse1, eclipse2, eclipse3, eclipse4, eclipse5, eclipse6];
+            eclipses.forEach((eclipse, index) => {
+                const numElement = document.createElement('div');
+                numElement.classList.add('number');
+                numElement.textContent = numbers[index];
+                eclipse.appendChild(numElement);
+            });
+
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { x: 0.5, y: 0.5 }
+            })
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Methods mathe</title>
+    <title>21- methods-mathematics</title>
     <link rel="stylesheet" href="css/master.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-     
-        button{
+        section button {
             border: none;
             background-color: transparent;
             appearance: none;
@@ -16,70 +15,72 @@
             margin: 1rem auto 2rem auto;
             display: flex;
             justify-content: center;
-            align-self: start;
+            align-items: center;
             height: 100px;
-            line-height: 0 !important;
-            width: 120px;
+            width: 100px;
             font-size: 12rem;
+            transition: transform 0.2s ease-in;
+            &:hover {
+                transform: scale(1.2);
+            }
         }
     </style>
-
+    
 </head>
-
 <body>
     <nav class="controls">
-        <a href="index.html">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                <path fill="#ffffff"
-                    d="M346.7 6C337.6 17 320 42.3 320 72c0 40 15.3 55.3 40 80s40 40 80 40c29.7 0 55-17.6 66-26.7c4-3.3 6-8.2 6-13.3s-2-10-6-13.2c-11.4-9.1-38.3-26.8-74-26.8c-32 0-40 8-40 8s8-8 8-40c0-35.7-17.7-62.6-26.8-74C370 2 365.1 0 360 0s-10 2-13.3 6zM244.6 136c-40 0-77.1 18.1-101.7 48.2l60.5 60.5c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0l-55.3-55.3 0 .1L2.2 477.9C-2 487-.1 497.8 7 505s17.9 9 27.1 4.8l134.7-62.4-52.1-52.1c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0L199.7 433l100.2-46.4c46.4-21.5 76.2-68 76.2-119.2C376 194.8 317.2 136 244.6 136z" />
-            </svg>
+        <a href="index.html"> <!-- ../para devolverme  -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
         </a>
     </nav>
     <main>
         <header>
-            <h1>Methods mathe</h1>
-            <h2>Description</h2>
+            <h1>21- methods mathematics</h1>
+            <h2>Usa métodos matemáticos para cálculos avanzados.</h2>
         </header>
         <section>
-            <h3>random (rol DICE)</h3>
+            <h3>Random (Roll DICE)</h2>
             <button class="btn-dice">⚀</button>
-            <h3>random (count up)</h3>
+            <h3>Ramdom (Counter Up)</h3>
             <button class="btn-counter">1</button>
             <h3>Min|Max</h3>
             <p class="out-min"></p>
             <p class="out-max"></p>
         </section>
-    </main>
+         
+    </main> 
     <script>
-        const btnDice    = document.querySelector ('.btn-dice')
-        const arrDice    = ['⚀','⚁','⚂','⚃','⚄','⚅']
-        const btnCounter = document.querySelector ('.btn-counter')
-        const outMin = document.querySelector ('.out-min')
-        const outMax = document.querySelector ('.out-max')
+        // Elements
+        const btnDice    = document.querySelector('.btn-dice')
+        const arrDice    = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅']
+        const btnCounter = document.querySelector('.btn-counter')
+        const outMin     = document.querySelector('.out-min')
+        const outMax     = document.querySelector('.out-max')
 
-        btnDice.addEventListener('click',function(){
-            let rand = Math.floor(Math.random()*arrDice.length)
-            console.log(arrDice.length)
+        // Events
+        btnDice.addEventListener('click', function() {
+            let rand = Math.floor(Math.random() * arrDice.length)    // Math.round para redondear el numero. // round, ceil y floor para aproximaciones.
             this.textContent = arrDice[rand]
         })
 
-        btnCounter.addEventListener('click',function(){
-            let rand = Math.ceil(Math.random() * 99)
+        btnCounter.addEventListener('click', function() {
+            let rand = Math.ceil(Math.random() * 99) 
             let cont = 1
-            let elm = this
-            const interval = setInterval(function(){
+            let elm = this   
+            const interval = setInterval(function() {   //Intervalos: Escoje un numero aleatorio y para en ese 
                 if (cont == rand) {
-                    clearInterval(setInterval)
+                    clearInterval(interval)
                 }
-                
+                console.log(rand)     // Para obsevar numero aleatorio por consola
                 elm.textContent = cont
-                cont++
-        }, 200)
-    })
-outMin.textContent = 'Min: 4, 10, -8, 3 =>'+ Math.min(4,10,-8,3)
-outMax.textContent = 'Max: 4, 10, -8, 3 =>'+ Math.max(4,10,-8,3)
-    </script>
-</body>
+                cont ++
+            }, 100) 
+        })
 
+        // Min & Max
+        outMin.textContent = 'Min values (4, 10, -8, 3) => ' + Math.min(4, 10, -8, 3)
+        outMax.textContent = 'Min values (4, 10, -8, 3) => ' + Math.max(4, 10, -8, 3)
+
+    </script> 
+</body>
 </html>

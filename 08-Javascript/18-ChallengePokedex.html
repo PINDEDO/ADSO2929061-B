@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="css/master.css">
+    <style>
+
+       
+        button .flecha{
+            background: url(./images/pokedex/flecha.png) no-repeat;
+            width: 100px;
+            height: 125px;          
+              
+            cursor: pointer; 
+            z-index: 999;
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+        
+        .section1 .fondo  {
+            background: url(./images/pokedex/Fondo.png) no-repeat;
+            width: 300px;
+            height: 400px;
+            margin-left: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .section1 .button1 {
+            background: url(./images/pokedex/button1.png) no-repeat;
+            width: 200px;
+            height: 50px;
+            margin-top: 100%;
+            cursor: pointer; 
+            display: flex;
+            border: none;
+            margin-left: -50px;
+
+        }
+        .section2 .fondo {
+            background: url(./images/pokedex/fondo2.png) no-repeat;
+            width: 300px;
+            height: 400px;
+            display: flex;
+            margin-left: 25%;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+      
+      
+      .section2 ul.pokemons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 20px;
+            height: calc(100% - 20px); /* Ajusta según el espacio disponible */
+            margin-left: -120px;
+            margin-top: 80px;
+        }
+
+        .section2 ul.pokemons::-webkit-scrollbar {
+            width: 8px; 
+        }
+
+        .section2 ul.pokemons::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.2); /* Cambia a un color más visible */
+        }
+
+    
+
+        .section2 ul.pokemons li {
+    display: flex;
+    flex-direction: column; /* Cambiado de row a column para centrar los elementos */
+    align-items: center; /* Centra todo dentro del contenedor */
+    justify-content: center;
+    width: 150px;
+    height: 150px; /* Aumentado para dar espacio */
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #41407C;
+    border-radius: 5px;
+    position: relative;
+}
+        
+.section2 ul.pokemons li span1 {
+    color: white; /* Cambia el color del texto a blanco */
+    font-size: 1.2rem; /* Tamaño del número */
+    font-weight: bold;
+    margin-right: 10px; /* Espacio entre el número y la imagen */
+    top: 10px; /* Ajusta según sea necesario */
+    left: 10px; /* Ajusta según sea necesario */
+}
+
+.section2 ul.pokemons li span2 {
+    color: white; /* Cambia el color del texto a blanco */
+    font-size: 1rem; /* Tamaño del nombre */
+    font-weight: normal;
+    
+    top: 10px; /* Ajusta según sea necesario */
+    left: 60px; /* Ajusta según la distancia de la imagen */
+    text-transform: capitalize; /* Capitaliza el nombre */
+}
+.section2 ul.pokemons li img {
+    width: 60px; /* Aumentado de 80px a 120px */
+    height: 60px;
+    position: absolute;
+   left:130px;
+    z-index: 999;
+}
+
+
+
+.section3 {
+    background: url(./images/pokedex/Fondo3.png) no-repeat;
+    width:200px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+
+#pokemon-image {
+    position: absolute; 
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    z-index: 1; 
+    width: 136px;
+}
+
+#pokemon-name {
+    position: absolute; 
+    top: 40%;
+    left: 47%;
+    transform: translateX(-50%); 
+    color: white; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    font-size: 1.2rem; /* Reduce el tamaño de la fuente */
+}
+
+#pokemon-info, #pokemon-number {
+    position: absolute; 
+    top: 60%; 
+    left: 50%;
+    transform: translateX(-50%);
+    color: white; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    font-size: 0.8rem; /* Reduce el tamaño del texto */
+}
+#pokemon-number{
+    font-size: 20px;
+    top:43%;
+    left: 46%;
+
+}
+
+.stat-bar-container {
+    background: #ffffff;
+    width:90px; /* Reduce la longitud de las barras */
+    height: 6px; /* Reduce la altura de las barras */
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    margin-left: 87px;
+    margin-top: -20px;
+}
+
+.stat-bar {
+    height: 100%; /* Asegura que las barras llenen el contenedor */
+    background: #41407C;
+    transition: width 0.3s ease;
+}
+
+.stat-label {
+    font-size: 10px;
+    margin-bottom: 5px;
+    position: relative;
+    margin-left: -20px;
+    margin-top: 10px;
+}
+
+.esconder{
+        display: none;
+      }
+
+    </style>
+</head>
+<body> 
+    <nav class="controls">
+        
+    </nav>
+    <main>
+        <header>
+            <h1>Pokedex</h1>
+            <H2>consume api rest
+            </H2>
+        </header>
+        <section class="section1" id="clase1">
+            
+            <div class="fondo">  
+                <button class="button1"></button>
+            </div>
+        </section>
+        <!-- Sección 2 -->
+        <section class="section2 esconder" id="clase2">
+            
+            
+            
+            <div class="fondo">
+                <ul class="pokemons"></ul>
+            </div>
+        </section>
+        <!-- Sección 3 -->
+        <section class="section3 esconder" id="clase3">
+            
+            <div class="fondo">
+                <h2 id="pokemon-name">Pokemon Name</h2>
+                <p id="pokemon-number">#</p> <!-- Número del Pokémon -->
+                <p id="pokemon-info">Pokemon info</p>
+                <img id="pokemon-image" src="" alt="Pokemon image">
+            </div>
+        </section>
+    </main>
+    <script>
+        const section1 = document.querySelector('.section1');
+        const section2 = document.querySelector('.section2');
+        const section3 = document.querySelector('.section3');
+        const button1 = document.querySelector('.button1');
+        const pks = document.querySelector('.pokemons');
+    
+        const backButtons = document.querySelectorAll('.flecha button ');
+        const goBackToSection1 = () => {
+            section1.classList.remove("esconder");
+            section2.classList.add("esconder");
+            section3.classList.add("esconder");
+        };
+        
+    
+        backButtons.forEach(button => {
+            button.addEventListener("click", goBackToSection1);
+        });
+    
+        button1.addEventListener("click", function () {
+            section1.classList.add("esconder");
+            section2.classList.remove("esconder");
+            section3.classList.add("esconder");
+        });
+    
+        const season1 = [1, 151]; // Rango de IDs para los Pokémon de la primera generación
+    
+        const loadPokemons = async () => {
+            for (let pk = season1[0]; pk <= season1[1]; pk++) {
+                const url = 'https://pokeapi.co/api/v2/pokemon/' + pk;
+                await fetch(url)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        let pkStr = pk;
+                        if (pk < 10) pkStr = '00' + pk;
+                        if (pk >= 10 && pk < 100) pkStr = '0' + pk;
+    
+                        const image = 'https://www.serebii.net/swordshield/pokemon/' + pkStr + '.png';
+    
+                        const li = document.createElement('li');
+                        li.classList.add('pokemon-card');
+                        li.style.background = `#41407C `;
+
+
+                        li.innerHTML = `
+                            <span2>${data.name}</span2>
+                            <span1>#${data.id}</span1>
+                            <img src="${image}" alt="${data.name}">
+                        `;
+    
+                        li.addEventListener('click', () => {
+                            showPokemonInfo(data);
+                        });
+    
+                        pks.appendChild(li);
+                    });
+            }
+        };
+    
+        const showPokemonInfo = (data) => {
+            // Referencias a elementos HTML
+            const name = document.getElementById('pokemon-name');
+            const number = document.getElementById('pokemon-number'); // Referencia al número
+            const info = document.getElementById('pokemon-info');
+            const pokemonImage = document.getElementById('pokemon-image');
+
+            // Mostrar nombre del Pokémon
+            name.textContent = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+
+            // Mostrar número del Pokémon
+            number.textContent = `#${data.id}`; // Mostrar el número del Pokémon
+
+            // Mostrar estadísticas base
+            info.innerHTML = data.stats.map(stat => {
+                const statName = stat.stat.name.replace('-', ' ').toUpperCase();
+                const statValue = stat.base_stat;
+                const percentage = Math.min(statValue, 100);
+                return `
+                    <div style="margin-bottom: 10px;">
+                        <p class="stat-label">${statName}: ${statValue}</p>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar" style="width: ${percentage}%;"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Actualizar imagen del Pokémon
+            pokemonImage.src = `https://www.serebii.net/swordshield/pokemon/${data.id.toString().padStart(3, '0')}.png`;
+
+            // Cambiar entre secciones
+            section2.classList.add("esconder");
+            section3.classList.remove("esconder");
+        };
+    
+        loadPokemons(); // Cargar los Pokémon
+    </script>
+    
+</body>
+</html>
