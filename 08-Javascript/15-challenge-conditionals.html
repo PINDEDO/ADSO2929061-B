@@ -3,139 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>challenge</title>
+    <title>15-challenge</title>
     <link rel="stylesheet" href="css/master.css">
-    <style>
+</head>
+<style>
+
         section div.query {
-             margin: 0 auto;
-             width: 260px;
-             display: flex;
-             align-items: center;
-             flex-direction: column;
-             gap: 0.4rem;
-             input {
+            align-items: center;
+            border: 4px solid red;
+            margin: 0 auto;
+            width: 260px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+
+            input {
                 background-color: #f0db4f;
                 border: 2px solid #fff;
-                outline: none;
-                padding: 0.4rem;
-                border-radius: 8px;
+                padding: 0.2rem;
+                border-radius: 10px;
                 transition: background-color 0.4s ease-in;
-                font-family: 'Poppins';
+                font-family: 'Poppings';
                 width: 200px;
+
                 &:focus {
                     background-color: #fff6;
                 }
-             }
-             h5 {
+            }
+
+            h5 {
                 margin: 0;
                 font-size: 1rem;
-             }
-             button {
-                border: none;
+            }
+
+            button {
+                background-color: #0009;
                 border-radius: 8px;
+                border: none;
                 color: #fff;
                 cursor: pointer;
-                background-color: #0009;
-                font-family: 'Poppins';
+                font-family: 'Poppings';
+                font-size: 0.8rem;
                 padding: 0.5rem;
                 transition: background-color 0.4s ease-in;
-                width: 216px;
+                width: 200px;
+
                 &:hover {
                     background-color: #000c;
                 }
-             }
+            }
         }
 
-        div.widget {
-            width: 210px;
-            height: 250px;
-            margin: 0.8rem auto;
-            position: relative;
-           
-            &.day {
-                background: url(images/bgday.svg) no-repeat center;
-            }
-            &.night {
-                background: url(images/bgnight.svg) no-repeat center;
-            }
-            h4 {
-                position: absolute;
-                
-                &.country {
-                    font-weight: bold;
-                    font-size: 12px;
-                    top: 36%; 
-                    left: 20%;
-                }
-                &.city {
-                    font-weight: 200;
-                    font-size: 12px;
-                    top: 42%; 
-                    left: 20%;
-                }
-                &.datetime {
-                    font-size: 12px;
-                    bottom: 5px;
-                    width: 86px;
-                    text-align: center;
-                    left: 30%;
-                    
-                    
-                }
-                &.condition,
-                &.humidity,
-                &.cloud {
-                    font-size: 10px;
-                    font-weight: 400;
-                    bottom: 18%;
-                }
-                &.condition {
-                    left: 75%;
-                }
-                &.humidity {
-                    left: 47%;
-                }
-                &.cloud {
-                    left: 18%;
-                }
-            }
-            figure.icon {
-                width: 108px;
-                height: 134px;
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: center;
-                margin-left: 45%;
-                
-            }
-            figure.temp {
-                font-size: 40px;
-                position: absolute;
-                font-weight: bold;
-                margin: 20px;
-            }
-            
+        section h4 {
+            font-size: 4rem;
+            text-align: center;
+            margin: 0;
         }
 
+        section img.icon {
+            zoom: 3;
+            width: 200px;
+            margin: 0 auto;
+        }
 
-      
-    </style>
-
-
-   
-</head>
-<body> 
-    <!------------ BOTON DE REGRESO ----------------->
+</style>
+<body>
     <nav class="controls">
         <a href="index.html">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc--><path fill="#000000" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#fafafa" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
         </a>
     </nav>
     <main>
         <header>
-            <h1>challenge</h1>
-            <H2>widget weather app
-            </H2>
+            <h1>CHALLENGE</h1>
+            <h2>Widget app clima</h2>
         </header>
         <section>
             <div class="query">
@@ -143,28 +84,17 @@
                 <input type="text">
                 <button>Show</button>
             </div>
-            <div class="widget">
-                <figure class="temp"></figure>
-                <figure class="icon"></figure>
-                <h4 class="country"></h4>
-                <h4 class="city"></h4>
-                <h4 class="datetime"></h4>
-                <h4 class="condition"></h4>
-                <h4 class="humidity"></h4>
-                <h4 class="cloud"></h4>
-            </div>
-
-            
-           
-
-        </section>
+            <h4 class="country"></h4>
+            <h4 class="temp"></h4>
+            <img src="" alt="Icon" class="icon">
+       </section>
     </main>
     <script>
-        // Elements
-        const query = document.querySelector('.query input')
-        const show  = document.querySelector('.query button')
-        let   q     = 'Manizales'
- 
+          // Elements
+          const query = document.querySelector('.query input')
+        const show = document.querySelector('.query button')
+        let q = 'Manizales'
+
         // Events
         show.addEventListener('click', (e) => {
             e.preventDefault()
@@ -175,55 +105,21 @@
         })
 
 
-        //widget 
-        const widget = document.querySelector('.widget')
-
-        const temp = document.querySelector('.temp')
-        const icon = document.querySelector('.icon')
+        const temp = document.querySelector('.temp');
+        const icon = document.querySelector('.icon');
         const country = document.querySelector('.country')
-        const city = document.querySelector('.city')
-        const datetime = document.querySelector('.datetime')
-        const condition = document.querySelector('.condition');
-        const humidity = document.querySelector('.humidity');
-        const cloud = document.querySelector('.cloud');
 
         const loadWeather = async (q) => {
-            
-            const url = 'http://api.weatherapi.com/v1/current.json?key=fe5cada92c0644abbc3135527242211&q='+q
+            const url = 'https://api.weatherapi.com/v1/current.json?key=7104adb94ff0457e99b153751241511&q='+q
             const response = await fetch(url)
             const data = await response.json()
-            let isDay = data.current.is_day ? true : false
-            if (isDay) {
-                widget.classList.add('day')
-                widget.classList.remove('night')
-                
-            }else {
-                widget.classList.add('night')
-                widget.classList.remove('day')
-                
-
-            }
-            
-
-            //Country - city -DateTime
             country.textContent = data.location.country
-            city.textContent = data.location.name 
-            datetime.textContent = data.location.localtime
-            //Icon - temp
-            icon.style.backgroundImage = 'url('+data.current.condition.icon+')'
-            temp.textContent = `${data.current.temp_c}°`
-
-            //cloud- humedity - condition 
-            condition.textContent = data.current.condition.text
-            humidity.textContent = `${data.current.humidity}%`
-            cloud.textContent = `${data.current.cloud}%`
-            //icon.setAttribu
-            te('src', data.current.condition.icon)
+            temp.textContent = data.current.temp_c
+            icon.setAttribute('src', data.current.condition.icon)
             //console.log(data.current.temp_c)
         }
         loadWeather(q)
 
-        
     </script>
 </body>
 </html>

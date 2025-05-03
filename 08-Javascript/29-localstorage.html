@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>29-localstorage</title>
+    <link rel="stylesheet" href="css/master.css">
+    <style>
+        div.form {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+
+        }
+        button {
+            background-color: #b7a63c;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.6rem;
+            width: 160px;
+        }
+
+        input {
+            border: 2px solid #b7a63c;
+            border-radius: 5px;
+            padding: 0.5rem;
+            width: 140px;
+        }
+
+        ol{
+            counter-reset: section;
+            list-style-type: none;
+            list-style-position: inside;
+            padding: 0;
+            margin: 1rem auto;
+            width: 340px;
+            li{
+                font-size: .8 rem;
+                padding: 3px 7px;
+                background-color: #fff7;
+                border-bottom: 2px solid #b7a63c;
+                display: flex;
+                justify-content: space-between;
+                border-radius: 10px;
+                align-items: center;
+
+            }
+            span{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: crimson;
+                border-radius: 50%;
+                display: flex;
+                color: white;
+                width: 23px;
+                height: 23px;
+                cursor: pointer;
+                font-size: 1.1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="controls">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#fafafa" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>LOCALSTORAGE</h1>
+            <h2>Almacena datos localmente a través del navegador</h2>
+        </header>
+        <section>
+            <div class="form">
+                <input type="text" placeholder="Escribe una tarea">
+                <button type="button"> + </button>
+            </div>
+            <ol class="tareas">
+
+            </ol>
+        </section>
+    </main>
+    <script>
+        // Elements
+        const tarea     = document.querySelector('input')
+        const bntAñadir = document.querySelector('button')
+        const tareas = document.querySelector('.tareas')
+
+        // Events
+        bntAñadir.addEventListener('click', function() {
+            if (tarea.value.length > 0) {
+                tareas.innerHTML += `<li> ${tarea.value} <span>&times;</span> </li>`
+                tarea.value = ""
+                guardarTareas()
+            } else {
+                alert('¡Por favor! Escribe una tarea')
+            }
+        })
+
+        // Functions 
+        function  mostrarTareas() {
+            if(localStorage.getItem('tareas').length>0) {
+                tareas.innerHTML = localStorage.getItem('tareas')
+            }
+        }
+
+        function guardarTareas() {
+            localStorage.setItem('tareas', tareas.innerHTML)
+            permitirEliminacion()
+        }
+
+        function permitirEliminacion(){
+            const bntsEliminar = document.querySelectorAll('li span')
+            bntsEliminar.forEach(element => {
+                element.addEventListener('click', function(){
+                    if (confirm('¿Está seguro de eliminar?')) {
+                        this.parentNode.remove()
+                        guardarTareas()
+                    }
+                })
+            })
+        }
+
+        mostrarTareas()
+        permitirEliminacion()
+    </script>
+</body>
+</html>

@@ -3,74 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex API</title>
-    <link rel="stylesheet" href="css/master.css">
-    <style>
-        section ul.pokemons {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            gap: 0.2rem;
-            grid-template-columns: repeat(4, 1fr);
-            li {
-                border-radius: 4px;
-                height: 100px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 100px;
-                span {
-                    background-color: #0009;
-                    color: #fff9;
-                    font-size: 0.8rem;
-                    display: flex;
-                    justify-content: center;
-                    width: 100%;
-                }
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/marvelAPI.css">
+    <title>17-marvel-API</title>
 </head>
 <body>
-    <!------------ BOTON DE REGRESO ----------------->
     <nav class="controls">
         <a href="index.html">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc--><path fill="#000000" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#fafafa" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
         </a>
     </nav>
-    <main>
-        <header>
-            <h1>17 POKEDEX API</h1>
-            <h2>Consumir API Rest.</h2>
-        </header>
-        <section>
-            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="450" src="https://embed.figma.com/design/MLqte24vF1z9NJibqdn4cY/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
-            <ul class="pokemons">
-            </ul>
-        </section>
+    <main class="container">
+        <div class="contain one">
+            <div class="titleOne">
+                <h1 class="marvel">MARVEL</h1>
+            </div>
+            <div class="buttonWelcome">
+                <button class="welcome">ENTRAR</button>
+            </div>
+        </div>
+
+        <!---------------------------------------------------------------------------------------------------------------->
+        
+        <div class="contain two">
+            <div class="control">
+                <button class="back">
+                    <img src="images/marvelAPI/back.png">
+                </button>
+            </div>
+            <div class="titleInfo">
+                <h1 class="marvelTwo">MARVEL</h1>
+            </div>
+            <div class="boxContain" id="boxContain">
+                
+            </div>
+        </div>
+
+        <!---------------------------------------------------------------------------------------------------------------->
+        
+        <div class="contain three">
+            <div class="control">
+                <button class="back">
+                    <img src="images/marvelAPI/back.png">
+                </button>
+            </div>
+            <div class="titleInfo">
+                <h1 class="marvelTwo">MARVEL</h1>
+            </div>
+            <div class="insider">
+                <div class="cont">
+                    <div class="imgTwo">
+
+                    </div>
+                    <div class="infoTwo">
+
+                    </div>
+            </div>
+            </div>
+        </div>
+        
+        <!---------------------------------------------------------------------------------------------------------------->
     </main>
-    <script>
-        const season1 = [1, 151];
-        const season2 = [152, 251];
-        const pks = document.querySelector('.pokemons')
-        const loadPokemons = async (pk) => {
-            for (let pk = season2[0]; pk <= season2[1]; pk++) {
-                const url      = 'https://pokeapi.co/api/v2/pokemon/'+pk
-                await fetch(url)
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log(data)
-                        if (pk < 10) { pk = '00' + pk }
-                        if (pk < 100 && pk > 9) { pk = '0' + pk }
-                        const image    = 'https://www.serebii.net/swordshield/pokemon/'+pk+'.png'
-                        pks.innerHTML += "<li style='background: #fffa url("+image+") no-repeat center /contain'> \
-                                            <span>"+data.id+"</span> \
-                                            <span>"+data.name+"</span> \
-                                        </li>"
-                    })
-            }
-        }
-        loadPokemons()
-    </script>
+    <script src="js/app.js"></script>    
 </body>
 </html>

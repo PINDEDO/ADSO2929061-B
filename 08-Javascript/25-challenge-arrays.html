@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft</title>
+    <link rel="stylesheet" href="css/minecraft.css">
+    <link rel="shortcut icon" href="images/minecraft/logo.png" type="image/x-icon">
+</head>
+<body>
+    <nav class="controls">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#fafafa" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+    <main>
+        <section>
+            <div class="title">
+                <div class="imgTitle">
+                    <img src="images/minecraft/title.png" alt="minecraft">
+                </div>
+            </div>
+            <div class="content">
+                <div class="items">
+                    <div class="container-items">
+                        <div class="title-items">
+                            <h5>Items</h5>
+                        </div>
+                        <div class="box-items">
+                            <div class="row-one">
+                                <div class="pico">
+                                    <img class="img-item" src="images/minecraft/pico.png" alt="pico" id="pico">
+                                </div>
+                                <div class="sword">
+                                    <img class="img-item" src="images/minecraft/sword.png" alt="sword" id="sword">
+                                </div>
+                                <div class="ache">
+                                    <img class="img-item" src="images/minecraft/ache.png" alt="ache" id="ache">
+                                </div>
+                            </div>
+                            <div class="row-two">
+                                <div class="iron">
+                                    <img class="img-item" src="images/minecraft/iron.png" alt="iron" id="iron">
+                                </div>
+                                <div class="emerald">
+                                    <img class="img-item" src="images/minecraft/emerald.png" alt="emerald" id="emerald">
+                                </div>
+                                <div class="diamond">
+                                    <img class="img-item" src="images/minecraft/diamond.png" alt="diamond" id="diamond" style="margin-top: 2px;">
+                                </div>
+                            </div>
+                            <div class="row-three">
+                                <div class="ender">
+                                    <img class="img-item" src="images/minecraft/ender.png" alt="ender" id="ender">
+                                </div>
+                                <div class="elytras">
+                                    <img class="img-item" src="images/minecraft/elytras.png" alt="elytras" id="elytras">
+                                </div>
+                                <div class="eye">
+                                    <img class="img-item" src="images/minecraft/eye.png" alt="eye" id="eye">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="actions">
+                    <div class="buttons">
+                        <div class="direct-actions">
+                            <div class="start">
+                                <div class="button-first">
+                                    <button class="direct-actions" id="first">
+                                        <p>First</p>
+                                    </button>
+                                </div>
+                                <div class="button-last">
+                                    <button class="direct-actions" id="last">
+                                        <p>Last</p>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="middle">
+                                <div class="button-add">
+                                    <button class="direct-actions" id="add">
+                                        <p>Add</p>
+                                    </button>
+                                </div>
+                                <div class="button-remove">
+                                    <button class="direct-actions" id="remove">
+                                        <p>Remove</p>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="down">
+                                <div class="button-input">
+                                    <input type="number" name="numPosition" id="numPosition" max="9" min="1" placeholder="position">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="final">
+                            <div class="final-button">
+                                <button class="final-action" id="final">
+                                    <p></p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inventory">
+                <div class="container-bottom">
+                    <div class="result">
+                        <div class="row">
+                            <img src="images/minecraft/row.png" alt="row">
+                        </div>
+                        <div class="box-result">
+    
+                        </div>
+                    </div>
+                    <div class="slots">
+                        <div id="pos-one" class="positions">
+                            
+                        </div>
+                        <div id="pos-two" class="positions">
+    
+                        </div>
+                        <div id="pos-three" class="positions">
+    
+                        </div>
+                        <div id="pos-four" class="positions">
+    
+                        </div>
+                        <div id="pos-five" class="positions">
+    
+                        </div>
+                        <div id="pos-six" class="positions">
+    
+                        </div>
+                        <div id="pos-seven" class="positions">
+    
+                        </div>
+                        <div id="pos-eight" class="positions">
+    
+                        </div>
+                        <div id="pos-nine" class="positions">
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Botones
+        const buttonFirst       = document.querySelector('#first')
+        const buttonLast        = document.querySelector('#last')
+        const buttonAdd         = document.querySelector('#add')
+        const buttonRemove      = document.querySelector('#remove')
+        const inputNumber       = document.querySelector('#numPosition')
+        const finalActionButton = document.querySelector('#final')
+
+
+        // Imagenes
+        const imgPico    = document.querySelector('#pico')
+        const imgSword   = document.querySelector('#sword')
+        const imgAche    = document.querySelector('#ache')
+        const imgIron    = document.querySelector('#iron')
+        const imgEmerald = document.querySelector('#emerald')
+        const imgDiamond = document.querySelector('#diamond')
+        const imgEnder   = document.querySelector('#ender')
+        const imgElytras = document.querySelector('#elytras')
+        const imgEye     = document.querySelector('#eye')
+        const itemImages = [imgPico, imgSword, imgAche, imgIron, imgEmerald, imgDiamond, imgEnder, imgElytras, imgEye]
+
+        itemImages.forEach(img => {
+            img.addEventListener('click', () => {
+                itemSelccionado = img
+                mostrarItemSeleccionado(img)
+            })
+        })
+
+
+        //Posiciones
+        const boxResult = document.querySelector('.box-result')
+
+
+        // Variables
+        let inventoryArray  = []
+        let itemSelccionado = null
+        let posicionActual  = ''
+        let accionActual    = ''
+
+
+        //Funciones
+        function actualizarVistaInventario() {
+            const positions = document.querySelectorAll('.positions')
+            positions.forEach(position => {
+                position.innerHTML = ''
+            });
+
+            inventoryArray.forEach((item, index) => {
+                const posNames = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+                const position = document.querySelector(`#pos-${posNames[index]}`)
+                if (position) {
+                    const newImg = document.createElement('img')
+                    newImg.src = item.src
+                    newImg.alt = item.alt
+                    newImg.classList.add('inventory-item')
+                    position.appendChild(newImg)
+                }
+            })
+        }
+
+        function mostrarItemSeleccionado(item) {
+            boxResult.innerHTML = ''
+            // Crear nueva imagen en lugar de clonar
+            const newImg = document.createElement('img')
+            newImg.src = item.src
+            newImg.alt = item.alt
+            newImg.classList.add('selected-item')
+            boxResult.appendChild(newImg)
+        }
+
+        function actualizarBotonFinalTexto() {
+            finalActionButton.querySelector('p').textContent = accionActual === 'add' ? '+' : '-'
+        }
+
+        function añadirAlInventario(item, position) {
+            if (inventoryArray.length >= 9) return;
+        
+            if (position > 0 && position <= inventoryArray.length + 1 ) {
+                inventoryArray.splice(position - 1, 0, item)
+            } else if (posicionActual === 'first') {
+                inventoryArray.unshift(item)
+            } else {
+                inventoryArray.push(item)
+            }
+        }
+
+        function quitarDelInventario(position) {
+            if (inventoryArray.length === 0) return;
+            if (position > 0 && position <= inventoryArray.length) {
+                inventoryArray.splice(position - 1, 1)
+            } else if (posicionActual === 'first') {
+                inventoryArray.shift()
+            } else {
+                inventoryArray.pop()
+            }
+        }
+
+        function manejoAccionFinal() {
+            if (!itemSelccionado) {
+                alert('Necesitas seleccionar un item primero')
+                return;
+            }
+        
+            if (accionActual === 'add' && inventoryArray.length >= 9) {
+                alert('El inventario está lleno. No puedes agregar más items.')
+                return
+            }
+        
+            let inputValue = inputNumber.value
+
+            if (inputValue === "") {
+                if (accionActual === 'add') {
+                    añadirAlInventario(itemSelccionado, 0)
+                } else {
+                    quitarDelInventario(0)
+                }
+            } else {
+                let position = parseInt(inputValue)
+
+                if (position > 0 && position <= (accionActual === 'add' ? inventoryArray.length + 1 : inventoryArray.length)) {
+                    if (accionActual === 'add') {
+                        añadirAlInventario(itemSelccionado, position)
+                    } else {
+                        quitarDelInventario(position)
+                    }
+                } else {
+                    if (accionActual === 'add') {
+                        añadirAlInventario(itemSelccionado, inventoryArray.length + 1)
+                    } else if (inventoryArray.length > 0) {
+                        quitarDelInventario(inventoryArray.length)
+                    }
+                }
+            }
+        
+            actualizarVistaInventario();
+            inputNumber.value = ""
+        }
+
+
+        // Botones
+        buttonFirst.addEventListener('click', () => {
+            buttonFirst.style.opacity = '1'
+            buttonLast.style.opacity = '0.5'
+            posicionActual = 'first'
+            actualizarBotonFinalTexto()
+        })
+
+        buttonLast.addEventListener('click', () => {
+            buttonLast.style.opacity = '1'
+            buttonFirst.style.opacity = '0.5'
+            posicionActual = 'last'
+            actualizarBotonFinalTexto();
+        });
+
+        buttonAdd.addEventListener('click', () => {
+            buttonAdd.style.opacity = '1'
+            buttonRemove.style.opacity = '0.5'
+            accionActual = 'add'
+            actualizarBotonFinalTexto()
+        });
+
+        buttonRemove.addEventListener('click', () => {
+            buttonAdd.style.opacity = '0.5'
+            buttonRemove.style.opacity = '1'
+            accionActual = 'remove'
+            actualizarBotonFinalTexto()
+        });
+
+        finalActionButton.addEventListener('click', function(){
+            manejoAccionFinal()
+        });
+
+        actualizarBotonFinalTexto();
+
+        </script>
+</body>
+</html>

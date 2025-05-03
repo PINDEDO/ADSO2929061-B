@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22-challenge</title>
+    <link rel="stylesheet" href="css/baloto.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <nav class="controls">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#fafafa" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+    <main>
+        <section>
+            <div class="title">
+                <h1>BALOTUP</h1>
+            </div>
+            <div class="globos">
+                <div class="arriba">
+                    <div class="globo-a">
+                        <img src="images/baloto/balotaMenor.png" id="globo-a">
+                    </div>
+                    <div class="globo-x">
+                        <img src="images/baloto/balotaMayor.png" id="globo-x">
+                    </div>
+                    <div class="globo-b">
+                        <img src="images/baloto/balotaMenor.png" id="globo-b">
+                    </div>
+                </div>
+                <div class="medio">
+                    <div class="globo-c">
+                        <img src="images/baloto/balotaMenor.png" id="globo-c">
+                    </div>
+                    <div class="globo-d">
+                        <img src="images/baloto/balotaMenor.png" id="globo-d">
+                    </div>
+                </div>
+                <div class="abajo">
+                    <div class="globo-e">
+                        <img src="images/baloto/balotaMenor.png" id="globo-e">
+                    </div>
+                </div>
+            </div>
+            <div class="casa">
+                <div class="button-up">
+                    <button id="up">
+                        UP
+                    </button>
+                    <button id="down">
+                        DOWN
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+    
+    // Elements
+        const upButton   = document.querySelector('#up');
+        const downButton = document.querySelector('#down');
+        const globos     = [
+            document.querySelector('#globo-a'),
+            document.querySelector('#globo-b'),
+            document.querySelector('#globo-c'),
+            document.querySelector('#globo-d'),
+            document.querySelector('#globo-e'),
+            document.querySelector('#globo-x')
+        ];
+
+        // Animate
+        window.onload = function() {
+            for (let i = 0; i < globos.length; i++) {
+                globos[i].style.display = 'none';
+            }
+        };
+
+
+        function animacionGlobosUp() {
+            let index = 0;
+    
+            // Ahora añadimos los globos uno por uno
+            const intervalo = setInterval(() => {
+                if(index < globos.length) {
+                    // Primero hacemos visible el globo actual
+                    globos[index].style.display = 'block';
+                    // Luego añadimos la animación
+                    globos[index].classList.add('float-animation');
+                    index++;
+                } else {
+                    clearInterval(intervalo);
+                }
+            }, 400);
+        }  
+
+
+        // Reset
+        function resetGlobos() {
+            for (let i = 0; i < globos.length; i++) {
+                globos[i].style.display = 'none';
+                globos[i].classList.remove('float-animation');
+            }
+        }
+
+        
+        function contadorBalotasMenores() {
+            let usedNumbers = [];
+
+            const balotasMenores = [
+                { img: document.querySelector('#globo-a'), container: document.querySelector('.globo-a') },
+                { img: document.querySelector('#globo-b'), container: document.querySelector('.globo-b') },
+                { img: document.querySelector('#globo-c'), container: document.querySelector('.globo-c') },
+                { img: document.querySelector('#globo-d'), container: document.querySelector('.globo-d') },
+                { img: document.querySelector('#globo-e'), container: document.querySelector('.globo-e') }
+            ];
+
+            
+            setTimeout(() => {
+                
+                balotasMenores.forEach(balota => {
+                    let randomNum;
+                    
+                    do {
+                        randomNum = Math.floor(Math.random() * 43) + 1; // 1-43
+                    } while (usedNumbers.includes(randomNum));
+
+                    
+                    usedNumbers.push(randomNum);
+
+                    
+                    const numberElement = document.createElement('div');
+                    numberElement.textContent = randomNum;
+                    numberElement.classList.add('balloon-number');
+
+                    numberElement.style.position = 'absolute';
+                    numberElement.style.fontSize = '22px';
+                    numberElement.style.fontWeight = 'lighter';
+                    numberElement.style.color = 'white';
+                    numberElement.style.zIndex = '100';
+                    numberElement.style.top = '50%';
+                    numberElement.style.left = '50%';
+                    numberElement.style.transform = 'translate(-50%, -50%)';
+                    numberElement.style.marginTop = '10px';
+
+
+                    balota.container.style.position = 'relative';
+
+                    
+                    const existingNumber = balota.container.querySelector('.balloon-number');
+                    if (existingNumber) {
+                        existingNumber.remove();
+                    }
+
+                    
+                    balota.container.appendChild(numberElement);
+                });
+            }, 4900); 
+        }
+
+        function contadorBalotaMayor() {
+            setTimeout(() => {
+                
+                const balotaMayor = {
+                    img: document.querySelector('#globo-x'),
+                    container: document.querySelector('.globo-x')
+                };
+    
+                
+                const randomNum = Math.floor(Math.random() * 9) + 1; // 1-9
+    
+    
+                const numberElement = document.createElement('div');
+                numberElement.textContent = randomNum;
+                numberElement.classList.add('balloon-number-x');
+    
+                
+                numberElement.style.position = 'absolute';
+                numberElement.style.fontSize = '28px';
+                numberElement.style.fontWeight = 'lighter';
+                numberElement.style.color = 'white';
+                numberElement.style.zIndex = '100';
+                numberElement.style.top = '50%';
+                numberElement.style.left = '50%';
+                numberElement.style.transform = 'translate(-50%, -50%)';
+                numberElement.style.marginTop = '5px';
+                numberElement.style.textDecoration = 'underline';
+    
+                
+                balotaMayor.container.style.position = 'relative';
+    
+                
+                const existingNumber = balotaMayor.container.querySelector('.balloon-number-x');
+                if (existingNumber) {
+                    existingNumber.remove();
+                }
+    
+                
+                balotaMayor.container.appendChild(numberElement);
+            }, 4900);
+        }
+
+
+        function removeNumbers() {
+            // Remove all balloon numbers
+            const numbers = document.querySelectorAll('.balloon-number, .balloon-number-x');
+            numbers.forEach(number => number.remove());
+        }
+
+
+        // Start
+        upButton.addEventListener('click', function() {
+            animacionGlobosUp();
+            lanzarConfettiUp();
+            contadorBalotasMenores();
+            contadorBalotaMayor();
+            upButton.disabled = true;
+            downButton.disabled = false;
+
+        });
+
+        //  Restart
+        downButton.addEventListener('click', function() {
+            resetGlobos();
+            lanzarConfettiExplote();
+            removeNumbers();
+            upButton.disabled = false;
+            downButton.disabled = true;
+        });
+
+
+        // Función para lanzar confeti
+        function lanzarConfettiUp() {
+            var end = Date.now() + (3.5 * 1000);
+
+            // go Buckeyes!
+            var colors = ['#1C0033FF', '#FF008CFF'];
+
+            (function frame() {
+                confetti({
+                    particleCount: 2,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: colors
+                });
+                confetti({
+                    particleCount: 2,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: colors
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+
+        function lanzarConfettiExplote() {
+            var defaults = {
+                spread: 360,
+                ticks: 50,
+                gravity: 0,
+                decay: 0.94,
+                startVelocity: 30,
+                colors: ['FFE400', 'FFBD00', 'FF0000FF', 'FFCA6C', 'FF0000FF']
+            };
+
+            function shoot() {
+                confetti({
+                    ...defaults,
+                    particleCount: 100,
+                    scalar: 1.2,
+                    shapes: ['star']
+                });
+
+                confetti({
+                    ...defaults,
+                    particleCount: 10,
+                    scalar: 0.75,
+                    shapes: ['circle']
+                });
+            }
+
+            setTimeout(shoot, 0);
+            setTimeout(shoot, 100);
+            setTimeout(shoot, 200);
+        }
+
+    </script>
+</body>
+</html>

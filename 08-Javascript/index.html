@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>08- JavaScript</title>
+    <title>08 - JAVASCRIPT</title>
     <link rel="stylesheet" href="css/master.css">
 </head>
 <body>
@@ -14,18 +14,15 @@
     </nav>
     <main>
         <header>
-            <h1>JavaScript</h1>
-            <img src="images/logo-js.png" alt="JavaScript">
-            <h2>
-                es un lenguaje scripting que permite manejar contenido dinamico.
-            </h2>
+            <h1>JAVASCRIPT</h1>
+            <img src="images/logo-js.png" alt="JAVASCRIPT" > 
+            
         </header>
-        <menu>  
-          
+        <menu>
         </menu>
     </main>
     <script>
-        const menu  = document.querySelector('menu')
+        const menu  = document.querySelector('menu') 
         const links = [
             {
                 url: '01-write.html', 
@@ -77,15 +74,15 @@
             },
             {
                 url: '13-challenge-calculator.html', 
-                text: 'Challenge Calculator 🙉'
+                text: 'Challenge Calculator'
             },
-            {
+            /*{
                 url: '14-conditionals.html', 
                 text: 'Conditionals'
             },
             {
                 url: '15-challenge-conditionals.html', 
-                text: 'Challenge Conditionals 🙉'
+                text: 'Challenge Conditionals'
             },
             {
                 url: '16-loops.html', 
@@ -93,81 +90,77 @@
             },
             {
                 url: '17-pokedex-api.html', 
-                text: 'Pokedex API'
+                text: 'Marvel API'
             },
             {
-                url: '18-ChallengePokedex.html', 
-                text: 'Challenge Pokedex 🙉'
-            },
-            {
-                url: '19-events.html', 
+                url: '18-events.html', 
                 text: 'Events'
             },
-            { 
-                url: '20-methods-strings.html', 
+            {
+                url: '19-methods-strings.html', 
                 text: 'Methods Strings'
             },
             {
-                url: '21-methods-numbers.html', 
+                url: '20-methods-numbers.html', 
                 text: 'Methods Numbers'
             },
             {
-                url: '22-methods-mathematics.html', 
+                url: '21-methods-mathematics.html', 
                 text: 'Methods Mathematics'
             },
             {
-                url: '23-challenge-baloto.html', 
-                text: 'Challenge Baloto 🙉'
+                url: '22-challenge-baloto.html', 
+                text: 'Challenge Baloto'
             },
             {
-                url: '24-methods-dates.html', 
+                url: '23-methods-dates.html', 
                 text: 'Methods Dates'
             },
             {
-                url: '25-methods-arrays.html', 
+                url: '24-methods-arrays.html', 
                 text: 'Methods Arrays'
             },
             {
-                url: '26-challenge-arrays.html', 
-                text: 'Challenge Arrays 🙉'
+                url: '25-challenge-arrays.html', 
+                text: 'Challenge Arrays'
             },
             {
-                url: '27-events-time.html', 
+                url: '26-events-time.html', 
                 text: 'Events Time'
             },
             {
-                url: '28-challenge-events-time.html', 
-                text: 'Challente Events Time 🙉'
+                url: '27-challenge-events-time.html', 
+                text: 'Challente Events Time'
             },
             {
-                url: '29-pop-up-windows.html', 
+                url: '28-pop-up-windows.html', 
                 text: 'Pop-Up Windows'
             },
             {
-                url: '30-localstorage.html', 
-                text: 'local Stronge'
+                url: '29-localstorage.html', 
+                text: 'localStorage'
             },
             {
-                url: '31-map-filter-reduce.html', 
-                text: 'Map Filter'
+                url: '30-map-filter-reduce.html', 
+                text: 'Map Filter Reduce'
             },
             {
-                url: '32-json-data.html', 
-                text: 'JSON data'
+                url: '31-json-data.html', 
+                text: 'JSON Data'
             },
             {
-                url: '33-onenterframe.html', 
-                text: 'On enter Frma'
-            }
+                url: '32-onenterframe.html', 
+                text: 'On Enter Frame'
+            }*/
         ] 
- 
+
         links.forEach(renderLink)
- 
+
         function renderLink(item, index) {
             number = index < 9 ? '0'+(index+1) : index+1
             menu.innerHTML += "<a href='"+item.url+"'><i>"+number+"</i> <span>"+item.text+"</span></a>"
         }
- 
+
     </script>
 </body>
 </html>
