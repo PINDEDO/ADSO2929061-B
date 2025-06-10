@@ -104,7 +104,7 @@
                 <p class="event-change">🙂</p>
             </div>
             <h3>Event: onmouseover</h3>
-            <img class="event-mouse" src="images/optimus-car.webp" alt="sun-jin-woo">
+            <img class="event-mouse" src="images/MILEI.avif" alt="sun-jin-woo">
         </section>
     </main>
     <script>
@@ -118,8 +118,6 @@
         ebody.onload = function () {
             msgload.textContent = 'The page is loaded'
         }
-
-
         const btnDbl = document.querySelector('.section-dbl button')
         let countDblClicks = 0
         btnDbl.addEventListener('dblclick', function () {
@@ -144,10 +142,22 @@
             msgChange.textContent = this.value
         })
 
-        const imgMouse = document.querySelector('.event-mouse')
-        imgMouse.addEventListener('mouseout', function () {
-            this.src = 'images/optmus-autobot.jpg'
+        document.getElementById(".event-mouse").addEventListener("mouseenter", mouseEnter);
+document.getElementById(".event-mouse").addEventListener("mouseleave", mouseLeave);
+
+function mouseEnter() {  const imgMouse = document.querySelector('.event-mouse')
+        imgMouse.addEventListener('mouseenter', function () {
+            this.src = 'images/milei anc.png'
         })
+
+}
+
+function mouseLeave() {    const imgMouse = document.querySelector('.event-mouse')
+        imgMouse.addEventListener('mouseleave', function () {
+            this.src = 'images/milei anc.png'
+        })
+
+}
     </script>
 </body>
 </html>
