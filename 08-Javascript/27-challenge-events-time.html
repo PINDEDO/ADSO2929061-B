@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-types
+    </title>
+    <!-- LINK OF STYLE -->
+    <link rel="stylesheet" href="css/master.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Keania+One&display=swap" rel="stylesheet">
+
+
+    <style>
+        .contenedores {
+            width: 270px;
+            height: 507px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin: 20px auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+
+        .contenedor-inicio {
+            background: url(images/homerEat/fondo-donas.svg) no-repeat center;
+
+
+        }
+
+        .contenedor-juego {
+            background: url(images/homerEat/fondo-cielo.svg) repeat-y center;
+
+            border: 2px solid #000;
+            background-size: cover;
+        }
+
+
+
+        .titulo {
+            background: url(images/homerEat/titulo.svg) no-repeat center;
+            width: 100%;
+            height: 150px;
+            margin-top: 10px;
+        }
+
+        .homerostart {
+            background: url(images/homerEat/HomerStart.svg) no-repeat center;
+            width: 165px;
+            height: 300px;
+            top: -30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btnStart {
+            background: url(images/homerEat/btnStart.svg) no-repeat center;
+            width: 150px;
+            height: 130px;
+            position: absolute;
+            bottom: 10px;
+            z-index: 2;
+            animation: bounce 1.5s infinite ease-in-out;
+        }
+
+        /* Animación de rebote suave */
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .information {
+            display: flex;
+            border-bottom: 1px solid #000;
+            align-items: center;
+
+        }
+
+        .btnvolver {
+            background: url(images/homerEat/volver.svg) no-repeat center;
+            width: 50px;
+            height: 30px;
+
+        }
+
+        .time {
+            font-family: 'Keania One', cursive;
+            font-size: 8;
+        }
+
+        .vida {
+            display: flex;
+
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .homero {
+            background: url(images/homerEat/homero.svg) no-repeat;
+            width: 90px;
+            height: 90px;
+            position: absolute;
+            bottom: 0;
+            padding: 0;
+            margin: 0;
+            left: 10px;
+
+        }
+
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 130px;
+            background-color: #ffffffbb;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            padding: 10px 20px;
+            border: 2px solid #000;
+        }
+
+        .modal h2 {
+            font-size: 20px;
+            text-align: center;
+            color: #000000;
+            margin: 0;
+        }
+
+
+
+        .modal p {
+            font-size: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .modal .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .modal .button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 10px;
+            margin: 5px;
+        }
+
+        .modal .button.cancel {
+            background-color: #f44336;
+        }
+
+        .modal .button:hover {
+            opacity: 0.8;
+        }
+
+        .modal .button:active {
+            transform: scale(0.98);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!------------ BOTON DE REGRESO ----------------->
+    <nav class="controls">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc-->
+                <path fill="#000000"
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg>
+        </a>
+    </nav>
+
+    <main>
+        <header>
+            <h1>CHALLENGE 🙉</h1>
+            <h2></h2>
+        </header>
+        <section>
+            <div class="contenedores contenedor-inicio">
+                <div class="titulo"></div>
+                <div class="homerostart"></div>
+                <button class="btnStart"></button>
+            </div>
+            <div class="contenedores contenedor-juego hidden">
+                <div class="information">
+                    <button class="btnvolver"></button>
+                    <div class="time">Time: </div>
+                    <div class="vida">
+                        <img src="images/homerEat/vida.svg" alt="">
+                        <img src="images/homerEat/vida.svg" alt="">
+                        <img src="images/homerEat/vida.svg" alt="">
+                    </div>
+
+                </div>
+                <div class="homero">
+                </div>
+                <audio id="brocoliSound" src="images/homerEat/audioHomer.mp3" preload="auto"></audio>
+
+                <div class="overlay" id="overlay"></div>
+
+                <!-- Modal Ganaste -->
+                <div class="modal" id="ganasteModal">
+                    <h2>¡<span>Ganaste</span>!</h2>
+                    <p>¡Felicidades! Has completado el desafío.</p>
+                    <div class="buttons">
+                        <button class="button" id="okButton">OK</button>
+                    </div>
+                </div>
+
+                <!-- Modal Perdiste -->
+                <div class="modal" id="perdisteModal">
+                    <h2>¡<span>Perdiste</span>!</h2>
+                    <p>¡Lo siento! Has perdido, pero puedes intentarlo de nuevo.</p>
+                    <div class="buttons">
+                        <button class="button cancel" id="retryButton">Volver a Jugar</button>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </section>
+    </main>
+    <script>
+
+        const btnStart = document.querySelector(".btnStart");
+        const btnVolver = document.querySelector(".btnvolver");
+        const contInicio = document.querySelector(".contenedor-inicio");
+        const contJuego = document.querySelector(".contenedor-juego");
+
+        const homero = document.querySelector(".homero");
+
+        const modalGanaste = document.querySelector("#ganasteModal");
+        const modalPerdiste = document.querySelector("#perdisteModal");
+        const overlay = document.querySelector(".overlay");
+
+        // Btn para Comenzar el juego
+        btnStart.addEventListener("click", function () {
+            contInicio.classList.add('hidden');
+            contJuego.classList.remove('hidden');
+        });
+
+        // Vuelve al inicio
+        btnVolver.addEventListener("click", function () {
+            contJuego.classList.add('hidden');
+            contInicio.classList.remove('hidden');
+        });
+
+       
+
+        // Muestra el modal de Ganaste
+        let juegoTerminado = false; // bandera para evitar múltiples finales
+
+        function mostrarModalGanaste() {
+            if (juegoTerminado) return;
+            juegoTerminado = true;
+            modalGanaste.style.display = 'block';
+            overlay.style.display = 'block';
+            detenerJuego();
+        }
+
+        function mostrarModalPerdiste() {
+            if (juegoTerminado) return;
+            juegoTerminado = true;
+            modalPerdiste.style.display = 'block';
+            overlay.style.display = 'block';
+            detenerJuego();
+        }
+
+        function detenerJuego() {
+            clearInterval(crearComidaInterval);
+            clearInterval(tiempoInterval);
+        }
+
+        
+        // Función para cerrar los modales
+        function cerrarModal() {
+            modalGanaste.style.display = 'none';
+            modalPerdiste.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+
+        // Eventos para los botones de los modales
+        document.querySelector("#retryButton").addEventListener("click", function () {
+            location.reload();
+        });
+        document.querySelector("#okButton").addEventListener("click", function () {
+            location.reload();
+        });
+        /*   let backgroundY = 0;
+         function moverFondo() {
+             backgroundY -= 1;
+             if (backgroundY <= -700) { //alto para que se reinicie la imagen
+                 backgroundY = 0;
+             }
+             document.querySelector(".contenedor-juego").style.backgroundPosition = `center ${backgroundY}px`;
+             requestAnimationFrame(moverFondo);
+         }
+ 
+         moverFondo(); */
+
+        // Mover a Homero
+        let leftPosition = 50;
+        document.addEventListener("keyup", (event) => {
+            if (event.keyCode === 37) {
+                if (leftPosition > 0) {
+                    leftPosition -= 30;
+                    homero.style.transform = `rotateY(0deg)`;
+                    homero.style.left = `${leftPosition}px`;
+                }
+            }
+
+            if (event.keyCode === 39) {
+                if (leftPosition < 171) {
+                    leftPosition += 30;
+                    homero.style.transform = `rotateY(180deg)`;
+                    homero.style.left = `${leftPosition}px`;
+                }
+            }
+        });
+
+        // Variables 
+        let vidas = 3;
+        let tiempoRestante = 50;
+        const vidaElements = document.querySelectorAll(".vida img");
+        const timeElement = document.querySelector(".time");
+        const contenedorJuego = document.querySelector(".contenedor-juego");
+
+        // Crear comida
+        function crearComida() {
+            const img = document.createElement("img");
+            const tipo = Math.random() < 0.5 ? "brocoli" : "dona";
+            img.src = `images/homerEat/${tipo}.svg`;
+            img.classList.add("item-comida");
+            img.dataset.tipo = tipo;
+            img.style.position = "absolute";
+            img.style.top = "20px";
+            img.style.left = `${Math.floor(Math.random() * 200) + 30}px`;
+            img.style.width = "40px";
+            img.style.height = "40px";
+            contenedorJuego.appendChild(img);
+            moverComida(img);
+        }
+
+        // Mover comida
+        function moverComida(item) {
+            let top = 20;
+            const interval = setInterval(() => {
+                top += 1.5;
+                item.style.top = `${top}px`;
+
+                const itemRect = item.getBoundingClientRect();
+                const homeroRect = homero.getBoundingClientRect();
+
+                // Verifica colisión
+                if (itemRect.bottom >= homeroRect.top && itemRect.left < homeroRect.right && itemRect.right > homeroRect.left) {
+                    clearInterval(interval);
+                    item.remove();
+                    if (item.dataset.tipo === "brocoli") {
+                        document.getElementById("brocoliSound").play();
+                        vidas--;
+                        actualizarVidas();
+                        if (vidas <= 0) {
+                            mostrarModalPerdiste();
+                        }
+                    }
+                }
+
+                // Si sale de la pantalla
+                if (top > 500) {
+                    clearInterval(interval);
+                    item.remove();
+                }
+            }, 20);
+        }
+
+        // Generar comida cada segundo
+        const crearComidaInterval = setInterval(() => {
+            crearComida();
+        }, 1300);
+
+        // Actualizar vidas
+        function actualizarVidas() {
+            vidaElements.forEach((img, index) => {
+                img.style.opacity = index < vidas ? "1" : "0.2";
+            });
+        }
+
+        // Contador de tiempo
+        const tiempoInterval = setInterval(() => {
+            if (tiempoRestante <= 0) {
+                mostrarModalGanaste();
+                return;
+            }
+            tiempoRestante--;
+            const minutos = String(Math.floor(tiempoRestante / 60)).padStart(2, '0');
+            const segundos = String(tiempoRestante % 60).padStart(2, '0');
+            timeElement.textContent = `Time: ${minutos}:${segundos}`;
+        }, 1000);
+    </script>
+</body>
+
+</html>

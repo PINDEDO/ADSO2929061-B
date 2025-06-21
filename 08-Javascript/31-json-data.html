@@ -1,25 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>31-json-data</title>
+    <title>Json-data</title>
     <link rel="stylesheet" href="css/master.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        div.player {
+            border: 2px solid black;
+            background-color: #E0C3A5;
+            border-radius: 10px;
+            height: 340px;
+            margin: 2rem auto;
+            width: 340px;
+            position: relative;
+            font-family: 'Inter', sans-serif;
+        }
+
+        img {
+            width: 222px;
+            height: 222px;
+            margin: 20px 60px;
+        }
+
+        h4.title {
+            color: #B77F3F;
+            position: absolute;
+            font-size: 35px;
+            font-weight: 900;
+            margin: 0;
+            width: 320px;
+            text-align: center;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h4.artist,
+        h4.year {
+            color: #ffff;
+            position: absolute;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+            width: 320px;
+            text-align: center;
+            opacity: 0.9;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h4.year {
+            top: 100px;
+        }
+
+        button.prev {
+            background: url(images/Music/atrasbtn.svg) no-repeat;
+            width: 35px;
+            height: 20px;
+            margin-top: 15px;
+           
+        }
+        button.next {
+            background: url(images/Music/nextbtn.svg)no-repeat;
+            width: 35px;
+            height: 20px;
+            margin-top: 15px;
+           
+        }
+        button.play {
+            background: url(images/Music/Pausebtn.svg)no-repeat;
+            width: 50px;
+            height: 50px;
+            
+        }
+
+
+        div.controls {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            
+           
+        }
+
+        div.controls button{
+            border: none;
+            cursor: pointer
+        }
+
+       
+    </style>
+
+
+
 </head>
+
 <body>
     <nav class="controls">
         <a href="index.html">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#fafafa" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path fill="#ffffff"
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg>
         </a>
     </nav>
     <main>
         <header>
-            <h1>TEMAPLATE</h1>
-            <h2>EXAMPLES</h2>
+            <h1>32 - Json Data</h1>
+            <H2>
+                Formato de texto para información
+            </H2>
         </header>
         <section>
+            <div class="player">
+                <img src="images/Music/DiscoGif.gif" alt="">
+                <h4 class="title"></h4>
+                <h4 class="artist"></h4>
+                <h4 class="year"></h4>
+                <div class="controls">
+                    <button class="prev" title="previous"></button>
+                    <button class="play" ></button>
+                    <button class="next" title="Next"></button>
+                </div>
+                <audio src=""></audio>
+            </div>
             
         </section>
     </main>
+    <script>
+        //Elements
+        const title = document.querySelector(".title")
+        const artist = document.querySelector(".artist")
+        const year = document.querySelector(".year")
+        const btnPrev = document.querySelector(".prev")
+        const btnPlay = document.querySelector(".play")
+        const btnNext = document.querySelector(".next")
+        const player = document.querySelector(".player")
+        const audio = document.querySelector("audio")
+        //Variables
+        let currentSong = 0
+        let songs = []
+        let isPlaying = false
+
+        //Functions
+        function loadSong(index){
+            const song = songs[index]
+            //player.style.background = `url(${song.cover}) no-repeat center`
+            title.textContent = song.title
+            artist.textContent = `${song.artist} - ${song.album}`
+            year.textContent = song.year
+            audio.src = song.song
+           
+        }
+
+        //Events 
+       btnPlay.addEventListener("click", (e) => {
+            if (isPlaying) {
+                audio.pause()
+                btnPlay.style.background = `url(images/Music/Pausebtn.svg)`
+            }else{
+                audio.play()
+                btnPlay.style.background = `url(images/Music/playbtn.svg)`
+            }
+            isPlaying = !isPlaying
+        })
+
+        btnNext.addEventListener("click", (e) => {
+            if (currentSong < songs.length) {
+                currentSong += 1
+            }else {
+                currentSong = 0
+            }
+            loadSong(currentSong)
+            btnPlay.style.background = `url(images/Music/Pausebtn.svg)`
+            isPlaying = false
+
+        })
+        btnPrev.addEventListener("click", (e) => {
+            if (currentSong > 0) {
+                currentSong -= 1
+            }else {
+                currentSong = songs.length-1
+            }
+            loadSong(currentSong)
+            btnPlay.style.background = `url(images/Music/Pausebtn.svg)`
+            isPlaying = false
+
+        })
+
+
+        fetch("json/playlist.json")
+            .then(response => response.json())
+            .then(data => {
+                songs = data.songs
+                loadSong(currentSong)
+            }).catch(error => console.error("Error: " + error))
+    </script>
 </body>
+
 </html>
