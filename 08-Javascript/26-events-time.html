@@ -36,7 +36,7 @@
         }
 
         figure.sky{
-            background: url("images/cielo.png") no-repeat center /cover;
+            background: url("images/ARGENTINA.avif") no-repeat center /cover;
             border: 2px solid #b7ab3c;
             height: 400px;
             margin: 0 auto;
@@ -77,7 +77,7 @@
             <h3>Move Element: </h3>
             <small><strong>Press left & rigth keys</strong></small>
             <figure class="sky">
-                <img class="nave" src="./images/nave.png" alt="">
+                <img class="nave" src="./images/MILEI.avif" alt="">
             </figure>
         </section>
     </main>
@@ -103,6 +103,7 @@
                 let count = 1
                 let time  = parseInt(timeToRefresh.value)
                 refresh.textContent = time + " seconds to refresh"
+                btnSetTime.style.pointerEvents = 'none'
                 setInterval(() =>{
                     refresh.textContent = (time - count) + " seconds to refresh"
                     count++
