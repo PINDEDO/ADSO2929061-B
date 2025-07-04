@@ -3,227 +3,747 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferxxo Run</title>
+    <title>Moto Flow Medellín - Juego</title>
     <style>
         body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
             margin: 0;
-            overflow: hidden;
-            background-color: #000;
-            font-family: Arial, sans-serif;
+            padding: 0;
+            overflow-x: hidden;
+            user-select: none;
         }
-        #game-container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(to bottom, #1a1a2e, #16213e);
-            overflow: hidden;
-        }
-        #player {
-            position: absolute;
-            width: 60px;
-            height: 80px;
-            bottom: 100px;
-            left: 100px;
-            background-color: #FEDB2C;
+
+        section {
+            background-color: #222;
+            padding: 20px;
             border-radius: 10px;
-            z-index: 10;
+            box-shadow: 0 0 10px rgba(0, 255, 150, 0.5);
+            width: 400px;
+            margin: 20px auto;
+            position: relative;
         }
+
+        h1 {
+            font-size: 24px;
+            text-transform: uppercase;
+            color: #0f0;
+            margin-top: 0;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .header img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .attributes {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Contenedor del parallax */
+        .parallax-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        /* Capas del parallax */
+        .parallax-layer {
+            position: absolute;
+            width: 300%;
+            height: 100%;
+            background-repeat: repeat-x;
+            background-position: 0 bottom;
+            will-change: transform;
+        }
+
+        /* Fondo (montañas lejanas) - se mueve más lento */
+        .layer-bg {
+            background-image: url('https://i.imgur.com/JYQZJzF.j');
+            background-size: auto 100%;
+            z-index: 1;
+            animation: moveBg 60s linear infinite;
+            animation-play-state: paused;
+        }
+
+        /* Medio (montañas cercanas) - velocidad media */
+        .layer-md {
+            background-image: url('https://i.imgur.com/PASAMANOS.png');
+            background-size: auto 20%;
+            z-index: 2;
+            animation: moveBg 40s linear infinite;
+            animation-play-state: paused;
+        }
+
+        /* Carretera - se mueve más rápido y ocupa 1/8 de la parte inferior */
+        .layer-road {
+            background-image: url('images/moto/CARRETERA.jpg');
+            background-size: auto 15%;
+            background-position: bottom;
+            height: 15%;
+            bottom: 0;
+            z-index: 3;
+            animation: moveBg 10s linear infinite;
+            animation-play-state: paused;
+        }
+
+        /* Metros - se mueve muy rápido en dirección contraria con efecto intermitente */
+        .layer-meter {
+            background-image: url('images/moto/METRO.png');
+            background-size: auto 40%;
+            z-index: 4;
+            animation: 
+                moveMeter 2s linear infinite,
+                blinkMeter 6s steps(1) infinite;
+            animation-play-state: paused;
+            transform: scaleX(-1);
+            bottom: 25%;
+            height: 50%;
+            opacity: 0;
+        }
+
+        @keyframes moveBg {
+            from { transform: translateX(0); }
+            to { transform: translateX(-66.6%); }
+        }
+
+        @keyframes moveMeter {
+            from { transform: translateX(0) scaleX(-1); }
+            to { transform: translateX(-66.6%) scaleX(-1); }
+        }
+
+        @keyframes blinkMeter {
+            0%, 80% { opacity: 0; }
+            20% { opacity: 1; }
+        }
+
+        .moto-image {
+            position: absolute;
+            width: 200px;
+            height: auto;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            transition: transform 0.2s ease;
+        }
+
+        .wheelie {
+            transform: translateX(-50%) rotate(-45deg) !important;
+            transform-origin: bottom center;
+        }
+
         .obstacle {
             position: absolute;
-            width: 40px;
-            height: 60px;
-            background-color: #FF0000;
-            bottom: 100px;
-            right: -40px;
+            width: 80px;
+            height: 80px;
+            bottom: 15%;
+            right: -100px;
+            z-index: 6;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .methods button, .nav-buttons button {
+            background: #0f0;
+            border: none;
+            color: #000;
+            padding: 10px 15px;
+            margin: 5px;
             border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease-in;
         }
-        #score {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 24px;
-            z-index: 20;
+
+        .methods button:hover, .nav-buttons button:hover {
+            transform: scale(1.1);
         }
-        #game-over {
+
+        .dark {
+            background-color: #111;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+
+        .dark h1 {
+            color: #f00;
+        }
+
+        .dark .methods button, .dark .nav-buttons button {
+            background: #f00;
+            color: #fff;
+        }
+
+        .start {
+            animation: vibrate 0.2s infinite alternate;
+        }
+
+        @keyframes vibrate {
+            0% { transform: translateX(-50%) translateY(-2px); }
+            100% { transform: translateX(-50%) translateY(2px); }
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .countdown {
             position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 72px;
+            font-weight: bold;
+            color: #0f0;
+            text-shadow: 0 0 10px #0f0;
+            z-index: 10;
+            display: none;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .modal-content {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 0 20px rgba(0, 255, 150, 0.5);
+        }
+
+        .modal h2 {
+            color: #0f0;
+            margin-top: 0;
+        }
+
+        .modal button {
+            background: #0f0;
+            border: none;
+            color: #000;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .game-over {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.8);
             display: none;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 30;
-            color: white;
+            z-index: 100;
         }
-        #restart-btn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #FEDB2C;
-            color: black;
-            border: none;
-            border-radius: 5px;
+
+        .game-over-content {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+
+        .game-over h2 {
+            color: #f00;
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        .game-over p {
             font-size: 18px;
+        }
+
+        .game-over button {
+            background: #f00;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-weight: bold;
             cursor: pointer;
+            font-size: 18px;
+        }
+
+        .success {
+            box-shadow: 0 0 20px rgba(0, 255, 150, 0.5) !important;
+        }
+
+        .success h2 {
+            color: #0f0 !important;
+        }
+
+        .success button {
+            background: #0f0 !important;
+            color: #000 !important;
         }
     </style>
 </head>
 <body>
-    <div id="game-container">
-        <div id="player"></div>
-        <div id="score">Puntaje: 0</div>
-        <div id="game-over">
-            <h1>¡Game Over!</h1>
-            <p id="final-score">Puntaje final: 0</p>
-            <button id="restart-btn">Reiniciar</button>
+    <div class="modal">
+        <div class="modal-content">
+            <h2>🏍️ Moto Flow Medellín - Instrucciones</h2>
+            <p>¡Bienvenido al juego de Moto Flow Medellín!</p>
+            <p><strong>Objetivo:</strong> Llegar del Poblado al barrio Antioquia en 1 minuto y 30 segundos.</p>
+            <p><strong>Controles:</strong> Usa la BARRA ESPACIADORA para hacer wheelie y esquivar obstáculos.</p>
+            <p><strong>Obstáculos:</strong></p>
+            <ul style="text-align: left;">
+                <li>👮 Policía de tránsito</li>
+                <li>🕳️ Bache en la calle</li>
+                <li>🧍 Venezolano limosnero</li>
+            </ul>
+            <p><strong>Reglas:</strong></p>
+            <ul style="text-align: left;">
+                <li>Cada colisión te quita 10 segundos</li>
+                <li>3 colisiones y pierdes inmediatamente</li>
+                <li>El fondo cambia cada 30 segundos</li>
+            </ul>
+            <button id="start-game">¡Empezar!</button>
         </div>
     </div>
 
+    <div class="game-over">
+        <div class="game-over-content">
+            <h2>¡Muy buñuelo pa manejar!</h2>
+            <p>No lograste completar el trayecto a tiempo.</p>
+            <p id="result-message"></p>
+            <button id="restart-game">Intentar de nuevo</button>
+        </div>
+    </div>
+
+    <section>
+        <div class="header">
+            <img id="logo-national" src="/08-Javascript/images/moto/nacional.png" alt="Escudo Nacional">
+            <img id="logo-medellin" src="/08-Javascript/images/moto/medellin.png" alt="Escudo Medellín" style="display: none;">
+            <button class="btn-mode">🌙</button>
+        </div>
+
+        <h1>🏍️ Moto Flow Medellin</h1>
+
+        <div class="game-info">
+            <div id="time">Tiempo: 01:30</div>
+            <div id="distance">Distancia: 0 km</div>
+            <div id="collisions">Colisiones: 0/3</div>
+        </div>
+
+        <div class="attributes">
+            <p><strong>Marca:</strong> <span class="brand"></span></p>
+            <p><strong>Modelo:</strong> <span class="model"></span></p>
+            <p><strong>Cilindraje:</strong> <span class="cc"></span></p>
+            <p><strong>Color:</strong> <span class="color"></span></p>
+        </div>
+
+        <!-- Contenedor del efecto parallax -->
+        <div class="parallax-container">
+            <div class="parallax-layer layer-bg"></div>
+            <div class="parallax-layer layer-md"></div>
+            <div class="parallax-layer layer-road"></div>
+            <div class="parallax-layer layer-meter"></div>
+            <img class="moto-image" src="" alt="Moto">
+            <div class="countdown">3</div>
+            <!-- Los obstáculos se generarán dinámicamente -->
+        </div>
+        
+        <div class="nav-buttons">
+            <button class="btn-prev">⬅️ Anterior</button>
+            <button class="btn-next">Siguiente ➡️</button>
+        </div>
+    </section>
+
     <script>
+        // Elementos del DOM
+        const btnMode = document.querySelector('.btn-mode');
+        const logoNational = document.getElementById('logo-national');
+        const logoMedellin = document.getElementById('logo-medellin');
+        const motoImage = document.querySelector('.moto-image');
+        const parallaxLayers = document.querySelectorAll('.parallax-layer');
+        const countdownElement = document.querySelector('.countdown');
+        const timeElement = document.getElementById('time');
+        const distanceElement = document.getElementById('distance');
+        const collisionsElement = document.getElementById('collisions');
+        const modal = document.querySelector('.modal');
+        const gameOverScreen = document.querySelector('.game-over');
+        const resultMessage = document.getElementById('result-message');
+        const startGameButton = document.getElementById('start-game');
+        const restartGameButton = document.getElementById('restart-game');
+        const btnPrev = document.querySelector('.btn-prev');
+        const btnNext = document.querySelector('.btn-next');
+
+        // Datos de las motos
+        const motos = [
+            { brand: 'YAMAHA', model: 'DT 125', cc: '124cc', color: 'Azul', image: '08-Javascript/images/moto/yamaha-dt125.png' },
+            { brand: 'SUZUKI', model: 'DR 650', cc: '648cc', color: 'Amarillo y Morado', image: '08-Javascript/images/moto/650.png' },
+            { brand: 'HONDA', model: 'XRE 300', cc: '298cc', color: 'Negro', image: '08-Javascript/images/moto/xr-300l-tornado-roja.webp' },
+            { brand: 'AKT', model: 'NKD 125', cc: '124cc', color: 'Amarillo y Morado', image: '08-Javascript/images/moto/NKD.png' },
+            { brand: 'YAMAHA', model: 'XTZ150', cc: '148cc', color: 'beich', image: '08-Javascript/images/moto/XTZ.webp' }
+        ];
+
         // Variables del juego
-        const player = document.getElementById('player');
-        const gameContainer = document.getElementById('game-container');
-        const scoreElement = document.getElementById('score');
-        const gameOverScreen = document.getElementById('game-over');
-        const finalScoreElement = document.getElementById('final-score');
-        const restartBtn = document.getElementById('restart-btn');
-        
-        let isJumping = false;
-        let isGameOver = false;
-        let score = 0;
-        let gameSpeed = 5;
+        let index = 0;
+        let gameActive = false;
+        let wheelieActive = false;
+        let timeLeft = 90; // 1 minuto y 30 segundos
+        let distanceCovered = 0;
+        let collisionCount = 0;
+        let obstacles = [];
+        let gameInterval;
         let obstacleInterval;
-        
-        // Posición inicial del jugador
-        let playerBottom = 100;
-        const playerLeft = 100;
-        
-        // Teclas control
-        document.addEventListener('keydown', (e) => {
-            if (e.code === 'Space' && !isJumping && !isGameOver) {
-                jump();
-            }
+        let backgroundChangeInterval;
+        let currentBackground = 'poblado';
+        let countdown = 3;
+
+        // Tipos de obstáculos
+        const obstacleTypes = [
+            { name: 'Policía', image: '08-Javascript/images/moto/trasnito.jpeg' },
+            { name: 'Bache', image: '08-Javascript/images/moto/bache.jpg' },
+            { name: 'Limosnero', image: '08-Javascript/images/moto/venezolano.jpg' }
+        ];
+
+        // Mostrar información de la moto actual
+        function showMoto(i) {
+            const brand = document.querySelector('.brand');
+            const model = document.querySelector('.model');
+            const cc = document.querySelector('.cc');
+            const color = document.querySelector('.color');
             
-            if (e.code === 'KeyR' && isGameOver) {
-                restartGame();
+            brand.textContent = motos[i].brand;
+            model.textContent = motos[i].model;
+            cc.textContent = motos[i].cc;
+            color.textContent = motos[i].color;
+            motoImage.src = motos[i].image;
+        }
+
+        // Cambiar modo claro/oscuro
+        btnMode.addEventListener('click', () => {
+            document.querySelector('section').classList.toggle('dark');
+            const isDark = document.querySelector('section').classList.contains('dark');
+
+            logoNational.style.display = isDark ? 'none' : 'block';
+            logoMedellin.style.display = isDark ? 'block' : 'none';
+            btnMode.textContent = isDark ? '☀️' : '🌙';
+        });
+
+        // Navegar entre motos
+        btnPrev.addEventListener('click', () => {
+            if (!gameActive) {
+                index = (index - 1 + motos.length) % motos.length;
+                showMoto(index);
             }
         });
-        
-        restartBtn.addEventListener('click', restartGame);
-        
-        // Función de salto
-        function jump() {
-            if (isJumping) return;
-            
-            isJumping = true;
-            let jumpCount = 0;
-            const jumpInterval = setInterval(() => {
-                // Subida
-                if (jumpCount < 15) {
-                    playerBottom += 8;
-                    player.style.bottom = playerBottom + 'px';
-                } 
-                // Bajada
-                else if (jumpCount >= 15 && jumpCount < 30) {
-                    playerBottom -= 8;
-                    player.style.bottom = playerBottom + 'px';
-                } 
-                // Fin del salto
-                else {
-                    clearInterval(jumpInterval);
-                    isJumping = false;
-                }
-                
-                jumpCount++;
-            }, 20);
-        }
-        
-        // Crear obstáculos
-        function createObstacle() {
-            if (isGameOver) return;
-            
-            const obstacle = document.createElement('div');
-            obstacle.classList.add('obstacle');
-            gameContainer.appendChild(obstacle);
-            
-            let obstacleLeft = gameContainer.clientWidth;
-            let obstacleBottom = 100;
-            let randomHeight = Math.random() * 50 + 30;
-            
-            obstacle.style.height = randomHeight + 'px';
-            obstacle.style.bottom = obstacleBottom + 'px';
-            
-            // Mover obstáculo
-            const moveObstacle = setInterval(() => {
-                if (isGameOver) {
-                    clearInterval(moveObstacle);
-                    return;
-                }
-                
-                obstacleLeft -= gameSpeed;
-                obstacle.style.left = obstacleLeft + 'px';
-                
-                // Detección de colisión
-                if (
-                    obstacleLeft < playerLeft + 60 &&
-                    obstacleLeft + 40 > playerLeft &&
-                    obstacleBottom < playerBottom + 80 &&
-                    obstacleBottom + randomHeight > playerBottom
-                ) {
-                    gameOver();
-                    clearInterval(moveObstacle);
-                }
-                
-                // Si el obstáculo sale de la pantalla
-                if (obstacleLeft < -40) {
-                    clearInterval(moveObstacle);
-                    gameContainer.removeChild(obstacle);
-                    score++;
-                    scoreElement.textContent = `Puntaje: ${score}`;
-                    
-                    // Aumentar dificultad
-                    if (score % 5 === 0) {
-                        gameSpeed += 0.5;
+
+        btnNext.addEventListener('click', () => {
+            if (!gameActive) {
+                index = (index + 1) % motos.length;
+                showMoto(index);
+            }
+        });
+
+        // Controlar animaciones del parallax
+        function toggleAnimations(enable) {
+            parallaxLayers.forEach(layer => {
+                if (enable) {
+                    if (layer.classList.contains('layer-meter')) {
+                        layer.style.animation = 'none';
+                        layer.offsetHeight;
+                        layer.style.animation = 'moveMeter 2s linear infinite, blinkMeter 10s steps(1) infinite';
                     }
+                    layer.style.animationPlayState = 'running';
+                } else {
+                    layer.style.animationPlayState = 'paused';
                 }
-            }, 20);
+            });
         }
-        
-        // Game over
-        function gameOver() {
-            isGameOver = true;
+
+        // Actualizar el tiempo en pantalla
+        function updateTime() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timeElement.textContent = `Tiempo: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Actualizar la distancia en pantalla
+        function updateDistance() {
+            distanceElement.textContent = `Distancia: ${(distanceCovered / 1000).toFixed(1)} km`;
+        }
+
+        // Actualizar contador de colisiones
+        function updateCollisions() {
+            collisionsElement.textContent = `Colisiones: ${collisionCount}/3`;
+        }
+
+        // Cambiar el fondo del juego
+        function changeBackground(background) {
+            currentBackground = background;
+            const bgLayer = document.querySelector('.layer-bg');
+            
+            switch(background) {
+                case 'poblado':
+                    bgLayer.style.backgroundImage = 'url(08-Javascript/images/moto/el poblado.png)';
+                    break;
+                case 'medellin':
+                    bgLayer.style.backgroundImage = 'url(08-Javascript/images/moto/MEDALLO.jpg)';
+                    break;
+                case 'antioquia':
+                    bgLayer.style.backgroundImage = 'url(08-Javascript/images/moto/barrio antioquia.jpg)';
+                    break;
+            }
+        }
+
+        // Crear un nuevo obstáculo
+        function createObstacle() {
+            if (!gameActive) return;
+            
+            const obstacleType = obstacleTypes[Math.floor(Math.random() * obstacleTypes.length)];
+            const obstacle = document.createElement('div');
+            obstacle.className = 'obstacle';
+            obstacle.style.backgroundImage = `url(${obstacleType.image})`;
+            obstacle.dataset.type = obstacleType.name;
+            
+            const container = document.querySelector('.parallax-container');
+            container.appendChild(obstacle);
+            
+            // Posición vertical aleatoria (pero no muy abajo para que se pueda esquivar)
+            const verticalPos = Math.random() * 30 + 10; // Entre 10% y 40% desde arriba
+            obstacle.style.bottom = `${verticalPos}%`;
+            
+            obstacles.push({
+                element: obstacle,
+                speed: Math.random() * 5 + 5, // Velocidad aleatoria entre 5 y 10
+                passed: false
+            });
+        }
+
+        // Mover obstáculos
+        function moveObstacles() {
+            obstacles.forEach((obstacle, index) => {
+                const currentRight = parseFloat(obstacle.element.style.right) || -100;
+                const newRight = currentRight + obstacle.speed;
+                obstacle.element.style.right = `${newRight}px`;
+                
+                // Detectar colisión
+                if (!wheelieActive && !obstacle.passed && newRight > 150 && newRight < 250) {
+                    handleCollision();
+                    obstacle.passed = true;
+                }
+                
+                // Eliminar obstáculo si sale de pantalla
+                if (newRight > 500) {
+                    obstacle.element.remove();
+                    obstacles.splice(index, 1);
+                }
+            });
+        }
+
+        // Manejar colisión
+        function handleCollision() {
+            collisionCount++;
+            updateCollisions();
+            
+            // Restar 10 segundos
+            timeLeft = Math.max(0, timeLeft - 10);
+            updateTime();
+            
+            // Verificar si perdió por muchas colisiones
+            if (collisionCount >= 3) {
+                endGame(false);
+            }
+        }
+
+        // Iniciar cuenta regresiva
+        function startCountdown() {
+            countdownElement.style.display = 'block';
+            countdown = 3;
+            countdownElement.textContent = countdown;
+            
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown;
+                
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.style.display = 'none';
+                    startGame();
+                }
+            }, 1000);
+        }
+
+        // Iniciar juego
+        function startGame() {
+            gameActive = true;
+            timeLeft = 90;
+            distanceCovered = 0;
+            collisionCount = 0;
+            
+            updateTime();
+            updateDistance();
+            updateCollisions();
+            
+            // Iniciar animaciones
+            motoImage.classList.add('start');
+            toggleAnimations(true);
+            
+            // Cambiar fondo inicial
+            changeBackground('poblado');
+            
+            // Configurar intervalos
+            gameInterval = setInterval(updateGame, 1000);
+            obstacleInterval = setInterval(createObstacle, 2000);
+            backgroundChangeInterval = setInterval(changeBackgroundPeriodically, 30000);
+            
+            // Escuchar tecla espaciadora
+            document.addEventListener('keydown', handleKeyDown);
+            document.addEventListener('keyup', handleKeyUp);
+        }
+
+        // Cambiar fondo periódicamente
+        function changeBackgroundPeriodically() {
+            if (currentBackground === 'poblado') {
+                changeBackground('medellin');
+            } else if (currentBackground === 'medellin') {
+                changeBackground('antioquia');
+            }
+        }
+
+        // Actualizar estado del juego
+        function updateGame() {
+            // Mover obstáculos
+            moveObstacles();
+            
+            // Actualizar tiempo y distancia
+            timeLeft--;
+            distanceCovered += 100; // Aprox 100 metros por segundo
+            
+            updateTime();
+            updateDistance();
+            
+            // Verificar si ganó
+            if (timeLeft <= 0) {
+                if (distanceCovered >= 9000) { // 9 km en 90 segundos
+                    endGame(true);
+                } else {
+                    endGame(false);
+                }
+            }
+        }
+
+        // Manejar tecla presionada
+        function handleKeyDown(e) {
+            if (e.code === 'Space' && gameActive) {
+                wheelieActive = true;
+                motoImage.classList.add('wheelie');
+            }
+        }
+
+        // Manejar tecla liberada
+        function handleKeyUp(e) {
+            if (e.code === 'Space' && gameActive) {
+                wheelieActive = false;
+                motoImage.classList.remove('wheelie');
+            }
+        }
+
+        // Terminar juego
+        function endGame(success) {
+            gameActive = false;
+            
+            // Detener intervalos
+            clearInterval(gameInterval);
             clearInterval(obstacleInterval);
-            finalScoreElement.textContent = `Puntaje final: ${score}`;
+            clearInterval(backgroundChangeInterval);
+            
+            // Detener animaciones
+            toggleAnimations(false);
+            motoImage.classList.remove('start');
+            motoImage.classList.remove('wheelie');
+            
+            // Eliminar eventos de teclado
+            document.removeEventListener('keydown', handleKeyDown);
+            document.removeEventListener('keyup', handleKeyUp);
+            
+            // Eliminar obstáculos
+            obstacles.forEach(obstacle => obstacle.element.remove());
+            obstacles = [];
+            
+            // Mostrar pantalla de fin de juego
+            const gameOverContent = document.querySelector('.game-over-content');
+            
+            if (success) {
+                gameOverContent.classList.add('success');
+                gameOverContent.querySelector('h2').textContent = '¡Llegó de chepa al barrio!';
+                resultMessage.textContent = `Completaste el trayecto en ${(90 - timeLeft)} segundos con ${collisionCount} colisiones.`;
+            } else {
+                gameOverContent.classList.remove('success');
+                gameOverContent.querySelector('h2').textContent = '¡Muy buñuelo pa manejar!';
+                
+                if (collisionCount >= 3) {
+                    resultMessage.textContent = 'Chocaste con demasiados obstáculos.';
+                } else if (distanceCovered < 9000) {
+                    resultMessage.textContent = `Solo recorriste ${(distanceCovered / 1000).toFixed(1)} km de los 9 km requeridos.`;
+                } else {
+                    resultMessage.textContent = 'No lograste completar el trayecto a tiempo.';
+                }
+            }
+            
             gameOverScreen.style.display = 'flex';
         }
-        
+
         // Reiniciar juego
         function restartGame() {
-            isGameOver = false;
-            score = 0;
-            gameSpeed = 5;
-            scoreElement.textContent = `Puntaje: ${score}`;
             gameOverScreen.style.display = 'none';
-            
-            // Eliminar todos los obstáculos
-            document.querySelectorAll('.obstacle').forEach(obs => {
-                obs.remove();
-            });
-            
-            // Restablecer posición del jugador
-            playerBottom = 100;
-            player.style.bottom = playerBottom + 'px';
-            
-            // Reiniciar generación de obstáculos
-            clearInterval(obstacleInterval);
-            obstacleInterval = setInterval(createObstacle, 2000);
+            startCountdown();
         }
-        
-        // Iniciar juego
-        restartGame();
+
+        // Eventos de los botones
+        startGameButton.addEventListener('click', () => {
+            modal.style.display = 'none';
+            startCountdown();
+        });
+
+        restartGameButton.addEventListener('click', restartGame);
+
+        // Inicializar
+        showMoto(index);
+        updateTime();
+        updateDistance();
+        updateCollisions();
     </script>
 </body>
 </html>
