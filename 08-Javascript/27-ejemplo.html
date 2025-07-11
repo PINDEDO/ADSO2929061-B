@@ -145,7 +145,7 @@
             position: absolute;
             width: 200px;
             height: auto;
-            bottom: 0;
+            bottom: 15%;
             left: 50%;
             transform: translateX(-50%);
             z-index: 5;
@@ -153,7 +153,7 @@
         }
 
         .wheelie {
-            transform: translateX(-50%) rotate(-45deg) !important;
+            transform: translateX(-50%) rotate(-46deg) !important;
             transform-origin: bottom center;
         }
 
@@ -162,7 +162,7 @@
             width: 80px;
             height: 80px;
             bottom: 15%;
-            right: -100px;
+            left: -100px;
             z-index: 6;
             background-size: contain;
             background-repeat: no-repeat;
@@ -417,6 +417,10 @@
         const restartGameButton = document.getElementById('restart-game');
         const btnPrev = document.querySelector('.btn-prev');
         const btnNext = document.querySelector('.btn-next');
+        const brandElement = document.querySelector('.brand');
+        const modelElement = document.querySelector('.model');
+        const ccElement = document.querySelector('.cc');
+        const colorElement = document.querySelector('.color');
 
         // Datos de las motos
         const motos = [
@@ -481,7 +485,7 @@
         };
 
         // Variables del juego
-        let index = 0;
+        let currentMotoIndex = 0;
         let gameActive = false;
         let wheelieActive = false;
         let timeLeft = 90; // 1 minuto y 30 segundos
@@ -498,15 +502,11 @@
         // Mostrar información de la moto actual
         function showMoto(index) {
             const moto = motos[index];
-            const brandElement = document.querySelector('.brand');
-            const modelElement = document.querySelector('.model');
-            const ccElement = document.querySelector('.cc');
-            const colorElement = document.querySelector('.color');
             
-            if (brandElement) brandElement.textContent = moto.brand;
-            if (modelElement) modelElement.textContent = moto.model;
-            if (ccElement) ccElement.textContent = moto.cc;
-            if (colorElement) colorElement.textContent = moto.color;
+            brandElement.textContent = moto.brand;
+            modelElement.textContent = moto.model;
+            ccElement.textContent = moto.cc;
+            colorElement.textContent = moto.color;
             
             motoImage.src = moto.image;
             motoImage.alt = `${moto.brand} ${moto.model}`;
@@ -561,7 +561,7 @@
 
         // Crear un nuevo obstáculo
         function createObstacle() {
-            if (!gameActive || obstacles.length > 0) return;
+            if (!gameActive || obstacles.length > 2) return;
             
             const type = obstacleTypes[Math.floor(Math.random() * obstacleTypes.length)];
             const obstacle = document.createElement('div');
@@ -572,27 +572,26 @@
             const container = document.querySelector('.parallax-container');
             container.appendChild(obstacle);
             
-            // Posición vertical aleatoria
-            const verticalPos = Math.random() * 30 + 10;
-            obstacle.style.bottom = `${verticalPos}%`;
+            // Posición vertical alineada con la moto
+            obstacle.style.bottom = '15%';
             
             obstacles.push({
                 element: obstacle,
-                speed: Math.random() * 10 + 15, // Velocidad entre 15 y 25
+                speed: Math.random() * 5 + 5, // Velocidad entre 5 y 10
                 passed: false
             });
             
-            // Programar próximo obstáculo en un intervalo aleatorio entre 3 y 8 segundos
-            const nextObstacleTime = Math.floor(Math.random() * 5000) + 3000; // 3-8 segundos
+            // Programar próximo obstáculo en un intervalo aleatorio entre 2 y 5 segundos
+            const nextObstacleTime = Math.floor(Math.random() * 3000) + 2000;
             obstacleTimeout = setTimeout(createObstacle, nextObstacleTime);
         }
 
         // Mover obstáculos y detectar colisiones
         function moveObstacles() {
             obstacles.forEach((obstacle, index) => {
-                const currentRight = parseFloat(obstacle.element.style.right) || -100;
-                const newRight = currentRight + obstacle.speed;
-                obstacle.element.style.right = `${newRight}px`;
+                const currentLeft = parseFloat(obstacle.element.style.left) || -100;
+                const newLeft = currentLeft + obstacle.speed;
+                obstacle.element.style.left = `${newLeft}px`;
                 
                 // Detectar colisión - área más precisa
                 const motoRect = motoImage.getBoundingClientRect();
@@ -608,7 +607,7 @@
                 }
                 
                 // Eliminar obstáculo si sale de pantalla
-                if (newRight > window.innerWidth + 100) {
+                if (newLeft > window.innerWidth + 100) {
                     obstacle.element.remove();
                     obstacles.splice(index, 1);
                 }
@@ -688,8 +687,8 @@
             // Configurar intervalos
             gameInterval = setInterval(updateGameState, 1000);
             
-            // Crear primer obstáculo después de 3 segundos
-            obstacleTimeout = setTimeout(createObstacle, 3000);
+            // Crear primer obstáculo después de 2 segundos
+            obstacleTimeout = setTimeout(createObstacle, 2000);
             
             backgroundChangeInterval = setInterval(changeBackgroundPeriodically, 30000);
             
@@ -774,15 +773,15 @@
         
         btnPrev.addEventListener('click', () => {
             if (!gameActive) {
-                index = (index - 1 + motos.length) % motos.length;
-                showMoto(index);
+                currentMotoIndex = (currentMotoIndex - 1 + motos.length) % motos.length;
+                showMoto(currentMotoIndex);
             }
         });
         
         btnNext.addEventListener('click', () => {
             if (!gameActive) {
-                index = (index + 1) % motos.length;
-                showMoto(index);
+                currentMotoIndex = (currentMotoIndex + 1) % motos.length;
+                showMoto(currentMotoIndex);
             }
         });
 
@@ -794,7 +793,7 @@
         restartGameButton.addEventListener('click', restartGame);
 
         // Inicialización
-        showMoto(index);
+        showMoto(currentMotoIndex);
         updateGameUI();
     </script>
 </body>
