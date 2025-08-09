@@ -876,7 +876,7 @@
       if (timerDOM) {
         timerDOM.innerText = gameState.timeLeft.toString();
         
-        // Change color when time is running out
+    
         if (gameState.timeLeft <= 10) {
           timerDOM.style.color = "#FF5252";
           timerDOM.style.animation = "pulse 0.5s infinite alternate";
@@ -926,7 +926,7 @@
       }
     }
 
-    // Event listeners
+
     document
       .getElementById("forward")
       ?.addEventListener("click", () => queueMove("forward"));
