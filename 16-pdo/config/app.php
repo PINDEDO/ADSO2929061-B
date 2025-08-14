@@ -1,16 +1,16 @@
 <?php
+    // Sessions
+    session_start();
 
-session_start();
+    // Routes Absolutes
+    $url    = 'http://'.$_SERVER['HTTP_HOST'].'/';
+    $public = $url . "public/";
+    $css    = $public . "css/";
+    $js     = $public . "js/";
+    $imgs   = $public . "imgs/";
 
-$url = "http://localhost:8080/"; //'$_SERVER['HTTP_HOST'].'/':
-$public = $url."public/";
-$css = $public."css/";
-$js = $public."js/";
-$imgs = $public."imgs/";
-
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$dbname = 'petsdb';
-
-//10 2 14 206
+    // Data Base Config
+    $host   = "localhost";
+    $user   = "root";
+    $pass   = "";
+    $dbname = "petsdb";
