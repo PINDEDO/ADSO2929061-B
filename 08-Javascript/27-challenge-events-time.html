@@ -2,117 +2,193 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Atrapa la Fruta</title>
+  <title>Atrapa la Fruta - Minecraft Style</title>
   <style>
+    body {
+      background-color: #7cb342;
+      font-family: 'Courier New', monospace;
+      background-image: 
+        linear-gradient(rgba(124, 179, 66, 0.8), rgba(124, 179, 66, 0.8)),
+        repeating-linear-gradient(
+          45deg,
+          #8bc34a 0px,
+          #8bc34a 20px,
+          #7cb342 20px,
+          #7cb342 40px
+        );
+      margin: 0;
+      padding: 20px;
+    }
+
     #game {
-  position: relative;
-  width: 400px;
-  height: 500px;
-  border: 2px solid black;
-  margin: 20px auto;
-  overflow: hidden;
-  background-color: #f0f8ff;
-}
+      position: relative;
+      width: 400px;
+      height: 500px;
+      border: 4px solid #5d4037;
+      border-radius: 8px;
+      margin: 20px auto;
+      overflow: hidden;
+      background-color: #8d6e63;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      background-image: 
+        linear-gradient(90deg, rgba(141, 110, 99, 0.3) 1px, transparent 1px),
+        linear-gradient(rgba(141, 110, 99, 0.3) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
 
-#player {
-  position: absolute;
-  bottom: 10px;
-  left: 180px;
-  width: 40px;
-  height: 40px;
-  background-color: blue;
-}
+    #hierro {
+      position: absolute;
+      bottom: 10px;
+      left: 180px;
+      width: 40px;
+      height: 40px;
+      background-color: transparent;
+    }
 
-#fruit {
-  position: absolute;
-  top: 0;
-  width: 30px;
-  height: 30px;
-  background-color: red;
-  border-radius: 50%;
-}
+    #manzana {
+      position: absolute;
+      top: 0;
+      width: 30px;
+      height: 30px;
+      background-color: transparent;
+      border-radius: 50%;
+    }
+
+    #hierro img, #manzana img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      image-rendering: pixelated;
+    }
+
+    #score, #lives {
+      position: absolute;
+      top: 10px;
+      background-color: rgba(121, 85, 72, 0.9);
+      color: white;
+      padding: 5px 10px;
+      border: 2px solid #3e2723;
+      border-radius: 4px;
+      font-weight: bold;
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    #score {
+      left: 10px;
+    }
+
+    #lives {
+      right: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      text-shadow: 3px 3px 0 #3e2723;
+      font-size: 28px;
+      margin-bottom: 5px;
+      letter-spacing: 2px;
+    }
+
+    .controls {
+      text-align: center;
+      color: white;
+      background-color: rgba(121, 85, 72, 0.7);
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: 0 auto;
+      border: 2px solid #3e2723;
+    }
+
+    .pixel-border {
+      border: 3px solid #3e2723;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
+  <h1>🍎 ATRAPA LA MANZANA 🍎</h1>
+  <div class="controls">
+    Usa las flechas ← → para mover el hierro
+  </div>
+  
   <div id="game">
-    <div id="player"></div>
-    <div id="fruit"></div>
+    <div id="hierro">
+      <img src="images/hierro.webp" alt="hierro">
+    </div>
+    <div id="manzana">
+      <img src="images/manzana.webp" alt="manzana">
+    </div>
     <div id="score">Puntos: 0</div>
     <div id="lives">Vidas: 3</div>
   </div>
+  
   <script>
-    // Elementos del juego
-const player = document.getElementById("player");
-const fruit = document.getElementById("fruit");
-const scoreDiv = document.getElementById("score");
-const livesDiv = document.getElementById("lives");
+    const player = document.getElementById("hierro")
+    const fruit = document.getElementById("manzana")
+    const scoreDiv = document.getElementById("score")
+    const livesDiv = document.getElementById("lives")
 
-// Variables del juego
-let playerX = 180;
-let fruitY = 0;
-let fruitX = 0;
+    let playerX = 180
+    let fruitY = 0
+    let fruitX = 0
 
-let score = 0
-let lives = 3
+    let score = 0
+    let lives = 3
 
-// Mover jugador con teclas
-document.addEventListener("keydown", function(e) {
-  if (e.key === "ArrowLeft" && playerX > 0) {
-    playerX -= 20;
-  }
-  if (e.key === "ArrowRight" && playerX < 360) {
-    playerX += 20;
-  }
-  player.style.left = playerX + "px";
-});
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "ArrowLeft" && playerX > 0) {
+        playerX -= 20;
+      }
+      if (e.key === "ArrowRight" && playerX < 360) {
+        playerX += 20;
+      }
+      player.style.left = playerX + "px"
+    });
 
-// Mover fruta cada cierto tiempo
-function moveFruit() {
-  fruitY += 10;
-  fruit.style.top = fruitY + "px";
+    function moveFruit() {
+      fruitY += 10;
+      fruit.style.top = fruitY + "px"
 
-  // Si la fruta llega al fondo
-  if (fruitY > 470) {
-    checkCollision(); // Verificar si se atrapó
-    resetFruit();
-  }
-}
-
-// Colocar fruta en posición aleatoria
-function resetFruit() {
-  fruitY = 0;
-  fruitX = Math.floor(Math.random() * 370); // entre 0 y 370
-  fruit.style.left = fruitX + "px";
-  fruit.style.top = "0px";
-}
-
-// Verificar si el jugador atrapó la fruta
-function checkCollision() {
-  const playerRect = player.getBoundingClientRect();
-  const fruitRect = fruit.getBoundingClientRect();
-
-  if (
-    fruitRect.left < playerRect.right &&
-    fruitRect.right > playerRect.left &&
-    fruitRect.top < playerRect.bottom &&
-    fruitRect.bottom > playerRect.top
-  ) {
-    score++;
-    scoreDiv.textContent = "Puntos: " + score
-  } else {
-    lives--;
-    livesDiv.textContent = "Vidas: " + lives
-
-    if (lives <= 0) {
-      alert("¡Juego terminado! Puntos: " + score);
-      clearInterval(gameInterval);
+      if (fruitY > 470) {
+        checkCollision(); 
+        resetFruit();
+      }
     }
-  }
-}
 
-// Iniciar el juego
-resetFruit();
-const gameInterval = setInterval(moveFruit, 200);
+    function resetFruit() {
+      fruitY = 0;
+      fruitX = Math.floor(Math.random() * 370); 
+      fruit.style.left = fruitX + "px"
+      fruit.style.top = "0px"
+    }
+
+    function checkCollision() {
+      const playerRect = player.getBoundingClientRect();
+      const fruitRect = fruit.getBoundingClientRect();
+
+      if (
+        fruitRect.left < playerRect.right &&
+        fruitRect.right > playerRect.left &&
+        fruitRect.top < playerRect.bottom &&
+        fruitRect.bottom > playerRect.top
+      ) {
+        score++;
+        scoreDiv.textContent = "Puntos: " + score
+      } else {
+        lives--;
+        livesDiv.textContent = "Vidas: " + lives
+
+        if (lives <= 0) {
+          alert("¡Juego terminado! Puntos: " + score)
+          clearInterval(gameInterval);
+        }
+      }
+    }
+
+    resetFruit()
+    const gameInterval = setInterval(moveFruit, 200)
   </script>
 </body>
 </html>
