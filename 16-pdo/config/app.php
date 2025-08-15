@@ -3,7 +3,7 @@
     session_start();
 
     // Routes Absolutes
-    $url    = 'http://'.$_SERVER['HTTP_HOST'].'/';
+    $url    = 'http://'.$_SERVER['HTTP_HOST'].'/'."16-pdo/";
     $public = $url . "public/";
     $css    = $public . "css/";
     $js     = $public . "js/";

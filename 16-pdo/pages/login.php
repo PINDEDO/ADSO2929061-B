@@ -11,7 +11,7 @@
     <main class="login">
         <form action="" method="post">
             <input type="text" name="email" placeholder="Correo Electrónico">
-            <input type="password" name="password" placeholder="Contraseña">
+            <input type="password" name="password" placeholder="Contraseña" value="admin">
             <button>Ingresar</button>
         </form>
         <?php 
