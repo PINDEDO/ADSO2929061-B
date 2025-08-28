@@ -1,10 +1,11 @@
-<?php
-$title = "Hello PHP";
-$description = "Primer contacto con PHP: muestra un mensaje básico usando <code>echo</code>.";
-include 'template.php';
-?>
+<?php 
+    $title = '01- Hello World';
+    $description  = 'How to show text, insert html even with variables';
 
-<!-- Contenido del ejercicio -->
-<div class="font-mono text-lg text-green-700 bg-green-50 p-6 rounded-lg border border-green-200">
-    <?php echo "¡Hola, mundo desde PHP!"; ?>
-</div>
+    include 'template/header.php';
+    
+        echo "<h3>Hello Wold PHP!</h3>";
+        print('<p style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint velit eos aperiam repellendus qui minus nemo sunt. Rem, repellat reiciendis</p> <br>');
+
+        echo('<br>echo con parametro');
+    include 'template/footer.php';

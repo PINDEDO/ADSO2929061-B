@@ -1,9 +1,19 @@
 <?php
-$title = "Variables en php";
-$description = "Aprende a declarar y usar variables en PHP: almaxcenamiento de datos, tipos basicos y buenas practicas."
-include 'template.php';
-?>
+$title = '04- variables';
+$description = 'How to define & use variables';
+
+include 'template/header.php';
+
+    $num1 = 25.6;
+    $num2 = 4;
+    
+    $string1 = "This is a ";
+    $string2 = 'String value';
+    
+    echo "<p> $num1 + $num2 = " . ($num1+$num2) . "</p>";
+    echo "<p>" . $string1  . $string2 . "</p>";
 
 
-<!-- Contenido de ejercicio -->
- <section class="bg-white p-8
+    
+
+include 'template/footer.php';

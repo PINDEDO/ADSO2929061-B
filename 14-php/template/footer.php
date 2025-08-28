@@ -1,6 +1,4 @@
-<section>
-
-        </section>
-        main
-    </body>
+</section>
+    </main>
+</body>
 </html>

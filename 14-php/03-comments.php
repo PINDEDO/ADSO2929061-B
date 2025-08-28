@@ -1,27 +1,20 @@
 <?php
-$title = "Comentarios en PHP";
-$description = "Aprende a usar comentarios para documentar tu código sin que se ejecuten ni muestren en pantalla.";
-include 'template.php';
-?>
+$title = '03- Comments';
+$description = 'Different ways to comment code.';
 
-<!-- Contenido del ejercicio -->
-<pre class="bg-gray-900 text-green-300 p-6 rounded-lg overflow-x-auto text-sm">
-<code>
-<?php
-// Comentario de una línea
+include 'template/header.php';
 
-/*
-   Comentario de varias líneas
-   Útil para explicar funciones o bloques
-*/
+    echo "<h2>See on IDE</h2>";
+    //Line Comment
 
-# Otro estilo de comentario (menos común)
 
-echo "¡Los comentarios no se muestran!";
-?>
-</code>
-</pre>
+    /*
+    
+    Multiline Comments
 
-<div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-    <strong>Nota:</strong> Este código no muestra los comentarios, solo el mensaje.
-</div>
+    */
+
+
+    # Hash single line comment
+    
+include 'template/footer.php';
