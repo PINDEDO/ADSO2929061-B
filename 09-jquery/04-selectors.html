@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>04-selectors</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+  <style>
+    div.counter {
+      margin: 1rem auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 260px;
+    }
+
+    div.counter output {
+      font-size: 6rem;
+    }
+
+    div.counter button {
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+      transition: transform 0.4s ease-in;
+    }
+
+    div.counter button svg {
+      width: 50px;
+    }
+
+    div.counter button.btn-subs {
+      color: red;
+    }
+
+    div.counter button.btn-add {
+      color: green;
+    }
+
+    div.counter button:hover {
+      transform: scale(1.2);
+    }
+
+    button.btn-reset {
+      cursor: pointer;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f0f0;
+      border-radius: 0.4rem;
+      margin: 1.5rem auto;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      transition: transform 0.2s ease-in;
+    }
+
+    button.btn-reset:hover {
+      transform: scale(1.1);
+      background-color: #e0e0e0;
+    }
+  </style>
+</head>
+
+<body class="jquery">
+  <nav>
+    <a href="index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <!-- Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free -->
+        <path fill="#ffffff"
+          d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+      </svg>
+    </a>
+  </nav>
+
+  <main>
+    <header>
+      <h1><strong>04-selectors</strong></h1>
+      <p>Select and manipulate DOM elements using jQuery selectors.</p>
+    </header>
+
+    <section class="section">
+      <div class="counter">
+        <button class="btn-subs">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+        </button>
+        <output>0</output>
+        <button class="btn-add">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+        </button>
+      </div>
+      <button class="btn-reset">Reset</button>
+    </section>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      let count = 0; 
+
+    
+      $('.btn-add').on('click', function (e) {
+        e.preventDefault();
+        count++;
+        $('output').text(count);
+      });
+
+     
+      $('.btn-subs').on('click', function (e) {
+        e.preventDefault();
+        count--;
+        $('output').text(count);
+      });
+
+      
+      $('.btn-add').on('dblclick', function (e) {
+        e.preventDefault();
+        count += 2;
+        $('output').text(count);
+      });
+
+   
+      $('.btn-subs').on('dblclick', function (e) {
+        e.preventDefault();
+        count -= 2;
+        $('output').text(count);
+      });
+
+      
+      $('.btn-reset').on('click', function (e) {
+        e.preventDefault();
+        count = 0;
+        $('output').text(count);
+      });
+    });
+  </script>
+</body>
+</html>

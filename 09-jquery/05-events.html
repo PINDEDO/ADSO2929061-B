@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>05-events</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+  <style>
+    figure {
+      border-radius: 0.4rem;
+      overflow: hidden;
+      padding: 0;
+      margin: 2rem auto;
+      height: 300px;
+      width: 300px;
+      filter: grayscale(1);
+      border: 2px solid #fff;
+      transition: all 0.5s ease-in;
+    }
+
+    figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease-in;
+      transform: scale(1.6);
+    }
+
+    article.landscape {
+      background: url('images/landscape.png') no-repeat center;
+      background-size: cover;
+      border-radius: 0.4rem;
+      border: 2px solid #fff;
+      overflow: hidden;
+      height: 300px;
+      margin: 2rem auto;
+      position: relative;
+      width: 300px;
+    }
+
+    article.landscape img.goku {
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      width: 60px;
+      transition: all 0.2s ease-in;
+    }
+
+    article.landscape small {
+      color: #fff;
+      text-shadow: 1px 1px 3px #000;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    select.emoji {
+      appearance: none;
+      display: block;
+      margin: 1rem auto;
+      padding: 0.6rem;
+      font-size: 1rem;
+      width: 180px;
+      border-radius: 0.4rem;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    output.emotion {
+      display: block;
+      font-size: 10rem;
+      text-align: center;
+      margin: 1rem auto;
+      height: 120px;
+    }
+  </style>
+</head>
+
+<body class="jquery">
+  <nav>
+    <a href="index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path fill="#ffffff"
+          d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+      </svg>
+    </a>
+  </nav>
+
+  <main>
+    <header>
+      <h1><strong>05-events</strong></h1>
+      <p>Build a simple to-do list application.</p>
+    </header>
+
+    <section class="section">
+      <h4>Mouse Events:</h4>
+      <h3>MouseEnter & MouseLeave</h3>
+      <figure>
+        <img src="images/maomao.png" alt="MaoMao">
+      </figure>
+
+      <h4>Keyboard Events:</h4>
+      <h3>KeyUp (Arrow Keys)</h3>
+      <article class="landscape">
+        <img src="images/goku.png" class="goku" alt="Goku">
+        <small>Press arrow keys: ← ↑ → ↓ to move</small>
+      </article>
+
+      <h4>Form Events:</h4>
+      <h3>Change (Select Emotion)</h3>
+      <select class="emoji">
+        <option value="❔">Select emotion...</option>
+        <option value="🙁">Sad</option>
+        <option value="😡">Angry</option>
+        <option value="😊">Happy</option>
+      </select>
+      <output class="emotion">❔</output>
+    </section>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      const step = 10;
+
+      let top = 100;
+      let left = 100;
+
+
+      $('figure').on('mouseenter', function () {
+        $(this).css('filter', 'grayscale(0)');
+        $(this).find('img').css('transform', 'scale(1)');
+      });
+
+      $('figure').on('mouseleave', function () {
+        $(this).css('filter', 'grayscale(1)');
+        $(this).find('img').css('transform', 'scale(1.6)');
+      });
+
+
+      $('.emoji').on('change', function () {
+        $('.emotion').text($(this).val());
+      });
+
+
+      $(document).on('keydown', function (e) {
+        e.preventDefault();
+
+
+        switch (e.key) {
+          case 'ArrowUp':
+            top = Math.max(0, top - step);
+            
+            break;
+          case 'ArrowDown':
+            top = Math.min(240, top + step);
+            break;
+          case 'ArrowLeft':
+            left = Math.max(0, left - step);
+            
+            
+            break;
+          case 'ArrowRight':
+            left = Math.min(240, left + step);
+            
+            break;
+                      
+        }
+
+        $('.goku').css({ top: top + 'px', left: left + 'px' });
+        $('.goku').css('transform', 'rotateY(180deg)');
+        $('.goku').css('transform', 'rotateY(0deg)');
+      });
+    });
+  </script>
+</body>
+
+</html>

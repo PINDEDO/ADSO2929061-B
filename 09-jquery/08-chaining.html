@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08-chaining</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    nav a {
+      display: inline-block;
+      margin: 10px;
+    }
+
+    main header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    button.btn {
+      cursor: pointer;
+      background-color: #fff9;
+      border: none;
+      margin: 1rem auto;
+      border-radius: 0.4rem;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      display: block;
+      transition: transform 0.2s ease-in;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    button.btn:hover:not([disabled]) {
+      transform: scale(1.05);
+    }
+
+    button.btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    article.landscape {
+      background: url('images/landscape.png') no-repeat center;
+      background-size: cover;
+      border-radius: 0.4rem;
+      border: 2px solid #fff;
+      overflow: hidden;
+      height: 300px;
+      margin: 2rem auto;
+      position: relative;
+      width: 300px;
+    }
+
+    img.goku {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 50px;
+      transition: transform 0.3s;
+    }
+
+    img.goku.flipped {
+      transform: rotateY(-180deg);
+    }
+  </style>
+</head>
+
+<body class="jquery">
+  <nav>
+    <a href="index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24" fill="#ffffff">
+        <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/>
+      </svg>
+    </a>
+  </nav>
+
+  <main>
+    <header>
+      <h1><strong>08-chaining</strong></h1>
+      <p>Chain multiple jQuery methods for concise and readable code.</p>
+    </header>
+
+    <section class="section">
+      <button class="btn">Run Animation Chain</button>
+      <article class="landscape">
+        <img src="images/goku.png" class="goku" alt="Goku">
+      </article>
+    </section>
+  </main>
+
+  <!-- jQuery from CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      const $btn = $('.btn');
+      const $goku = $('.goku');
+      const duration = 800;
+
+      $btn.on('click', function () {
+        // Disable button
+        $btn.prop('disabled', true).css('opacity', '0.6');
+
+        // ✅ TRUE JQUERY METHOD CHAINING EXAMPLE
+        $goku
+          .removeClass('flipped')
+          .fadeOut(300)
+          .fadeIn(300)
+          .animate({ left: '240px' }, duration)
+          .animate({ top: '240px' }, duration)
+          .fadeOut(400, function () {
+            // Flip image after fading out
+            $(this).addClass('flipped');
+          })
+          .fadeIn(400)
+          .animate({ left: '10px', top: '10px' }, duration, function () {
+            // Animation complete — re-enable button
+            $btn.prop('disabled', false).css('opacity', '1');
+            console.log("Chained animation complete!");
+          });
+      });
+    });
+  </script>
+</body>
+</html>
