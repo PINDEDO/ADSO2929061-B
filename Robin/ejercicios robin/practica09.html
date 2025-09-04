@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div{
+            background-color: greenyellow
+        }
+        .h1{
+            font-size: small;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1 class="titulo">This is my first page</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Ipsa hic aperiam iusto molestias similique voluptatibus exercitationem facilis, quasi atque voluptate eos corporis numquam harum unde, 
+            laboriosam ab quos maxime cupiditate.</p>
+    </div>
+    <div>
+        <button class="boton" aria-placeholder="boton">boton</button>
+    </div>
+</body>
+<script>
+    let nombre = "Miguel"
+    const edad = 19;
+    function saludar() {
+        alert("¡Qhubo!")
+    }
+    document.getElementById("titulo").innerText = "New text"
+    document.getElementById("boton").addEventListener("click", function(){
+        alert("¡Hiciste click!")
+    })
+</script>
+
+</html>
