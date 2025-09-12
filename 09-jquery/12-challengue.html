@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Memory Game - Liga BetPlay</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2; /* Fondo general */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .game-container {
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+
+    /* 👇 Fondo del contenedor */
+    background: url("images/challengue/fondo.png") no-repeat center center;
+    background-size: cover;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+    font-weight: bold;
+  }
+
+  .h1 {
+    color-scheme: 002976;
+  
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    color: 002976;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .card {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+
+  .card.flip .front {
+    transform: rotateY(0deg);
+  }
+
+  .card.flip .back {
+    transform: rotateY(180deg);
+  }
+
+  .front,
+  .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+  }
+
+  .front {
+    transform: rotateY(180deg);
+  }
+
+  .back {
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+
+  </style>
+</head>
+
+<body>
+  <div class="game-container">
+    <h1>MEMORY GAME</h1>
+    <div class="stats">
+      <div>⏱ Tiempo: <span id="time">0</span> s</div>
+      <div>🔄 Movimientos: <span id="moves">0</span></div>
+    </div>
+
+    <div class="grid"></div>
+
+    <button id="restart">RESTART</button>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      const teams = [
+        "nacional.png", "nacional.png",
+        "santafe.png", "santafe.png",
+        "millonarios.png", "millonarios.png",
+        "america.png", "america.png",
+        "junior.png", "junior.png",
+        "cali.png", "cali.png",
+        "medellin.png", "medellin.png",
+        "oncecaldas.png", "oncecaldas.png"
+      ];
+
+      let moves = 0;
+      let matches = 0;
+      let time = 0;
+      let timer;
+      let firstCard = null;
+      let secondCard = null;
+      let lock = false;
+
+      // Inicializar
+      function initGame() {
+        $(".grid").empty();
+        moves = 0;
+        matches = 0;
+        time = 0;
+        $("#moves").text(moves);
+        $("#time").text(time);
+        clearInterval(timer);
+        timer = setInterval(() => {
+          time++;
+          $("#time").text(time);
+        }, 1000);
+
+        // Barajar
+        const shuffled = teams.sort(() => 0.5 - Math.random());
+
+        // Renderizar
+        shuffled.forEach(team => {
+          const card = $(`
+            <div class="card" data-team="${team}">
+              <div class="front">
+                <img src="images/challengue/${team}" width="100" height="100">
+              </div>
+              <div class="back">
+                <img src="images/challengue/liga.png" width="100" height="100">
+              </div>
+            </div>
+          `);
+          $(".grid").append(card);
+        });
+      }
+
+      // Voltear carta
+      $(document).on("click", ".card", function () {
+        if (lock || $(this).hasClass("flip")) return;
+
+        $(this).addClass("flip");
+
+        if (!firstCard) {
+          firstCard = $(this);
+        } else {
+          secondCard = $(this);
+          moves++;
+          $("#moves").text(moves);
+          checkMatch();
+        }
+      });
+
+      function checkMatch() {
+        if (firstCard.data("team") === secondCard.data("team")) {
+          matches++;
+          firstCard = null;
+          secondCard = null;
+          if (matches === teams.length / 2) {
+            clearInterval(timer);
+            alert("🎉 ¡Ganaste en " + moves + " movimientos y " + time + " segundos!");
+          }
+        } else {
+          lock = true;
+          setTimeout(() => {
+            firstCard.removeClass("flip");
+            secondCard.removeClass("flip");
+            firstCard = null;
+            secondCard = null;
+            lock = false;
+          }, 1000);
+        }
+      }
+
+      $("#restart").click(initGame);
+
+      initGame();
+    });
+  </script>
+</body>
+</html>
