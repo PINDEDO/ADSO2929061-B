@@ -1,0 +1,232 @@
+        :root {
+            --jquery-blue: #0769AD;
+            --jquery-dark-blue: #064C7F;
+            --jquery-light-blue: #7ACEF4;
+            --jquery-gray: #EEEEEE;
+            --jquery-dark-gray: #555555;
+            --jquery-accent: #FFA500;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body.jquery {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, var(--jquery-blue) 0%, var(--jquery-dark-blue) 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body.jquery::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(122, 206, 244, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(122, 206, 244, 0.2) 0%, transparent 20%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+        
+        nav a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        nav svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px 40px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease;
+        }
+        
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header h1 strong {
+            color: var(--jquery-light-blue);
+        }
+        
+        header img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            margin: 20px 0;
+            border-radius: 50%;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease;
+        }
+        
+        header img:hover {
+            transform: rotate(360deg);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: var(--jquery-gray);
+        }
+        
+        menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+        }
+        
+        menu a {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--jquery-blue), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        menu a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        menu a:hover::before {
+            opacity: 0.3;
+        }
+        
+        menu a:hover span {
+            background: var(--jquery-light-blue);
+            color: var(--jquery-dark-blue);
+        }
+        
+        menu a span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--jquery-blue);
+            color: white;
+            border-radius: 10px;
+            margin-right: 15px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            menu {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            header img {
+                width: 140px;
+                height: 140px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body.jquery {
+                padding: 10px;
+            }
+            
+            main {
+                padding: 50px 10px 30px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            menu a {
+                padding: 15px;
+            }
+        }
+        
+        /* Efectos con jQuery */
+        .highlight {
+            background: rgba(122, 206, 244, 0.2) !important;
+            border: 1px solid var(--jquery-light-blue) !important;
+        }

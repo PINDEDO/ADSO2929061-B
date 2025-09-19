@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20-methods-numbers</title>
+    <link rel="stylesheet" href="css/master.css">
+    <style>
+        .section-dbl {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+            flex-direction: column;
+
+        }
+        button {
+            background-color: #f0db4f;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.6rem;
+            width: 160px;
+            margin-bottom: -1rem;
+        }
+
+        .section-keyup {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 0.6rem;
+
+        }
+        input {
+            border: 2px solid #b7a63c;
+            border-radius: 5px;
+            padding: 0.5rem;
+            width: 140px;
+            margin-top: 1rem;
+        }
+
+        .section-change {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 0.6rem;
+
+            select {
+                border: 2px solid #b7a63c;
+                border-radius: 5px;
+                padding: 0.5rem;
+                width: 140px;
+            }
+
+            p {
+                zoom: 4;
+            }
+        }
+        .event-mouse{
+            border-radius: 50%;
+            border: 4px solid #b7a63c;
+            margin: 0.6rem auto;
+            display: flex;
+            object-fit: cover;
+            width: 240px;
+            height: 240px;
+        }
+        ul{
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="controls">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#fafafa" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>METHODS NUMBERS</h1>
+            <h2>Realiza operaciones con métodos númericos.</h2>
+        </header>
+        <section class="section-dbl">
+            <input type="number" class="num-float" placeholder="Ingresa un número">
+            <button class="btn-calc">
+                Calcular
+            </button>
+            <ul class="output">
+
+            </ul>
+        </section>
+    </main>
+    <script>
+        // Elements
+        const numberFloat = document.querySelector('.num-float')
+        const buttonCalc = document.querySelector('.btn-calc')
+        const output = document.querySelector('.output')
+
+        // Events 
+        buttonCalc.addEventListener('click', function() {
+            const num = parseFloat(numberFloat.value)
+            if (isFloat(numberFloat.value)) {
+                output.innerHTML = "<li><strong>toString: </strong>"+num.toString()+"</li>"
+                output.innerHTML += "<li><strong>toFixed: </strong>"+num.toFixed(0)+"</li>"
+                output.innerHTML += "<li><strong>toPrecision: </strong>"+num.toPrecision(2)+"</li>"
+                output.innerHTML += "<li><strong>parseInt: </strong>"+parseInt(num)+"</li>"
+                output.innerHTML += "<li><strong>parseFloat: </strong>"+num+"</li>"
+            } else {
+                alert('FALSO')
+            }
+        })
+        
+        // Functions
+        function isFloat(number) {
+            return (number % 1 !== 0)
+        }
+
+        </script>
+</body>
+</html>

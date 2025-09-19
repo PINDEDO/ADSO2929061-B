@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moto Flow Medellín</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        section {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 150, 0.5);
+            width: 400px;
+            margin: 20px auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-transform: uppercase;
+            color: #0f0;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .header img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .attributes {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Contenedor del parallax */
+        .parallax-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        /* Capas del parallax */
+        .parallax-layer {
+            position: absolute;
+            width: 300%;
+            height: 100%;
+            background-repeat: repeat-x;
+            background-position: 0 bottom;
+            will-change: transform;
+        }
+
+        /* Fondo (montañas lejanas) - se mueve más lento */
+        .layer-bg {
+            background-image: url('images/moto/MEDALLO.jpg');
+            background-size: auto 100%;
+            z-index: 1;
+            animation: moveBg 60s linear infinite;
+            animation-play-state: paused;
+        }
+
+        /* Medio (montañas cercanas) - velocidad media */
+        .layer-md {
+            background-image: url('images/moto/PASAMANOS.png');
+            background-size: auto 20%;
+            z-index: 2;
+            animation: moveBg 40s linear infinite;
+            animation-play-state: paused;
+        }
+
+        /* Carretera - se mueve más rápido y ocupa 1/8 de la parte inferior */
+        .layer-road {
+            background-image: url('images/moto/CARRETERA.jpg');
+            background-size: auto 15%;
+            background-position: bottom;
+            height: 15%;
+            bottom: 0;
+            z-index: 3;
+            animation: moveBg 10s linear infinite;
+            animation-play-state: paused;
+        }
+
+        /* Metros - se mueve muy rápido en dirección contraria con efecto intermitente */
+        .layer-meter {
+            background-image: url('images/moto/METRO.png');
+            background-size: auto 40%;
+            z-index: 4;
+            animation: 
+                moveMeter 2s linear infinite,
+                blinkMeter 6s steps(1) infinite;
+            animation-play-state: paused;
+            transform: scaleX(-1);
+            bottom: 25%;
+            height: 50%;
+            opacity: 0;
+        }
+
+        @keyframes moveBg {
+            from { transform: translateX(0); }
+            to { transform: translateX(-66.6%); }
+        }
+
+        @keyframes moveMeter {
+            from { transform: translateX(0) scaleX(-1); }
+            to { transform: translateX(-66.6%) scaleX(-1); }
+        }
+
+        @keyframes blinkMeter {
+            0%, 80% { opacity: 0; }
+            20% { opacity: 1; }
+        }
+
+        .moto-image {
+            position: absolute;
+            width: 200px;
+            height: auto;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+        }
+
+        .methods button, .nav-buttons button {
+            background: #0f0;
+            border: none;
+            color: #000;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease-in;
+        }
+
+        .methods button:hover, .nav-buttons button:hover {
+            transform: scale(1.1);
+        }
+
+        .dark {
+            background-color: #111;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+
+        .dark h1 {
+            color: #f00;
+        }
+
+        .dark .methods button, .dark .nav-buttons button {
+            background: #f00;
+            color: #fff;
+        }
+
+        .start {
+            animation: vibrate 0.2s infinite alternate;
+        }
+
+        @keyframes vibrate {
+            0% { transform: translateX(-50%) translateY(-2px); }
+            100% { transform: translateX(-50%) translateY(2px); }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="header">
+            <img id="logo-national" src="images/moto/nacional.png" alt="Escudo Nacional">
+            <img id="logo-medellin" src="images/moto/medellin.png" alt="Escudo Medellín" style="display: none;">
+            <button class="btn-mode">🌙</button>
+        </div>
+
+        <h1>🏍️ Moto Flow Medellin</h1>
+
+        <div class="attributes">
+            <p><strong>Marca:</strong> <span class="brand"></span></p>
+            <p><strong>Modelo:</strong> <span class="model"></span></p>
+            <p><strong>Cilindraje:</strong> <span class="cc"></span></p>
+            <p><strong>Color:</strong> <span class="color"></span></p>
+        </div>
+
+        <!-- Contenedor del efecto parallax -->
+        <div class="parallax-container">
+            <div class="parallax-layer layer-bg"></div>
+            <div class="parallax-layer layer-md"></div>
+            <div class="parallax-layer layer-road"></div>
+            <div class="parallax-layer layer-meter"></div>
+            <img class="moto-image" src="" alt="Moto">
+        </div>
+        
+        <div class="methods">
+            <button class="btn-on">Encender 🔥</button>
+            <button class="btn-fwd">Acelerar 🏁</button>
+            <button class="btn-stop">Frenar 🛑</button>
+            <button class="btn-off">Apagar ❌</button>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="btn-prev">⬅️ Anterior</button>
+            <button class="btn-next">Siguiente ➡️</button>
+        </div>
+    </section>
+
+    <script>
+        const btnMode = document.querySelector('.btn-mode');
+        const logoNational = document.getElementById('logo-national');
+        const logoMedellin = document.getElementById('logo-medellin');
+        const motoImage = document.querySelector('.moto-image');
+        const parallaxLayers = document.querySelectorAll('.parallax-layer');
+
+        const brand = document.querySelector('.brand');
+        const model = document.querySelector('.model');
+        const cc = document.querySelector('.cc');
+        const color = document.querySelector('.color');
+
+        const motos = [
+            { brand: 'YAMAHA', model: 'DT 125', cc: '124cc', color: 'Azul', image: 'images/moto/yamaha-dt125.png' },
+            { brand: 'SUZUKI', model: 'DR 650', cc: '648cc', color: 'Amarillo y Morado', image: 'images/moto/suzuki-dr650.png' },
+            { brand: 'KAWASAKI', model: '100', cc: '105cc', color: 'Negro', image: 'images/moto/kawasaki-100.png' },
+            { brand: 'SUZUKI', model: '125', cc: '125cc', color: 'Amarillo y Morado', image: 'images/moto/suzuki-125.png' },
+            { brand: 'YAMAHA', model: 'NMAX', cc: '155cc', color: 'beich', image: 'images/moto/yamaha-nmax.png' }
+        ];
+
+        function showMoto(i) {
+            brand.textContent = motos[i].brand;
+            model.textContent = motos[i].model;
+            cc.textContent = motos[i].cc;
+            color.textContent = motos[i].color;
+            motoImage.src = motos[i].image;
+        }
+
+        btnMode.addEventListener('click', () => {
+            document.querySelector('section').classList.toggle('dark');
+            const isDark = document.querySelector('section').classList.contains('dark');
+
+            logoNational.style.display = isDark ? 'none' : 'block';
+            logoMedellin.style.display = isDark ? 'block' : 'none';
+            btnMode.textContent = isDark ? '☀️' : '🌙';
+        });
+
+        document.querySelector('.btn-prev').addEventListener('click', () => {
+            index = (index - 1 + motos.length) % motos.length;
+            showMoto(index);
+        });
+
+        document.querySelector('.btn-next').addEventListener('click', () => {
+            index = (index + 1) % motos.length;
+            showMoto(index);
+        });
+
+        let engine = false;
+        let moving = false;
+        let index = 0;
+
+        function toggleAnimations(enable) {
+            parallaxLayers.forEach(layer => {
+                if (enable) {
+                    if (layer.classList.contains('layer-meter')) {
+                        layer.style.animation = 'none';
+                        layer.offsetHeight;
+                        layer.style.animation = 'moveMeter 2s linear infinite, blinkMeter 10s steps(1) infinite';
+                    }
+                    layer.style.animationPlayState = 'running';
+                } else {
+                    layer.style.animationPlayState = 'paused';
+                }
+            });
+        }
+
+        document.querySelector('.btn-on').addEventListener('click', () => {
+            if (!engine) {
+                engine = true;
+                motoImage.classList.add('start');
+                alert('Moto encendida 🔥');
+            } else {
+                alert('La moto ya está encendida');
+            }
+        });
+
+        document.querySelector('.btn-off').addEventListener('click', () => {
+            if (engine) {
+                engine = false;
+                moving = false;
+                toggleAnimations(false);
+                motoImage.classList.remove('start');
+                alert('Moto apagada ❌');
+            } else {
+                alert('La moto ya está apagada');
+            }
+        });
+
+        document.querySelector('.btn-fwd').addEventListener('click', () => {
+            if (engine) {
+                moving = true;
+                toggleAnimations(true);
+                alert('Acelerando 🏁');
+            } else {
+                alert('Primero enciende la moto');
+            }
+        });
+
+        document.querySelector('.btn-stop').addEventListener('click', () => {
+            if (engine && moving) {
+                moving = false;
+                toggleAnimations(false);
+                alert('Frenando 🛑');
+            } else {
+                alert('La moto ya está detenida o apagada');
+            }
+        });
+
+        showMoto(index);
+    </script>
+</body>
+</html>

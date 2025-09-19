@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTA V - Fan Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos personalizados */
+        .page-target {
+            display: none;
+        }
+
+        .page-target:target {
+            display: block;
+        }
+
+        /* Estilo para las tarjetas de personajes */
+        .character-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #ffcc00;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            height: auto;
+        }
+
+        .character-card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        /* Estilo para las tarjetas de golpes */
+        .heist-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #ffcc00;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .heist-card:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
+
+        /* Fondo inspirado en GTA V */
+        body {
+            background: url('images/GTA V FONFO PROFUNDO.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <main id="content" class="flex flex-col">
+        <!-- Página 1: Home -->
+        <div id="page1-Home" class="page-target container m-auto h-auto w-96 rounded-3xl my-3 bg-gray-800 p-10">
+            <div class="rounded-3xl h-72 w-96 relative bottom-10 right-10">
+                <img src="images/GTA V FONDO.jpg" class="rounded-t-3xl object-cover h-72 w-96">
+            </div>
+            <div class="rounded-full h-14 w-14 relative bottom-8 left-[119px]">
+                <img src="images/GTA V LOGO.png" class="rounded-t-3xl object-cover h-14 w-14">
+            </div>
+            <p class="uppercase relative bottom-8 tracking-widest text-4xl font-sans font-bold text-yellow-400 text-center">
+                GTA V
+            </p>
+            <p class="lowercase relative bottom-6 font-sans text-lg text-center">
+                Explora el mundo abierto de Los Santos y Blaine County, donde el crimen, la acción y la diversión nunca terminan.
+            </p>
+            <a href="#page2-characters" class="bg-yellow-400 text-black p-4 relative top-1 left-20 rounded-xl text-lg font-bold font-sans transition-all hover:bg-yellow-500">
+                Personajes
+            </a>
+        </div>
+
+        <!-- Página 2: Personajes -->
+        <div id="page2-characters" class="page-target container m-auto h-auto w-96 rounded-3xl my-3 bg-gray-800 p-10">
+            <a href="#page1-Home" class="bg-yellow-400 text-black p-1 relative bottom-6 right-7 rounded-xl text-lg font-bold font-sans transition-all hover:bg-yellow-500">
+                ⬅
+            </a>
+            <p class="uppercase mb-5 relative bottom-6 tracking-widest text-4xl font-sans font-bold text-yellow-400 text-center">
+                Personajes
+            </p>
+
+            <!-- Personajes principales -->
+            <p class="text-xl font-bold text-yellow-400 mb-3 text-center">Personajes principales</p>
+            <div class="flex flex-wrap justify-center gap-4 mb-6">
+                <div class="character-card text-center">
+                    <img src="images/MICHAEL.webp" class="w-full h-48 object-cover">
+                    <p class="p-2">Michael</p>
+                </div>
+                <div class="character-card text-center">
+                    <img src="images/FRANKLIN.jpg" class="w-full h-48 object-cover">
+                    <p class="p-2">Franklin</p>
+                </div>
+                <div class="character-card text-center">
+                    <img src="images/TREVOR.jpg" class="w-full h-48 object-cover">
+                    <p class="p-2">Trevor</p>
+                </div>
+            </div>
+
+            <!-- Personajes secundarios -->
+            <p class="text-xl font-bold text-yellow-400 mb-3 text-center">Personajes secundarios</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="character-card text-center">
+                    <img src="images/LAMAR.jpg" class="w-full h-48 object-cover">
+                    <p class="p-2">Lamar</p>
+                </div>
+                <div class="character-card text-center">
+                    <img src="images/AMANDA.jpg" class="w-full h-48 object-cover">
+                    <p class="p-2">Amanda</p>
+                </div>
+                <div class="character-card text-center">
+                    <img src="images/LESTER.jpeg" class="w-full h-48 object-cover">
+                    <p class="p-2">Lester</p>
+                </div>
+                <div class="character-card text-center">
+                    <img src="images/DEVIN WESTON.png" class="w-full h-48 object-cover">
+                    <p class="p-2">Devin Weston</p>
+                </div>
+            </div>
+
+            <a href="#page3-heists" class="bg-yellow-400 text-black p-2 relative top-4 left-24 rounded-xl text-lg font-bold font-sans transition-all hover:bg-yellow-500">
+                Golpes
+            </a>
+        </div>
+
+        <!-- Página 3: Golpes -->
+        <div id="page3-heists" class="page-target container m-auto h-auto w-96 rounded-3xl my-3 bg-gray-800 p-10">
+            <a href="#page2-characters" class="bg-yellow-400 text-black p-1 relative bottom-6 right-7 rounded-xl text-lg font-bold font-sans transition-all hover:bg-yellow-500">
+                ⬅
+            </a>
+            <p class="uppercase mb-5 relative bottom-6 tracking-widest text-4xl font-sans font-bold text-yellow-400 text-center">
+                Golpes
+            </p>
+
+            <!-- Lista de golpes -->
+            <div class="space-y-4">
+                <!-- Golpe 1: Atraco a EVANGELICO -->
+                <div class="heist-card">
+                    <img src="images/GTA V PRIMER GOLPE.jpg" alt="Atraco a EVANGELICO" class="w-full h-48 object-cover rounded-t-lg">
+                    <p class="text-xl font-bold text-yellow-400 p-2">Golpe: El atraco a EVANGELICO</p>
+                    <p class="text-sm p-2">El primer golpe importante. Requiere planificación y un buen equipo.</p>
+                </div>
+
+                <!-- Golpe 2: MERRY WEATHER -->
+                <div class="heist-card">
+                    <img src="images/GTA V GOLPE MERYWETHEAR.webp" alt="Golpe MERRY WEATHER" class="w-full h-48 object-cover rounded-t-lg">
+                    <p class="text-xl font-bold text-yellow-400 p-2">Golpe: MERRY WEATHER</p>
+                    <p class="text-sm p-2">Un golpe complicado que implica infiltrarse en un buque militar.</p>
+                </div>
+
+                <!-- Golpe 3: UNION DEPOSITORY -->
+                <div class="heist-card">
+                    <img src="images/GTA V GRAN GOLPE.jpg" alt="Atraco al UNION DEPOSITORY" class="w-full h-48 object-cover rounded-t-lg">
+                    <p class="text-xl font-bold text-yellow-400 p-2">Golpe: El atraco al UNION DEPOSITORY</p>
+                    <p class="text-sm p-2">Uno de los golpes más lucrativos, pero también uno de los más difíciles.</p>
+                </div>
+
+                <!-- Golpe 4: PALETO BAY -->
+                <div class="heist-card">
+                    <img src="images/GTA V GOLPE PALETO BAY.jpg" alt="Atraco al PALETO BAY" class="w-full h-48 object-cover rounded-t-lg">
+                    <p class="text-xl font-bold text-yellow-400 p-2">Golpe: El atraco al PALETO BAY</p>
+                    <p class="text-sm p-2">Un golpe que requiere artillería pesada.</p>
+                </div>
+            </div>
+
+            <a href="#page4-platforms" class="bg-yellow-400 text-black p-2 relative top-4 left-24 rounded-xl text-lg font-bold font-sans transition-all hover:bg-yellow-500">
+                Plataformas
+            </a>
+        </div>
+
+        <!-- Página 4: Plataformas -->
+        <div id="page4-platforms" class="page-target container m-auto h-auto w-96 rounded-3xl my-3 bg-gray-800 p-10">
+            <a href="#page3-heists" class="bg-yellow-400 text-black p-1 relative bottom-6 right-7 rounded-xl text-lg font-bold font-sans transition-all hover:bg-yellow-500">
+                ⬅
+            </a>
+            <p class="uppercase mb-5 relative bottom-6 tracking-widest text-4xl font-sans font-bold text-yellow-400 text-center">
+                Plataformas
+            </p>
+
+            <!-- Imágenes de plataformas -->
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="character-card text-center">
+                    <img src="images/PS3.jpg" class="w-full h-48 object-cover">
+                    <p class="p-2">PlayStation 3</p>
+                </div>
+                <div class="character-card text-center">
+                    <img src="images/XBOX 360.jpg" class="w-full h-48 object-cover">
+                    <p class="p-2">Xbox 360</p>
+                </div>
+                <div class="character-card text-center">
+                    <img src="images/PS4.png" class="w-full h-48 object-cover">
+                    <p class="p-2">PlayStation 4</p>
+                </div>
+                <div class="character-card text-center">
+                    <img src="images/XBOX ONE.jpg" class="w-full h-48 object-cover">
+                    <p class="p-2">Xbox One</p>
+                </div>
+            </div>
+
+            <a href="#page1-Home" class="bg-yellow-400 text-black p-2 relative top-4 left-28 rounded-xl text-lg font-bold font-sans transition-all hover:bg-yellow-500">
+                Inicio
+            </a>
+        </div>
+    </main>
+</body>
+</html>

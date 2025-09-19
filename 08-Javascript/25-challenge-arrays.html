@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge Congreso de Colombia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        .controls {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+        }
+        
+        .controls a {
+            display: inline-block;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .controls svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        main {
+            padding: 20px;
+            padding-top: 60px;
+        }
+        
+        header h1 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #003366;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .contenedor {
+            font-family: 'Just Me Again Down Here', sans-serif;
+            margin: 0 auto;
+            border: 3px solid #003366;
+            border-radius: 15px;
+            background: #fff url(images/CHALLENGE/CONGRESO.jpg) no-repeat;
+            background-size: cover;
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contenedor::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+        
+        .contenedor > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .title {
+            width: 150px;
+            height: 100px;
+            background: url(images/array/Tittle.png) no-repeat;
+            background-size: contain;
+            margin: 0 auto;
+        }
+        
+        .objects {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 15px;
+            justify-items: center;
+            margin: 25px 0;
+        }
+        
+        .objects .item {
+            width: 60px;
+            height: 90px;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.3s ease;
+            object-fit: contain;
+            border-radius: 5px;
+            padding: 5px;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .objects .item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .objects .item.selected {
+            background-color: #F6CF06;
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(246, 207, 6, 0.7);
+            border: 2px solid #003366;
+        }
+        
+        /* STYLE BOTONES SWITCH */
+        .checkbox {
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        .checkbox .tgl {
+            display: none;
+        }
+        
+        .checkbox .tgl+.tgl-btn {
+            outline: 0;
+            display: block;
+            width: 78px;
+            height: 34px;
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+            font-size: 20px;
+            font-weight: 400;
+            color: #fff;
+        }
+        
+        .checkbox .tgl+.tgl-btn:after,
+        .checkbox .tgl+.tgl-btn:before {
+            position: relative;
+            display: block;
+            content: "";
+            width: 44%;
+            height: 100%;
+        }
+        
+        .checkbox .tgl+.tgl-btn:after {
+            left: 0;
+        }
+        
+        .checkbox .tgl+.tgl-btn:before {
+            display: inline;
+            position: absolute;
+        }
+        
+        .checkbox .tgl:checked+.tgl-btn:after {
+            left: 56.5%;
+        }
+        
+        .checkbox .tgl+.tgl-btn {
+            border: 1px solid #003366;
+            background: #F6CF06;
+            border-radius: 20rem;
+            padding: 2px;
+            transition: all 0.4s ease;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .checkbox .tgl+.tgl-btn:after {
+            border-radius: 2em;
+            background: #003366;
+            transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                padding 0.3s ease, margin 0.3s ease;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+        }
+        
+        /* TEXTOS SWITCH */
+        .checkbox .tgl+.tgl-btn:before {
+            content: "First";
+            left: 35px;
+            color: #003366;
+            font-size: 14px;
+            top: 7px;
+            font-weight: bold;
+        }
+        
+        .checkbox .tgl1+.tgl-btn1:before {
+            content: "Add";
+            left: 35px;
+            color: #003366;
+            font-size: 14px;
+            top: 7px;
+            font-weight: bold;
+        }
+        
+        .checkbox .tgl:checked+.tgl-btn:before {
+            content: "Last";
+            left: 4px;
+            color: #003366;
+        }
+        
+        .checkbox .tgl1:checked+.tgl-btn1:before {
+            content: "Delete";
+            left: 4px;
+            color: #003366;
+        }
+        
+        /* input tipo number */
+        .checkbox input[type="number"] {
+            width: 78px;
+            height: 34px;
+            padding: 5px;
+            text-align: center;
+            border-radius: 20px;
+            border: 1px solid #003366;
+            background: #F6CF06;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            color: #003366;
+            outline: none;
+            font-weight: bold;
+        }
+        
+        /* POSICIONAR BTNS EN FILA */
+        .btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .checkbox {
+            display: flex;
+            align-items: center;
+        }
+        
+        .btns-roundend {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 20px;
+        }
+        
+        .desaparecer {
+            display: none;
+        }
+        
+        .btns-roundend button {
+            background: #003366;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btns-roundend button:hover {
+            transform: scale(1.1);
+            background: #004080;
+        }
+        
+        .btns-roundend button img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+        
+        /*STYLE DE RESULTADO */
+        .title-result {
+            width: 100px;
+            height: 40px;
+            background: url(images/CHALLENGE) no-repeat;
+            background-size: contain;
+            margin: 15px auto;
+        }
+        
+        .array-results {
+            width: 100%;
+            min-height: 120px;
+            margin: auto;
+            margin-bottom: 10px;
+            display: flex;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            border: 2px dashed #003366;
+            align-items: center;
+        }
+        
+        .array-results::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .array-results::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .array-results::-webkit-scrollbar-thumb {
+            background: #003366;
+            border-radius: 10px;
+        }
+        
+        .array-results::-webkit-scrollbar-thumb:hover {
+            background: #004080;
+        }
+        
+        .array-results .result-item {
+            min-width: 60px;
+            height: 90px;
+            margin-right: 15px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .array-results .result-item img {
+            width: 60px;
+            height: 90px;
+            object-fit: contain;
+            border-radius: 5px;
+            background-color: white;
+            padding: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result-item-index {
+            font-size: 12px;
+            color: #003366;
+            margin-top: 5px;
+            font-weight: bold;
+            background: #F6CF06;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .empty-msg {
+            width: 100%;
+            text-align: center;
+            color: #003366;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <!------------ BOTON DE REGRESO ----------------->
+    <nav class="controls">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path fill="#003366" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg>
+        </a>
+    </nav>
+
+    <main>
+        <header>
+            <h1>CONGRESO DE COLOMBIA</h1>
+        </header>
+        <section>
+            <div class="contenedor">
+                <div class="title"></div>
+                <div class="objects">
+                    <img src="images/CHALLENGE/ALIANZA.png" alt="Alianza Verde" class="item" draggable="true">
+                    <img src="images/CHALLENGE/CAMBIO.png" alt="Cambio Radical" class="item" draggable="true">
+                    <img src="images/CHALLENGE/CENTRO.png" alt="Centro Democrático" class="item" draggable="true">
+                    <img src="images/CHALLENGE/CONSERVADOR.png" alt="Partido Conservador" class="item" draggable="true">
+                    <img src="images/CHALLENGE/LIBERAL.png" alt="Partido Liberal" class="item" draggable="true">
+                    <img src="images/CHALLENGE/PACTO.png" alt="Pacto Histórico" class="item" draggable="true">
+                    <img src="images/CHALLENGE/PARTIDO U.png" alt="Partido de la U" class="item" draggable="true">
+                    <img src="images/CHALLENGE/COMUNES.png" alt="Comunes" class="item" draggable="true">
+                </div>
+                <div class="btns">
+                    <div class="checkbox">
+                        <input class="tgl" name="checkbox" id="toggle" type="checkbox" />
+                        <label class="tgl-btn" for="toggle"></label>
+                    </div>
+                    <div class="checkbox">
+                        <input class="tgl tgl1" name="checkbox" id="toggle1" type="checkbox" />
+                        <label class="tgl-btn tgl-btn1" for="toggle1"></label>
+                    </div>
+                    <div class="checkbox">
+                        <input class="position" id="position" type="number" placeholder="0" min="0" />
+                    </div>
+                </div>
+                <div class="btns-roundend">
+                    <button class="more">
+                        <img src="images/CHALLENGE/APROBADO.webp" alt="Add" class="more">
+                    </button>
+                    <button class="less desaparecer">
+                        <img src="images/CHALLENGE/RECHAZADO.jpg" alt="Remove" class="less">
+                    </button>
+                </div>
+                <div class="result">
+                    <div class="title-result"></div>
+                    <div class="array-results"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Elements
+        const images = document.querySelectorAll('.objects .item');
+        const resultsContainer = document.querySelector('.array-results');
+        //Btns add y delete
+        const btnMore = document.querySelector('.more');
+        const btnLess = document.querySelector('.less');
+
+        //Btns acciones
+        const toggleBtn = document.getElementById('toggle');
+        const toggleBtn1 = document.getElementById('toggle1');
+        const positionInput = document.getElementById('position');
+
+        // Array Resultado
+        let imagesArray = [];
+        let selectedImage = null;
+
+        // Seleccionar la imagen
+        images.forEach(function(image) {
+            image.addEventListener('click', function() {
+                // Deseleccionar la imagen anterior si existe
+                if (selectedImage) {
+                    selectedImage.classList.remove('selected');
+                }
+                
+                // Seleccionar la nueva imagen
+                this.classList.add('selected');
+                selectedImage = this;
+            });
+        });
+
+        // switch Add/Delete
+        toggleBtn1.addEventListener('change', function() {
+            if (this.checked) {
+                btnLess.classList.remove('desaparecer');
+                btnMore.classList.add('desaparecer');
+            } else {
+                btnLess.classList.add('desaparecer');
+                btnMore.classList.remove('desaparecer');
+            }
+        });
+
+        // Mostrar Lista
+        function renderResultsList() {
+            resultsContainer.innerHTML = '';
+            
+            if (imagesArray.length === 0) {
+                const emptyMsg = document.createElement('div');
+                emptyMsg.textContent = 'Seleccione un partido político';
+                emptyMsg.className = 'empty-msg';
+                resultsContainer.appendChild(emptyMsg);
+                return;
+            }
+            
+            imagesArray.forEach(function(imgData, index) {
+                const resultDiv = document.createElement('div');
+                resultDiv.classList.add('result-item');
+
+                const img = document.createElement('img');
+                img.src = imgData.src;
+                img.alt = imgData.alt;
+                img.style.width = '60px';
+                img.style.height = '90px';
+                img.style.objectFit = 'contain';
+
+                const indexSpan = document.createElement('span');
+                indexSpan.className = 'result-item-index';
+                indexSpan.textContent = index;
+
+                resultDiv.appendChild(img);
+                resultDiv.appendChild(indexSpan);
+                resultsContainer.appendChild(resultDiv);
+            });
+        }
+
+        // Añadir imagen
+        btnMore.addEventListener('click', function() {
+            if (selectedImage) {
+                const position = parseInt(positionInput.value);
+                const imageData = {
+                    src: selectedImage.src,
+                    alt: selectedImage.alt
+                };
+
+                if (!isNaN(position) && position >= 0 && position <= imagesArray.length) {
+                    imagesArray.splice(position, 0, imageData);
+                } else {
+                    if (toggleBtn.checked) {
+                        imagesArray.push(imageData);
+                    } else {
+                        imagesArray.unshift(imageData);
+                    }
+                }
+
+                renderResultsList();
+                positionInput.value = '';
+            } else {
+                alert('Por favor seleccione un partido político primero');
+            }
+        });
+
+        // Eliminar Imagen
+        btnLess.addEventListener('click', function() {
+            if (imagesArray.length > 0) {
+                const position = parseInt(positionInput.value);
+                
+                // Eliminar por posición específica
+                if (!isNaN(position) && position >= 0 && position < imagesArray.length) {
+                    imagesArray.splice(position, 1);
+                } else {
+                    // Eliminar según el botón seleccionado
+                    if (toggleBtn.checked) {
+                        imagesArray.pop();
+                    } else {
+                        imagesArray.shift();
+                    }
+                }
+                
+                renderResultsList();
+                positionInput.value = '';
+            } else {
+                alert('No hay partidos políticos en la lista');
+            }
+        });
+
+        // Inicializar con mensaje de lista vacía
+        renderResultsList();
+    </script>
+</body>
+
+</html>

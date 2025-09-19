@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21-methods-mathematics</title>
+    <link rel="stylesheet" href="css/master.css">
+    <style>
+        button{
+            font-size: 12rem;
+            appearance: none;
+            border: none;
+            margin: 1rem auto 2rem auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            cursor: pointer;
+            background-color: transparent;
+            transition: all ease-in .2s;
+            &:hover {
+                transform: scale(1.2);
+            }
+        }        
+    </style>
+</head>
+<body>
+    <nav class="controls">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#fafafa" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>METHODS MATHEMATICS</h1>
+            <h2>Usa métodos matemáticos para cálculos avanzados.</h2>
+        </header>
+        <section>
+            <h3>Random (DICE)</h3>
+            <button class="btn-dado">⚀</button>
+            <h3>Random (Count Up)</h3>
+            <button class="btn-contador">1</button>
+            <h3>Min | Max</h3>
+            <p class="out-min"></p>
+            <p class="out-max"></p>
+        </section>
+    </main>
+    <script>
+        // Elements 
+        const buttonDado     = document.querySelector('.btn-dado')
+        const arrayDados     = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅']
+        const buttonContador = document.querySelector('.btn-contador')
+        const outMin         = document.querySelector('.out-min')
+        const outMax         = document.querySelector('.out-max')
+
+        // Events
+        buttonDado.addEventListener('click', function(){
+            let rand = Math.floor(Math.random() * arrayDados.length)
+            this.textContent = arrayDados[rand]
+            
+        })
+
+        buttonContador .addEventListener('click', function(){
+            let rand = Math.ceil(Math.random() * 99)
+            let contador = 1
+            let element = this
+            const interval = setInterval(function() {
+                if(contador == rand){
+                    clearInterval(interval)
+                }
+                element.textContent = contador
+                contador++
+            }, 100)
+        })
+
+        // Min & Max
+        outMin.textContent = 'Min: 4, 10, -8, 3 => ' + Math.min(4, 10, -8, 3)
+        outMax.textContent = 'Min: 4, 10, -8, 3 => ' + Math.max(4, 10, -8, 3)
+    </script>
+</body>
+</html>

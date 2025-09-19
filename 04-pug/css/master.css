@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;800&display=swap');
+
+body { 
+    background-color: #e0c09b;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%2365463a' points='800 100 0 200 0 800 1600 800 1600 200'/%3E%3Cpolygon fill='%23795b4a' points='800 200 0 400 0 800 1600 800 1600 400'/%3E%3Cpolygon fill='%238e6f5a' points='800 300 0 600 0 800 1600 800 1600 600'/%3E%3Cpolygon fill='%23a2836b' points='1600 800 800 400 0 800'/%3E%3Cpolygon fill='%23b7977b' points='1280 800 800 500 320 800'/%3E%3Cpolygon fill='%23cbac8b' points='533.3 800 1066.7 800 800 600'/%3E%3Cpolygon fill='%23E0C09B' points='684.1 800 914.3 800 800 700'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: Poppins;
+}
+
+nav.controls {
+    position: fixed;
+    a:is(:link, :visited) {
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0009;
+        height: 40px;
+        transform: scale(0.8);
+        opacity: 0.6;
+        padding: 10px;
+        width: 40px;
+        transition: all 0.4s ease-in;  
+    }
+    a:is(:hover) {
+        opacity: 1;
+        transform: scale(1);
+    }
+    svg {
+        width: 40px;
+    }
+}
+
+main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    min-height: 100vh;
+
+            header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                h1, h2 {
+                    color: #000;
+                    text-align: center; 
+                    margin: 0;
+                }
+                h1 {
+                    font-size: 4rem;
+                    font-weight: 400;
+                }
+                h2 {
+                    font-size: 1.4rem;
+                    font-weight: 300;
+                }
+                img {
+                    border-radius: 50%;
+                    background-color: #fff3;
+                    width: 160px;
+                    border: 10px solid #fff9;
+                }
+            }
+
+            menu {
+                display: flex;
+                flex-direction: column;
+                padding: 0px;
+                gap: 1rem;
+
+                a:is(:link, :visited){
+                     background-color: #0009;
+                     border-radius: 50px;
+                     display: flex;
+                     color: #fffd;
+                     gap: 1rem;
+                     align-items: center;
+                     padding: 1rem;
+                     text-decoration: none;
+                     transition: all 0.5s ease-in;
+                     width: 280px;
+
+                     i {
+                        background-color: #937561;
+                        border-radius: 20px;
+                        color: #000c;
+                        font-style: normal;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: all 0.5s ease-in;
+                        height: 34px;
+                        width:  34px;
+                     }
+                }
+
+                a:is(:hover) {
+                    transform: translate(-10px);
+                    background-color: #000c;
+                }
+
+                a:is(:hover) i {
+                    transform: scale(1.4);
+                }
+                
+                h3 {
+                    align-self: center;
+                    font-size: 2.4rem;
+                    color: #fff9;
+                }
+            }
+
+            section {
+                border-radius: 10px;
+                background-color: #fff9;
+                color: #0009;
+                padding: 10px;
+                width: 400px;
+
+                h3 {
+                    border-bottom: 2px dotted #0004;
+                    color: #000a;
+                    font-size: 1.6rem;
+                    margin: 0;
+                    width: fit-content;
+                }
+                p {
+                   font-size: 1.4rem;
+                   margin: 10px 0;
+                }
+
+                xmp {
+                    border-radius: 10px;
+                    background-color: #0009;
+                    color: #fff9;
+                    padding: 0 10px 10px 10px;
+                }
+            }
+}

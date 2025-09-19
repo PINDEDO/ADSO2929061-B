@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokédex</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f2f2f2;
+      color: #333;
+      text-align: center;
+    }
+
+    h1 {
+      color: #e3350d;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .type-menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .type-btn {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+      text-transform: capitalize;
+      transition: background-color 0.3s;
+    }
+
+    .pokemon-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .pokemon-card {
+      perspective: 1000px;
+      position: relative;
+      height: 250px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .pokemon-card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 15px;
+      background-color: white;
+    }
+
+    .card-front {
+      z-index: 2;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      overflow-y: auto;
+    }
+
+    .pokemon-img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .pokemon-id {
+      font-weight: bold;
+    }
+
+    .pokemon-name {
+      font-size: 1.2em;
+      margin-bottom: 5px;
+      text-transform: capitalize;
+    }
+
+    .pokemon-types {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .type {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8em;
+      font-weight: bold;
+      color: white;
+      text-transform: capitalize;
+    }
+
+    /* Colores por tipo */
+    .normal { background-color: #A8A77A; }
+    .fire { background-color: #EE8130; }
+    .water { background-color: #6390F0; }
+    .electric { background-color: #F7D02C; }
+    .grass { background-color: #7AC74C; }
+    .ice { background-color: #96D9D6; }
+    .fighting { background-color: #C22E28; }
+    .poison { background-color: #A33EA1; }
+    .ground { background-color: #E2BF65; }
+    .flying { background-color: #A98FF3; }
+    .psychic { background-color: #F95587; }
+    .bug { background-color: #A6B91A; }
+    .rock { background-color: #B6A136; }
+    .ghost { background-color: #735797; }
+    .dragon { background-color: #6F35FC; }
+    .dark { background-color: #705746; }
+    .steel { background-color: #B7B7CE; }
+    .fairy { background-color: #D685AD; }
+
+    .stat-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 4px 0;
+      font-size: 0.8em;
+    }
+
+    .stat-name {
+      width: 60px;
+      text-align: left;
+    }
+
+    .stat-bar-container {
+      background: #ccc;
+      width: 100px;
+      height: 8px;
+      border-radius: 4px;
+      margin: 0 8px;
+    }
+
+    .stat-bar {
+      height: 100%;
+      background-color: #4CAF50;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="Pokédex" style="display:block; margin: 0 auto 10px; width:150px;">
+  <h1>Pokédex</h1>
+
+
+  <div class="type-menu" id="typeMenu"></div>
+
+  <div class="pokemon-list" id="pokemonList"></div>
+
+  <script>
+    const pokemonList = document.getElementById("pokemonList");
+    const typesList = ["normal", "fire", "water", "grass", "electric", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dark", "dragon", "steel", "fairy"];
+
+    function createTypeButtons() {
+      const typeMenu = document.getElementById('typeMenu');
+      typesList.forEach(type => {
+        const btn = document.createElement('button');
+        btn.className = `type-btn ${type}`;
+        btn.textContent = type;
+        btn.addEventListener('click', () => loadByType(type));
+        typeMenu.appendChild(btn);
+      });
+    }
+
+    async function loadByType(typeName) {
+      pokemonList.innerHTML = '<p>Cargando Pokémon...</p>';
+      try {
+        const res = await fetch(`https://pokeapi.co/api/v2/type/${typeName}`);
+        const data = await res.json();
+        pokemonList.innerHTML = '';
+
+        for (const poke of data.pokemon.slice(0, 30)) {
+          const resPoke = await fetch(poke.pokemon.url);
+          const pokeData = await resPoke.json();
+          createPokemonCard(pokeData);
+        }
+      } catch (err) {
+        console.error(err);
+        pokemonList.innerHTML = '<p>Error al cargar los Pokémon.</p>';
+      }
+    }
+
+    function createPokemonCard(pokemon) {
+      const card = document.createElement('div');
+      card.className = 'pokemon-card';
+
+      const pokemonId = pokemon.id.toString().padStart(3, '0');
+      const types = pokemon.types.map(type => type.type.name);
+
+      card.innerHTML = `
+        <div class="card-inner">
+          <div class="card-front">
+            <img class="pokemon-img" src="${pokemon.sprites.other['official-artwork'].front_default}" alt="${pokemon.name}">
+            <p class="pokemon-id">#${pokemonId}</p>
+            <p class="pokemon-name">${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</p>
+            <div class="pokemon-types">
+              ${types.map(type => `<span class="type ${type}">${type}</span>`).join('')}
+            </div>
+          </div>
+          <div class="card-back">
+            <h4>Estadísticas</h4>
+            ${pokemon.stats.map(stat => {
+              const percent = (stat.base_stat / 300) * 100;
+              return `
+                <div class="stat-row">
+                  <span class="stat-name">${stat.stat.name.toUpperCase()}</span>
+                  <div class="stat-bar-container">
+                    <div class="stat-bar" style="width:${percent}%"></div>
+                  </div>
+                  <span>${stat.base_stat}</span>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+
+      pokemonList.appendChild(card);
+    }
+
+    createTypeButtons();
+  </script>
+</body>
+</html>
