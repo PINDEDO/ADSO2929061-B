@@ -1,93 +1,124 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Memory Game - Liga BetPlay</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #f2f2f2; /* Fondo general */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game - Liga BetPlay</title>
+    <link rel="stylesheet" href="css/estilos.css">
+      <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-  .game-container {
-    text-align: center;
-    padding: 20px;
-    border-radius: 20px;
+    .game-container {
+      text-align: center;
+      padding: 20px;
+      border-radius: 20px;
+      background: url("images/challengue/fondo.png") no-repeat center center;
+      background-size: cover;
+    }
 
-    /* 👇 Fondo del contenedor */
-    background: url("images/challengue/fondo.png") no-repeat center center;
-    background-size: cover;
-  }
+    h1 {
+      color: #002976;
+      margin-bottom: 10px;
+    }
 
-  .stats {
-    display: flex;
-    justify-content: space-around;
-    margin: 10px 0;
-    font-weight: bold;
-  }
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 10px 0;
+      font-weight: bold;
+      color: #002976;
+    }
 
-  .h1 {
-    color-scheme: 002976;
-  
-  }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      gap: 10px;
+      justify-content: center;
+      margin: 20px auto;
+      padding: 20px;
+    }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(4, 100px);
-    color: 002976;
-    gap: 10px;
-    justify-content: center;
-    margin: 20px auto;
-    padding: 20px;
-  }
+    .card {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      perspective: 1000px;
+      cursor: pointer;
+    }
 
-  .card {
-    width: 100px;
-    height: 100px;
-    position: relative;
-    perspective: 1000px;
-    cursor: pointer;
-  }
+    .card.flip .front {
+      transform: rotateY(0deg);
+    }
 
-  .card.flip .front {
-    transform: rotateY(0deg);
-  }
+    .card.flip .back {
+      transform: rotateY(180deg);
+    }
 
-  .card.flip .back {
-    transform: rotateY(180deg);
-  }
+    .front,
+    .back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      transition: transform 0.5s;
+    }
 
-  .front,
-  .back {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-    border-radius: 10px;
-  }
+    .front {
+      transform: rotateY(180deg);
+    }
 
-  .front {
-    transform: rotateY(180deg);
-  }
+    .back {
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-  .back {
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-</style>
+    button {
+      background: #002976;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
+    button:hover {
+      background: #0141a8;
+    }
   </style>
 </head>
 
-<body>
+<body class="jquery">
+    <nav>
+        <a href="index.html" aria-label="Back to home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24" height="24" aria-hidden="true">
+                <path fill="#ffffff"
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg>
+        </a>
+    </nav>
+    <main role="main">
+        <header>
+            <svg viewBox="0 0 256 63" width="256" height="63" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true">
+                <!-- SVG content remains unchanged -->
+            </svg>
+            <h1><strong>12-chanllegue</strong></h1>
+            <p>Lorem.</p>
+        </header>
+        <section class="section" role="region" aria-label="Fruit selection interface">
+         <body>
   <div class="game-container">
     <h1>MEMORY GAME</h1>
     <div class="stats">
@@ -100,9 +131,14 @@
     <button id="restart">RESTART</button>
   </div>
 
-  <script>
-    $(document).ready(function () {
-      const teams = [
+
+</body>
+        </section>
+    </main>
+    <script src="js/jquery-3.7.1.min.js"></script>
+     <script>
+    $(function () {
+      let equipos = [
         "nacional.png", "nacional.png",
         "santafe.png", "santafe.png",
         "millonarios.png", "millonarios.png",
@@ -113,88 +149,90 @@
         "oncecaldas.png", "oncecaldas.png"
       ];
 
-      let moves = 0;
-      let matches = 0;
-      let time = 0;
-      let timer;
-      let firstCard = null;
-      let secondCard = null;
-      let lock = false;
+      let movimientos = 0, aciertos = 0, tiempo = 0, temporizador;
+      let primera = null, segunda = null, bloqueo = false;
 
-      // Inicializar
-      function initGame() {
+      function iniciarJuego() {
+        // Reiniciar stats
+        movimientos = 0; aciertos = 0; tiempo = 0;
+        $("#moves").text(movimientos);
+        $("#time").text(tiempo);
+        clearInterval(temporizador);
+
+        // Mezclar
+        equipos = equipos.sort(() => 0.5 - Math.random());
+
+        // Renderizar cartas
         $(".grid").empty();
-        moves = 0;
-        matches = 0;
-        time = 0;
-        $("#moves").text(moves);
-        $("#time").text(time);
-        clearInterval(timer);
-        timer = setInterval(() => {
-          time++;
-          $("#time").text(time);
-        }, 1000);
-
-        // Barajar
-        const shuffled = teams.sort(() => 0.5 - Math.random());
-
-        // Renderizar
-        shuffled.forEach(team => {
-          const card = $(`
-            <div class="card" data-team="${team}">
+        $.each(equipos, function (i, eq) {
+          $(".grid").append(`
+            <div class="card" data-team="${eq}">
               <div class="front">
-                <img src="images/challengue/${team}" width="100" height="100">
+                <img src="images/challengue/${eq}" width="100" height="100">
               </div>
               <div class="back">
                 <img src="images/challengue/liga.png" width="100" height="100">
               </div>
             </div>
           `);
-          $(".grid").append(card);
         });
+
+        // Preview inicial
+        $(".card").addClass("flip");
+        setTimeout(function () {
+          $(".card").removeClass("flip");
+          // Arranca el cronómetro después del preview
+          temporizador = setInterval(function () {
+            tiempo++;
+            $("#time").text(tiempo);
+          }, 1000);
+        }, 2000);
       }
 
-      // Voltear carta
+      // Click en carta
       $(document).on("click", ".card", function () {
-        if (lock || $(this).hasClass("flip")) return;
+        if (bloqueo || $(this).hasClass("flip")) return;
 
         $(this).addClass("flip");
 
-        if (!firstCard) {
-          firstCard = $(this);
+        if (!primera) {
+          primera = $(this);
         } else {
-          secondCard = $(this);
-          moves++;
-          $("#moves").text(moves);
-          checkMatch();
+          segunda = $(this);
+          movimientos++;
+          $("#moves").text(movimientos);
+          verificar();
         }
       });
 
-      function checkMatch() {
-        if (firstCard.data("team") === secondCard.data("team")) {
-          matches++;
-          firstCard = null;
-          secondCard = null;
-          if (matches === teams.length / 2) {
-            clearInterval(timer);
-            alert("🎉 ¡Ganaste en " + moves + " movimientos y " + time + " segundos!");
+      function verificar() {
+        if (primera.data("team") === segunda.data("team")) {
+          aciertos++;
+          primera = null;
+          segunda = null;
+
+          if (aciertos === equipos.length / 2) {
+            clearInterval(temporizador);
+            alert("🎉 ¡Ganaste en " + movimientos + " movimientos y " + tiempo + " segundos!");
           }
         } else {
-          lock = true;
-          setTimeout(() => {
-            firstCard.removeClass("flip");
-            secondCard.removeClass("flip");
-            firstCard = null;
-            secondCard = null;
-            lock = false;
+          bloqueo = true;
+          setTimeout(function () {
+            primera.removeClass("flip");
+            segunda.removeClass("flip");
+            primera = null;
+            segunda = null;
+            bloqueo = false;
           }, 1000);
         }
       }
 
-      $("#restart").click(initGame);
+      // Botón restart
+      $("#restart").click(iniciarJuego);
 
-      initGame();
+      iniciarJuego();
     });
   </script>
 </body>
+
 </html>
