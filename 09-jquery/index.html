@@ -1,131 +1,390 @@
 <!DOCTYPE html>
-<html lang="en">
-<body class="jquery" 
-    <nav>
-        <a href="../">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
-        </a>
-    </nav>
-     <main>
-        <header>
-            <h1><strong>jQuery</strong></h1>
-            <img src="../images/logo-jquery.png" alt="Emmet" >
-            <p>
-                jQuery is a fast and concise JavaScript library for DOM manipulation and event handling.
-            </p>
-        </header>
-        <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Menu - ADSO2929061B</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <title>jQuery Exercises - ADSO2929061B</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
- 
-
+    <style>
+        :root {
+            --jquery-blue: #0769AD;
+            --jquery-dark-blue: #064C7F;
+            --jquery-light-blue: #7ACEF4;
+            --jquery-gray: #EEEEEE;
+            --jquery-dark-gray: #555555;
+            --jquery-accent: #FFA500;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body.jquery {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, var(--jquery-blue) 0%, var(--jquery-dark-blue) 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body.jquery::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(122, 206, 244, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(122, 206, 244, 0.2) 0%, transparent 20%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+        
+        nav a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        nav svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px 40px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease;
+        }
+        
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header h1 strong {
+            color: var(--jquery-light-blue);
+        }
+        
+        header img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            margin: 20px 0;
+            border-radius: 50%;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease;
+        }
+        
+        header img:hover {
+            transform: rotate(360deg);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: var(--jquery-gray);
+        }
+        
+        menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+        }
+        
+        menu a {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--jquery-blue), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        menu a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        menu a:hover::before {
+            opacity: 0.3;
+        }
+        
+        menu a:hover span {
+            background: var(--jquery-light-blue);
+            color: var(--jquery-dark-blue);
+        }
+        
+        menu a span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--jquery-blue);
+            color: white;
+            border-radius: 10px;
+            margin-right: 15px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            menu {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            header img {
+                width: 140px;
+                height: 140px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body.jquery {
+                padding: 10px;
+            }
+            
+            main {
+                padding: 50px 10px 30px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            menu a {
+                padding: 15px;
+            }
+        }
+        
+        /* Efectos con jQuery */
+        .highlight {
+            background: rgba(122, 206, 244, 0.2) !important;
+            border: 1px solid var(--jquery-light-blue) !important;
+        }
+    </style>
 </head>
 <body class="jquery"> 
     <nav>
         <a href="../">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <path fill="#ffffff" d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/>
+            </svg>
         </a>
     </nav>
-     <main>
+    
+    <main>
+        <header>
+            <h1><strong>jQuery</strong></h1>
+            <img src="https://cdn.iconscout.com/icon/free/png-256/free-jquery-8-1175153.png" alt="jQuery Logo">
+            <p>
+                jQuery is a fast and concise JavaScript library for DOM manipulation and event handling.
+            </p>
+        </header>
+        
         <menu>
+            <a href="00-template.html">
+                <span>00</span>
+                Template
+            </a>
             <a href="01-install.html">
-            <span>01</span>
-                            Install
+                <span>01</span>
+                Install
             </a>
             <a href="02-ready.html">
-            <span>02</span>
-                            Ready
+                <span>02</span>
+                Ready
             </a>
             <a href="03-todolist.html">
-            <span>03</span>
-                            Todo List
+                <span>03</span>
+                Todo List
             </a>
             <a href="04-selectors.html">
-            <span>04</span>
-                            Selectors
+                <span>04</span>
+                Selectors
             </a>
             <a href="05-events.html">
-            <span>05</span>
-                            Events
+                <span>05</span>
+                Events
             </a>
             <a href="06-effects.html">
-            <span>06</span>
-                            Effects
+                <span>06</span>
+                Effects
             </a>
             <a href="07-callback.html">
-            <span>07</span>
-                            Callback
+                <span>07</span>
+                Callback
             </a>
             <a href="08-chaining.html">
-            <span>08</span>
-                            Chaining
+                <span>08</span>
+                Chaining
             </a>
             <a href="09-set-get.html">
-            <span>09</span>
-                            Set & Get
+                <span>09</span>
+                Set & Get
             </a>
             <a href="10-add-remove.html">
-            <span>10</span>
-                            Add & Remove
+                <span>10</span>
+                Add & Remove
             </a>
             <a href="11-next-prev.html">
-            <span>11</span>
-                            Next & Prev
+                <span>11</span>
+                Next & Prev
             </a>
             <a href="12-challenge-memory-game.html">
-            <span>12</span>
-                            Challenge Memory Game
+                <span>12</span>
+                Challenge Memory Game
             </a>
             <a href="13-css.html">
-            <span>13</span>
-                            Css
+                <span>13</span>
+                Css
             </a>
             <a href="14-dimensions.html">
-            <span>14</span>
-                            Dimenions
+                <span>14</span>
+                Dimensions
             </a>
             <a href="15-ajax-load.html">
-            <span>15</span>
-                            Ajax Load
+                <span>15</span>
+                Ajax Load
             </a>
             <a href="16-ajax-request.html">
-            <span>16</span>
-                            Request Ajax
+                <span>16</span>
+                Request Ajax
             </a>
             <a href="17-ajax-get.html">
-            <span>17</span>
-                            Ajax Get
+                <span>17</span>
+                Ajax Get
             </a>
             <a href="18-ajax-post.html">
-            <span>18</span>
-                            Ajax Post
+                <span>18</span>
+                Ajax Post
             </a>
             <a href="19-ui-draggable-droppable.html">
-            <span>19</span>
-                            Drag & Drop
+                <span>19</span>
+                Drag & Drop
             </a>
             <a href="20-challenge-drag-drop.html">
-            <span>20</span>
-                            Challenge Drag & Drop
+                <span>20</span>
+                Challenge Drag & Drop
             </a>
             <a href="21-plugin-validate-forms.html">
-            <span>21</span>
-                            Plugin Validation Forms
+                <span>21</span>
+                Plugin Validation Forms
             </a>
             <a href="22-plugin-carousel-slider.html">
-            <span>22</span>
-                            Plugin Carousel Slider
+                <span>22</span>
+                Plugin Carousel Slider
             </a>
         </menu>
-     </main>
-</body>
-</html>
-     </main>
+    </main>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            console.log("jQuery está cargado y funcionando!");
+            
+            // Efecto de resaltado al pasar el mouse sobre los elementos del menú
+            $('menu a').hover(
+                function() {
+                    $(this).addClass('highlight');
+                },
+                function() {
+                    $(this).removeClass('highlight');
+                }
+            );
+            
+            // Animación de carga para los elementos del menú
+            $('menu a').each(function(index) {
+                $(this).css('opacity', 0)
+                       .delay(100 * index)
+                       .animate({opacity: 1}, 500);
+            });
+            
+            // Efecto de clic en los elementos del menú
+            $('menu a').click(function(e) {
+                e.preventDefault();
+                $(this).css('transform', 'scale(0.95)');
+                setTimeout(() => {
+                    window.location.href = $(this).attr('href');
+                }, 200);
+            });
+        });
+    </script>
 </body>
 </html>

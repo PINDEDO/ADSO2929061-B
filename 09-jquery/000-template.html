@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios jQuery</title>
+    <style>
+        :root {
+            --jquery-blue: #0769AD;
+            --jquery-dark-blue: #064C7F;
+            --jquery-light-blue: #7ACEF4;
+            --jquery-gray: #EEEEEE;
+            --jquery-dark-gray: #555555;
+            --jquery-accent: #FFA500;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body.jquery {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--jquery-blue) 0%, var(--jquery-dark-blue) 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body.jquery::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(122, 206, 244, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(122, 206, 244, 0.2) 0%, transparent 20%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+        
+        nav a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        nav svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 20px 30px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header h1 strong {
+            color: var(--jquery-light-blue);
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+            color: var(--jquery-gray);
+        }
+        
+        .exercise-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .exercise-title {
+            color: var(--jquery-light-blue);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .interactive-elements {
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            background-color: var(--jquery-light-blue);
+            color: var(--jquery-dark-blue);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .input-group {
+            margin: 15px 0;
+            display: flex;
+            gap: 10px;
+        }
+        
+        input[type="text"] {
+            flex: 1;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        input[type="text"]::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .result-area {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            min-height: 80px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .code-block pre {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--jquery-light-blue);
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .exercise-container {
+                padding: 20px;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body.jquery {
+                padding: 15px;
+            }
+            
+            main {
+                padding: 40px 10px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            .exercise-container {
+                padding: 15px;
+            }
+            
+            .btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Efectos con jQuery */
+        .highlight {
+            background: rgba(122, 206, 244, 0.2) !important;
+            border: 1px solid var(--jquery-light-blue) !important;
+        }
+        
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        .fade-in {
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+        
+        .slide-up {
+            transform: translateY(-10px);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="jquery"> 
+    <nav>
+        <a href="../index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/>
+            </svg>
+        </a>
+    </nav>
+    
+    <main>
+        <header>
+            <h1><strong id="exercise-title">00-Template jQuery</strong></h1> 
+            <p id="exercise-description">
+                Plantilla base para ejercicios de jQuery. Reemplaza este texto con la descripción de tu ejercicio.
+            </p>
+        </header>
+        
+        <section id="exercise-content">
+            <div class="exercise-container">
+                <h2 class="exercise-title">Área de trabajo interactiva</h2>
+                
+                <div class="interactive-elements">
+                    <button class="btn" id="btn-action">Ejecutar acción</button>
+                    <button class="btn" id="btn-reset">Reiniciar</button>
+                    <button class="btn" id="btn-effects">Efectos</button>
+                    
+                    <div class="input-group">
+                        <input type="text" id="input-text" placeholder="Escribe algo...">
+                        <button class="btn" id="btn-submit">Procesar</button>
+                    </div>
+                </div>
+                
+                <div class="result-area" id="result">
+                    Los resultados aparecerán aquí.
+                </div>
+            </div>
+            
+            <div class="code-block">
+                <h3 class="exercise-title">Código jQuery utilizado:</h3>
+                <pre><code>
+// Selectores básicos
+$('#elemento-id')      // Selecciona por ID
+$('.clase-elemento')   // Selecciona por clase
+$('div')               // Selecciona por etiqueta
+
+// Eventos comunes
+$(elemento).click(function() { ... })
+$(elemento).hover(function() { ... })
+$(elemento).keyup(function() { ... })
+
+// Efectos y animaciones
+$(elemento).hide() / .show() / .toggle()
+$(elemento).fadeIn() / .fadeOut() / .fadeToggle()
+$(elemento).slideUp() / .slideDown() / .slideToggle()
+
+// Manipulación de DOM
+$(elemento).html() / .html(nuevoContenido)
+$(elemento).text() / .text(nuevoTexto)
+$(elemento).append() / .prepend()
+$(elemento).addClass() / .removeClass() / .toggleClass()
+                </code></pre>
+            </div>
+        </section>
+    </main>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Forma abreviada de document.ready
+        $(function() {
+            console.log("jQuery cargado correctamente");
+            
+            // Ejemplo de funcionalidad básica
+            $('#btn-action').click(function() {
+                $('#result').html('<p>¡Acción ejecutada! ' + new Date().toLocaleTimeString() + '</p>');
+                $('#result').addClass('highlight');
+                
+                // Quitar el highlight después de 2 segundos
+                setTimeout(function() {
+                    $('#result').removeClass('highlight');
+                }, 2000);
+            });
+            
+            $('#btn-reset').click(function() {
+                $('#result').html('Los resultados aparecerán aquí.');
+                $('#result').css('background-color', 'rgba(0, 0, 0, 0.2)');
+                $('#input-text').val('');
+            });
+            
+            $('#btn-submit').click(function() {
+                const texto = $('#input-text').val();
+                if (texto) {
+                    $('#result').html(`<p>Texto procesado: <strong>${texto}</strong></p>`);
+                } else {
+                    $('#result').html('<p class="error">Por favor, escribe algo primero.</p>');
+                }
+            });
+            
+            $('#btn-effects').click(function() {
+                $('#result').fadeOut(500, function() {
+                    $(this).html('<p>¡Efecto aplicado! ' + new Date().toLocaleTimeString() + '</p>').fadeIn(500);
+                });
+            });
+            
+            // Efecto hover básico
+            $('.btn').hover(
+                function() { // mouseenter
+                    $(this).addClass('slide-up');
+                },
+                function() { // mouseleave
+                    $(this).removeClass('slide-up');
+                }
+            );
+            
+            // Efecto de escritura en el título
+            const titleText = "Template jQuery Interactivo";
+            let i = 0;
+            const titleElement = $('#exercise-title');
+            titleElement.text('');
+            
+            function typeWriter() {
+                if (i < titleText.length) {
+                    titleElement.text(titleElement.text() + titleText.charAt(i));
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+            
+            // Iniciar el efecto de escritura
+            typeWriter();
+        });
+    </script>
+</body>
+</html>
