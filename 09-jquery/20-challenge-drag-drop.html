@@ -1,26 +1,13 @@
-<section>
-            <article class="columnst">
-                <aside class="columnt">
-                    <h4>Evolution 1</h4>
-                    <div class="stage stage1">
-                        <div id="pk11" class="pk pk1 animate__animated"></div>
-                        <div id="pk21" class="pk pk1 animate__animated"></div>
-                        <div id="pk31" class="pk pk1 animate__animated"></div>
-                    </div>
-                </aside>
-                <aside class="columnt">
-                    <h4>Evolution 2</h4>
-                    <div class="stage stage2">
-                    </div>
-                </aside>
-                <aside class="columnt">
-                    <h4>Evolution 3</h4>
-                    <div class="stage stage3"></div>
-                </aside>
-            </article>
-        </section>
-        <style>
-            article.columnst {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 - Challenge Drag and Drop</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <style>
+        article.columnst {
 			padding: 5px;
 			background-color: #1f1f1f;
             display: flex;
@@ -81,9 +68,47 @@
 		aside.columnt div.pk#pk33 {
 			background: url(images/pokemons/pk33.png) no-repeat center;
 		}
-        </style>
-     <script>
-        $(document).ready(function() {
+    </style>
+</head>
+<body class="jquery">
+    <nav>
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>20 - Challenge Drag and Drop</h1>
+            <p>
+                Create a drag and drop interface for Pokémon evolution.
+            </p>
+        </header>
+    <section>
+    <article class="columnst">
+        <aside class="columnt">
+        <h4>Evolution 1</h4>
+        <div class="stage stage1">
+            <div id="pk11" class="pk pk1 animate__animated"></div>
+            <div id="pk21" class="pk pk1 animate__animated"></div>
+            <div id="pk31" class="pk pk1 animate__animated"></div>
+        </div>
+        </aside>
+        <aside class="columnt">
+        <h4>Evolution 2</h4>
+        <div class="stage stage2">
+        </div>
+        </aside>
+        <aside class="columnt">
+        <h4>Evolution 3</h4>
+        <div class="stage stage3"></div>
+        </aside>
+    </article>
+    </section>
+    </main>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script>
+$(document).ready(function() {
             $('.pk').draggable({
 				containment: '.columnst',
 				cursor: 'move',
@@ -111,63 +136,6 @@
 				}
 			});
         });
-     </script>
-
-       
-
-
-// 14
-
-
-      
-
-// 15
-
-
-// 16
-
-
-
-//17 
-
-
-
-//18
-
-
-// 19
-
-
-//20 
-
-
-
-
-//21 
-
-$(document).ready(function() {
-            //$.validate({ lang: 'en' })
-            $.validate({ lang: 'es' })
-        })
-
-// 22
-
-$(document).ready(function() {
-            $('.owl-carousel').owlCarousel({
-				items: 3,
-				loop: true,
-			    margin: 10,
-			    nav: true,
-                responsive:{
-                    0:{
-                        items:1
-                    },
-                    600:{
-                        items:2
-                    },
-                    1000:{
-                        items:3
-                    }
-                }
-			});
-        });
+    </script>
+</body>
+</html>

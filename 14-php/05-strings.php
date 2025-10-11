@@ -1,19 +1,20 @@
 <?php
-$title = '05- string';
-$description = 'Different ways to comment code.';
+
+    $tittle = "04 - Variables";
+    $descripcion = "How to assing values";
 
 include 'template/header.php';
+    echo '<section>';
 
-    $num1 = 25.6;
-    $num2 = 4;
-    
-    $string1 = "Lorem Ipsum Dolor ";
-    $string2 = 'Sit Amet Consecutare';
-    
-    echo "<p>" . $string1  . $string2 . "</p>"; 
-    echo  "Characters length is: " . strlen($string1.$string2);
+    $string1 = "Lorem ipsum dolor ";
+    $string2 = "sit amet consectetur...";
 
+    echo "<p>" . $string1 .' '. $string2 . "</p>";
+    echo "Character length: " . strlen($string1 . $string2);
+    echo '<br>';
+    echo "Position if ADSO into Hello ADSO: " . strpos('Hello ADSO', 'ADSO');
+    echo '<br>';
+    echo "Last 5 words of Visualization: " . substr('Visualization', -5);
 
-    
 
 include 'template/footer.php';

@@ -1,145 +1,33 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicios jQuery</title>
-    <link rel="stylesheet" href="css/estilos.css">
-    <style>
-        /* Estilos específicos para el template */
-        .exercise-container {
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 5px;
-        }
-        
-        .exercise-title {
-            color: #0868AC;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-        
-        .code-block {
-            background-color: #f8f8f8;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-            overflow-x: auto;
-        }
-        
-        .btn {
-            background-color: #0868AC;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 5px;
-        }
-        
-        .btn:hover {
-            background-color: #065a94;
-        }
-        
-        .result-area {
-            background-color: #f0f8ff;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-            min-height: 50px;
-        }
-    </style>
+    <title>00 - template</title>
+    <link rel="stylesheet" href="../../css/styles.css">
 </head>
-<body class="jquery"> 
+<body class="jquery">
     <nav>
-        <a href="../index.html">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/>
-            </svg>
-            Volver al índice
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
         </a>
     </nav>
-    
     <main>
         <header>
-            <svg viewBox="0 0 256 63" width="256" height="63" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- SVG de jQuery (mantenido igual) -->
-                <g clip-path="url(#jquery_dark__prefix__clip0_1_214)">
-                    <!-- ... contenido del SVG ... -->
-                </g>
-            </svg>
-            <h1><strong id="exercise-title">00-Template</strong></h1> 
-            <p id="exercise-description">
-                Plantilla base para ejercicios de jQuery. Reemplaza este texto con la descripción de tu ejercicio.
+            <h1>00 - template</h1>
+            <p>
+                
             </p>
         </header>
-        
-        <section id="exercise-content">
-            <!-- Zona para el contenido específico del ejercicio -->
-            <div class="exercise-container">
-                <h2 class="exercise-title">Área de trabajo</h2>
-                
-                <div class="interactive-elements">
-                    <button class="btn" id="btn-action">Ejecutar acción</button>
-                    <button class="btn" id="btn-reset">Reiniciar</button>
-                    
-                    <div class="input-group" style="margin: 15px 0;">
-                        <input type="text" id="input-text" placeholder="Escribe algo...">
-                        <button class="btn" id="btn-submit">Procesar</button>
-                    </div>
-                </div>
-                
-                <div class="result-area" id="result">
-                    Los resultados aparecerán aquí.
-                </div>
-            </div>
-            
-            <div class="code-block">
-                <h3>Código jQuery utilizado:</h3>
-                <pre><code>
-                </code></pre>
-            </div>
+        <section>
+
         </section>
     </main>
-    
-    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
     <script>
-        // Forma abreviada de document.ready
-        $(function() {
-            console.log("jQuery cargado correctamente");
+        $(document).ready(function(){
             
-            // Ejemplo de funcionalidad básica
-            $('#btn-action').click(function() {
-                $('#result').html('<p>¡Acción ejecutada! ' + new Date().toLocaleTimeString() + '</p>');
-                $('#result').css('background-color', '#e6f7ff');
-            });
-            
-            $('#btn-reset').click(function() {
-                $('#result').html('Los resultados aparecerán aquí.');
-                $('#result').css('background-color', '#f0f8ff');
-                $('#input-text').val('');
-            });
-            
-            $('#btn-submit').click(function() {
-                const texto = $('#input-text').val();
-                if (texto) {
-                    $('#result').html(`<p>Texto procesado: <strong>${texto}</strong></p>`);
-                } else {
-                    $('#result').html('<p class="error">Por favor, escribe algo primero.</p>');
-                }
-            });
-            
-            // Efecto hover básico
-            $('.btn').hover(
-                function() { // mouseenter
-                    $(this).css('opacity', '0.9');
-                },
-                function() { // mouseleave
-                    $(this).css('opacity', '1');
-                }
-            );
-        });
+        })
     </script>
 </body>
 </html>
