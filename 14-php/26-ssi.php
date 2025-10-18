@@ -1,18 +1,13 @@
-<?php
+<?php 
+    $title       = '26- Server Side Include';
+    $description = 'Is used to include the content of one file into another.';
 
-    $tittle = "26 - SSI";
-    $descripcion = "Learn how to use Server Side Includes (SSI) in PHP.";
+    include 'template/header.php';
 
-include 'template/header.php';
-    echo '<section>';
+    echo "<section>";
 
-    echo '<p>Server Side Includes (SSI) are a server-side scripting language used for including content from one file into another.</p>';
-    echo '<p>To use SSI, you need to have the following line in your .htaccess file:</p>';
-    echo '<pre>Options +Includes<br>AllowOverride All</pre>';
-    echo '<p>Then, you can include files using the following syntax:</p>';
-    echo '<pre><!--#include virtual="/path/to/file.php" --></pre>';
+    require 'template/content.php';
+    include_once 'template/content.php';
+    require_once 'template/content.php';
 
-    echo '</section>';
-
-include 'template/footer.php'; ?>
-
+    include 'template/footer.php'; 

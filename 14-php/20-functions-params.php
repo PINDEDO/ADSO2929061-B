@@ -1,16 +1,17 @@
-<?php
+<?php 
+    $title       = '20- Functions with Params';
+    $description = 'A function that accepts input values to perform its specific task.';
 
-    $tittle = "20 - Functions With Params";
-    $descripcion = "A function that accepts input values to perform its specific task";
+    include 'template/header.php';
 
-include 'template/header.php';
-    echo '<section>';
+    echo "<section>";
 
     function calculateProduct($num1, $num2 = 5) {
-        echo "$num1 * $num2 equals: " . ($num1 * $num2). "<br>";
+        echo "$num1 * $num2 equals: " . ($num1 * $num2) . "<br>" ;
     }
 
     calculateProduct(4, 10);
     calculateProduct(6);
+    calculateProduct(64, 4);
 
-include 'template/footer.php'; ?>
+    include 'template/footer.php'; 

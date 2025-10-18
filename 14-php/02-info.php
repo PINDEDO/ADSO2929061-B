@@ -1,9 +1,10 @@
-<?php
+<?php 
+    $title       = '02- PHP Info';
+    $description = 'Show all information of PHP';
 
-    $tittle = "02 - PHP Info";
-    $descripcion = "lorem ipsum dolor sit amet";
+    include 'template/header.php';
 
-include 'template/header.php';
-    echo '<section style="width: 100%;">';
+    echo "<section style='width: 100%'>";
     phpinfo();
-include 'template/footer.php';
+    
+    include 'template/footer.php';

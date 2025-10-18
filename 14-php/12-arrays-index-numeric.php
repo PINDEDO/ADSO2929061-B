@@ -1,16 +1,26 @@
-<?php
+<?php 
+    $title       = '12- Arrays Index Numeric';
+    $description = 'Stores multiples values accessed by index';
 
-    $tittle = "12 - Arrays Index Numeric";
-    $descripcion = "Learn about numeric indexed arrays";
+    include 'template/header.php';
+    echo "<section>";
 
-include 'template/header.php';
-    echo '<section>';
+    $fruits = array("🍎", "🍌", "🍊", "🥭");
 
-    $fruits = array("Apple", "Banana", "Cherry");
-    echo '<pre>';
-    print_r($fruits);
-    echo '</pre>';
+    echo "My favorite fruit is: " . $fruits[0] . "<br>"; 
+    echo "The second fruit in the list is: " . $fruits[1] . "<br>"; 
+
+    $fruits[2] = "🍇";
+    echo "The updated third fruit is: " . $fruits[2] . "<br>"; 
+
+    $fruits[] = "🍍";
+    echo "The newly added fruit is: " . $fruits[4] . "<br>";
+
+    echo "All fruits in the array: <br>";
+    foreach ($fruits as $fruit) {
+        echo $fruit . " ";
+    }
+
 ?>
-<?php
 
-include 'template/footer.php'; ?>
+<?php  include 'template/footer.php'; ?>

@@ -1,18 +1,37 @@
-<?php
+<?php 
+    $title       = '24- Date & Time';
+    $description = 'Many ways to handle dates and times.';
 
-    $tittle = "24 - Date and Time";
-    $descripcion = "Learn how to work with date and time in PHP.";
+    include 'template/header.php';
 
-include 'template/header.php';
-    echo '<section>';
+    echo "<section>";
+?>
 
-    date_default_timezone_set('America/Bogota');
-    echo "<p>The current date and time is: " . date("Y-m-d H:i:s") . "</p>";
-    
-    echo '</section>';
+<ul class="msg">
+    <li>
+        <strong>hour-minutes-seconds: </strong>
+        <?php echo date('h:i:s') ?>
+    </li>
+    <li>
+        <strong>day-month-year: </strong>
+        <?php echo date('d-m-Y') ?>
+    </li>
+    <li>
+        <strong>Name of Day: </strong>
+        <?php echo date('l') ?>
+    </li>
+    <li>
+        <strong>Full Year: </strong>
+        <?php echo date('Y') ?>
+    </li>
+    <li>
+        <strong>Time Zone: </strong>
+        <?php echo date('e') ?>
+    </li>
+    <li>
+        <strong>Time UNIX: </strong>
+        <?php echo time() ?>
+    </li>
+</ul>
 
-
-    echo '</section>';
-
-include 'template/footer.php'; ?>
-
+<?php include 'template/footer.php' ?>

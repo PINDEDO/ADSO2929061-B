@@ -1,26 +1,25 @@
-<?php
+<?php 
+    $title       = '10- Conditional if';
+    $description = 'Executes code if condition is true';
 
-    $tittle = "10 - Conditional IF";
-    $descripcion = "Perform conditional operations on variables";
+    include 'template/header.php';
+    echo "<section>";
 
-include 'template/header.php';
-    echo '<section>';
-
-    echo $days = date("D");
+    $day = date('D');
 ?>
- <?php  if ($days == 'Mon'): ?>
-    <p>Today is Monday!</p>
-<?php elseif ($days == 'Tue'): ?>
-    <p>Today is Tuesday!</p>
-<?php elseif ($days == 'Wed'): ?>
-    <p>Today is Wednesday!</p>
-    <?php elseif ($days == 'Thu'): ?>
-    <p>Today is Thursday!</p>
-    <?php elseif ($days == 'Fri'): ?>
-    <p>Today is Friday!</p>
-    <?php else: ?>
-    <p>Happy weekend</p>
-<?php endif; ?>
 
-<?php
-include 'template/footer.php'; ?>
+<?php if($day == 'Mon'): ?>
+    <h4>Today is Monday</h4>
+<?php elseif($day == 'Tue'): ?>
+    <h4>Today is Tuesday</h4>
+<?php elseif($day == 'Wed'): ?>
+    <h4>Today is Wednesday</h4>
+<?php elseif($day == 'Thu'): ?>
+    <h4>Today is Thursday</h4>
+<?php elseif($day == 'Fri'): ?>
+    <h4>Today is Friday</h4>
+<?php else: ?>
+    <h4>🥳 Happy Weekend!</h4>
+<?php endif ?>
+
+<?php  include 'template/footer.php'; ?>

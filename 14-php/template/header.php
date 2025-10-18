@@ -14,8 +14,6 @@
     </nav>
     <main>
         <header>
-            <h1><?=$tittle?></h1>
             <p>
-                <?=$descripcion?>
             </p>
         </header>

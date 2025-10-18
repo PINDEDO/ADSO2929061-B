@@ -1,33 +1,40 @@
-<?php
+<?php 
+    $title       = '31- Send Mail';
+    $description = 'Function for sending emails directly from the server.';
 
-    $tittle = "31 - Send Mail";
-    $descripcion = "Learn how to send emails in PHP.";
+    include 'template/header.php';
 
-include 'template/header.php';
-    echo '<section>';
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $to = $_POST['to'];
+    echo "<section>";
+?>
+<form action="" method="POST">
+    <div class="row">
+        <input type="email" name="email" placeholder="Email">
+    </div>
+    <div class="row">
+        <input type="text" name="subject" placeholder="Subject">
+    </div>
+    <div class="row">
+        <textarea name="message" rows="4" placeholder="Message"></textarea>
+    </div>
+    <div class="row">
+        <input type="submit" value="Send" class="btn btn-outline-success">
+        <input type="reset" value="Clear Form" class="btn btn-outline-secondary">
+    </div>
+</form>
+<?php 
+    if ($_POST) {
+        $email   = $_POST['email'];
         $subject = $_POST['subject'];
         $message = $_POST['message'];
-        $headers = "From: webmaster@example.com";
-
-        if (mail($to, $subject, $message, $headers)) {
-            echo "Email sent successfully!";
-        } else {
-            echo "Failed to send email.";
-        }
-    }
-
-    echo '<form action="" method="post">';
-    echo '<input type="email" name="to" placeholder="Recipient Email" required>';
-    echo '<input type="text" name="subject" placeholder="Subject" required>';
-    echo '<textarea name="message" placeholder="Message" required></textarea>';
-    echo '<input type="submit" value="Send Email">';
-    echo '</form>';
-
-
-    echo '</section>';
-
-include 'template/footer.php'; ?>
-
+?>
+<?php if (mail('ofaczero@gmail.com', "Subject: $subject", "Message: $message", "From: $email")): ?>
+    <div class="msg">
+        The email has been sent successfully!
+    </div>
+<?php else: ?>
+    <div class="error">
+        The email could not be sent!
+    </div>
+<?php endif ?>
+<?php } ?>
+<?php include 'template/footer.php' ?>

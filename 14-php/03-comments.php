@@ -1,19 +1,24 @@
-<?php
+<?php 
+    $title       = '03- Comments';
+    $description = 'Differents ways to comment code.';
 
-    $tittle = "03 - Comments";
-    $descripcion = "Different ways to add comments in PHP";
+    include 'template/header.php';
 
-include 'template/header.php';
-    echo '<section>';
-    // This is a Line Comment
+    echo "<section>";
+    
+    // This is a Line comment
+    // echo "<h3>Show code</h3>";
 
-    // echo <h3>Show code</h3>
+    echo "<h3>Check source code...</h3>";
 
     /*
-    Multi-line comment
-    Hi, Hello :)
-    This is a line jijiji
+        Multi-Line comment
+        Hi, Hello, :)
+        This is a line jijiji
+        echo "Line 4";
+        echo "Line 5";
     */
 
-    # This is another Line Comment
-include 'template/footer.php';
+    # This is another line comment
+    
+    include 'template/footer.php';

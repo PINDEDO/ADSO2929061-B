@@ -1,27 +1,31 @@
-<?php
+<?php 
+    // Create Cookie:
+    setcookie('name', 'Jeremias Springfield', time()+60);
+    // Delete Cookie:
+    //setcookie('name', 'Jeremias Springfield', time()-60);
+?>
+<?php 
+    $title       = '29- Cookies';
+    $description = 'Mechanism for storing data in the remote browser.';
 
-    $tittle = "29 - Cookies";
-    $descripcion = "Learn how to work with cookies in PHP.";
+    include 'template/header.php';
 
-include 'template/header.php';
-    echo '<section>';
+    echo "<section>";
+?>
 
-    echo '<h2>Cookies</h2>';
-    echo '<form action="" method="post">';
-    echo '<input type="text" name="cookie_name" placeholder="Cookie Name">';
-    echo '<input type="text" name="cookie_value" placeholder="Cookie Value">';
-    echo '<input type="submit" value="Set Cookie">';
-    echo '</form>';
+<div class="msg">
+    <small> Show Cookies: Go to console/storage/cookies</small>
+    <br>
+    <?php if (isset($_COOKIE['name'])): ?>
+        <p> 
+            <strong>name:</strong>
+            <?php echo $_COOKIE['name'] ?> 
+        </p>
+    <?php else: ?>
+        <p>
+            Welcome Guest!
+        </p>
+    <?php endif ?>
+</div>
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $name = $_POST['cookie_name'];
-        $value = $_POST['cookie_value'];
-        setcookie($name, $value, time() + 3600);
-        echo "Cookie '$name' has been set!";
-    }
-
-    echo '</section>';
-
-
-include 'template/footer.php'; ?>
-
+<?php include 'template/footer.php' ?>

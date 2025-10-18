@@ -1,12 +1,12 @@
-<?php
+<?php 
+    $title       = '06- Oper Arithmetics';
+    $description = 'Perform mathematical calculations using numeric values';
 
-    $tittle = "06 - Oper Arithmetics";
-    $descripcion = "Perform mathematical calculations using numeric values";
-
-include 'template/header.php';
-    echo '<section>';
-
+    include 'template/header.php';
+    echo "<section>";
+    $x = 2;
 ?>
+
 <table>
     <thead>
         <tr>
@@ -20,20 +20,20 @@ include 'template/header.php';
         <tr>
             <td>+</td>
             <td>Addition</td>
-            <td>$x=2 | x+2</td>
-            <td><?=$x=2?></td>
+            <td>$x=2 | $x+2</td>
+            <td><?=$x+2?></td>
         </tr>
         <tr>
             <td>-</td>
-            <td>Subtraction</td>
-            <td>$x=2 | 5-x</td>
-            <td><?=$x=2?></td>
+            <td>Substraction</td>
+            <td>$x=2 | 5-$x</td>
+            <td><?=5-$x?></td>
         </tr>
         <tr>
             <td>*</td>
             <td>Product</td>
-            <td>$x=4 | x*3</td>
-            <td><?=$x=4; echo 5*$x?></td>
+            <td>$x=4 | 5*$x</td>
+            <td><?php $x=4;  echo 5*$x; ?></td>
         </tr>
         <tr>
             <td>/</td>
@@ -49,29 +49,23 @@ include 'template/header.php';
         </tr>
         <tr>
             <td>++</td>
-            <td>Increment (post)</td>
+            <td>Increment (pos)</td>
             <td>$x=5 | x++</td>
-            <td><?=$x=5; echo $x++?></td>
+            <td><?php $x=5; echo $x++; ?></td>
         </tr>
         <tr>
             <td>++</td>
             <td>Increment (pre)</td>
             <td>$x=5 | ++x</td>
-            <td><?=$x=5; echo ++$x?></td>
-        </tr>
-        <tr>
-            <td>--</td>
-            <td>Decrement (post)</td>
-            <td>$x=5 | x--</td>
-            <td><?=$x=5; echo $x--?></td>
+            <td><?php $x=5; echo ++$x; ?></td>
         </tr>
         <tr>
             <td>--</td>
             <td>Decrement (pre)</td>
             <td>$x=5 | --x</td>
-            <td><?=$x=5; echo --$x?></td>
+            <td><?php $x=5; echo --$x; ?></td>
         </tr>
     </tbody>
 </table>
-<?php
-include 'template/footer.php'; ?>
+
+<?php  include 'template/footer.php'; ?>

@@ -1,22 +1,28 @@
-<?php
+<?php 
+    $title       = '27- File Text';
+    $description = 'Is used to open a file or URL.';
 
-    $tittle = "27 - File and Text Handling";
-    $descripcion = "Learn how to work with files and text in PHP.";
+    include 'template/header.php';
 
-include 'template/header.php';
-    echo '<section>';
+    echo "<section>";
 
-    echo '<h2>File Handling</h2>';
-    $filename = 'example.txt';
-    // Create or open the file
-    $file = fopen($filename, "a+") or die("Unable to open file!");
-    fwrite($file, "Hello, World!\n");
+    $file = fopen('text/lorem.txt', 'r') 
+    or exit("Can't open!");
+
+    while (!feof($file)) {
+        echo fgets($file);
+    }
     fclose($file);
-    echo '<h2>Text Handling</h2>';
-    $text = "Hello, World!";
-    echo '<p>' . $text . '</p>';
-    echo '<p>String length: ' . strlen($text) . '</p>';
-    echo '<p>Uppercase: ' . strtoupper($text) . '</p>';
+?>
+    <br><br>
+    <div class="msg">
+    <?php 
+        $file = fopen('text/lorem.txt', 'r') 
+        or exit("Can't open!");
 
-include 'template/footer.php'; ?>
+        while (!feof($file)) {
+            echo fgetc($file).'🐘';
+        }
+        fclose($file);
 
+    include 'template/footer.php'; 

@@ -1,12 +1,11 @@
-<?php
+<?php 
+    $title       = '08- Oper Comparison';
+    $description = 'Compare values and return boolean result';
 
-    $tittle = "08 - Oper Comparison";
-    $descripcion = "Perform comparison operations on variables";
-
-include 'template/header.php';
-    echo '<section>';
-
+    include 'template/header.php';
+    echo "<section>";
 ?>
+
 <table>
     <thead>
         <tr>
@@ -18,34 +17,40 @@ include 'template/header.php';
     <tbody>
         <tr>
             <td>==</td>
-            <td>Is equal</td>
-            <td><?php echo '5==8 | '; var_dump(5==8)?></td>
+            <td>Is Equal</td>
+            <td><?php echo '5==8 | '; var_dump(5==8) ?></td>
         </tr>
         <tr>
             <td>!=</td>
-            <td>Is not equal</td>
-            <td><?php echo '5!=8 | '; var_dump(5!=8)?></td>
+            <td>Is Not Equal</td>
+            <td><?php echo '5!=8 | '; var_dump(5!=8) ?></td>
         </tr>
         <tr>
             <td><></td>
-            <td>Is different</td>
-            <td><?php echo '5<>8 | '; var_dump(5<>8)?></td>
+            <td>Is Different</td>
+            <td><?php echo '5<>8 | '; var_dump(5<>8) ?></td>
+        </tr>
         <tr>
             <td>></td>
             <td>Great than</td>
-            <td><?php echo '5>8 | '; var_dump(5>8)?></td>
+            <td><?php echo '5>8 | '; var_dump(5>8) ?></td>
         </tr>
         <tr>
             <td><</td>
             <td>Less than</td>
-            <td><?php echo '5<8 | '; var_dump(5<8)?></td>
+            <td><?php echo '5<8 | '; var_dump(5<8) ?></td>
         </tr>
         <tr>
             <td>>=</td>
-            <td>Great than or equal</td>
-            <td><?php echo '5>=8 | '; var_dump(5>=8)?></td>
+            <td>Great or Equal than</td>
+            <td><?php echo '5>=8 | '; var_dump(5>=8) ?></td>
+        </tr>
+        <tr>
+            <td><=</td>
+            <td>Less or Equal than</td>
+            <td><?php echo '5<=8 | '; var_dump(5<=8) ?></td>
         </tr>
     </tbody>
 </table>
-<?php
-include 'template/footer.php'; ?>
+
+<?php  include 'template/footer.php'; ?>

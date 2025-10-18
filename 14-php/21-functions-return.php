@@ -1,17 +1,17 @@
-<?php
+<?php 
+    $title       = '21- Functions Return';
+    $description = 'A function that sends a value back to the code that called it.';
 
-    $tittle = "21 - Functions Return";
-    $descripcion = "functions that return a value after execution";
+    include 'template/header.php';
 
-include 'template/header.php';
-    echo '<section>';
+    echo "<section>";
 
     function calculateDivision($num1, $num2 = 5) {
-        return "$num1 / $num2 equals: " . ($num1 / $num2). "<br>";
+        return "$num1 / $num2 equals: " . ($num1 / $num2) . "<br>" ;
     }
 
     echo calculateDivision(4, 10);
     echo calculateDivision(6);
     echo calculateDivision(64, 4);
 
-include 'template/footer.php'; ?>
+    include 'template/footer.php'; 

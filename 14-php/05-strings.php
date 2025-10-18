@@ -1,20 +1,20 @@
-<?php
+<?php 
+    $title       = '05- Strings';
+    $description = 'Characters values';
 
-    $tittle = "04 - Variables";
-    $descripcion = "How to assing values";
+    include 'template/header.php';
 
-include 'template/header.php';
-    echo '<section>';
+    echo "<section>";
 
     $string1 = "Lorem ipsum dolor ";
-    $string2 = "sit amet consectetur...";
+    $string2 = "sit amet consecutare...";
 
-    echo "<p>" . $string1 .' '. $string2 . "</p>";
-    echo "Character length: " . strlen($string1 . $string2);
-    echo '<br>';
-    echo "Position if ADSO into Hello ADSO: " . strpos('Hello ADSO', 'ADSO');
-    echo '<br>';
+    echo "<p>$string1  $string2</p>";
+    echo "Characters Length is: " . strlen($string1.$string2);
+    echo "<br>";
+    echo "Position of ADSO into Hello ADSO: " . strpos('Hello ADSO', 'ADSO');
+    echo "<br>";
     echo "Last 5 words of Visualization: " . substr('Visualization', -5);
 
-
-include 'template/footer.php';
+    
+    include 'template/footer.php';
