@@ -1,18 +1,26 @@
-<?php 
-    $title       = '15- Loop while';
-    $description = 'A loop that repeats code while condition is true';
+<?php
 
-    include 'template/header.php';
+$title = '15- Loop while';
+$description = 'A loop that repeats code while condition is true';
 
-    echo "<section style='display: flex; gap: 0.2rem'>";
 
-    $i = 1;
+include 'template/header.php';
+echo "<section style='display: flex; gap: 0.2rem'>";
 
-    while($i <= 10) {
-        echo "<p style='padding: 0.4rem 0.6rem; border: 2px solid #0006'>
-                $i
+
+$contador = 1;
+
+
+while ($contador <= 10) {
+    echo "<p style='padding: 0.4rem 0.6rem; border: 2px solid #0006'>
+                $contador
               </p>";
-        $i++;
-    }
+    $contador++;
+}
 
-    include 'template/footer.php'; 
+
+echo "</section>";
+
+
+include 'template/footer.php';
+?>

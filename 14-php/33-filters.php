@@ -1,64 +1,63 @@
-
-
-
-
 <?php 
-    $title       = '33- Filters';
+    $title = '33- Filters';
     $description = 'Are used to validate and sanitize external input.';
 
     include 'template/header.php';
-
     echo "<section>";
 ?>
 
 <form action="" method="POST">
     <div class="row">
-        <input type="number" class="form-control" name="age" placeholder="Enter you Age">
+        <input type="number" class="form-control" name="edad" placeholder="Ingresa tu Edad">
     </div>
     <div class="row">
-        <input type="email" class="form-control" name="email" placeholder="Enter your Email">
+        <input type="email" class="form-control" name="correo" placeholder="Ingresa tu Correo">
     </div>
     <div class="row">
-        <input type="url" class="form-control" name="url" placeholder="Enter your URL">
+        <input type="url" class="form-control" name="direccion_web" placeholder="Ingresa tu URL">
     </div>
     <div class="row">
-        <input type="submit" value="Apply Filters" class="btn btn-success">
+        <input type="submit" value="Aplicar Filtros" class="btn btn-success">
     </div>
 </form>
+
 <?php 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        // AGE - - - - - - - - - - - - - - - - -
-        $age = $_REQUEST['age'];
-        $ops = array('options' => 
+        // EDAD 
+        $edad = $_REQUEST['edad'];
+        $opciones = array('options' => 
                 array('min_range' => 18, 
                         'max_range' => 23
                 )
             );
-        if (!filter_var($age, FILTER_VALIDATE_INT, $ops)) {
+        if (!filter_var($edad, FILTER_VALIDATE_INT, $opciones)) {
             echo '<div class="error">
-                    You Cannot Participate in WSI!
+                    No Puedes Participar en WSI!
                     </div>';
         } else {
             echo '<div class="msg">
-                    You Can Participate in WSI!
+                    Puedes Participar en WSI!
                     </div>';
         }
-        // EMAIL - - - - - - - - - - - - - - - - -
-        if (!filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL)) {
+        // CORREO 
+        if (!filter_input(INPUT_POST, 'correo', FILTER_VALIDATE_EMAIL)) {
             echo '<div class="error">
-                    The Email is not valid!
+                    El Correo no es válido!
                     </div>';
         } else {
             echo '<div class="msg">
-                    The Email is valid!
+                    El Correo es válido!
                     </div>';
         }
-        // URL - - - - - - - - - - - - - - - - -
-        $url = filter_input(INPUT_POST, 'url', FILTER_SANITIZE_URL);
+        // URL 
+        $direccion_web = filter_input(INPUT_POST, 'direccion_web', FILTER_SANITIZE_URL);
         echo '<div class="msg">
-            The URL disinfected is: '.$url.'
+            La URL desinfectada es: '.$direccion_web.'
                 </div>';
     }
 ?>
 
-<?php include 'template/footer.php' ?>
+<?php 
+    echo "</section>";
+    include 'template/footer.php' 
+?>

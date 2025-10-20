@@ -1,31 +1,31 @@
 <?php 
-    $title       = '32- Exceptions';
+    $title = '32- Exceptions';
     $description = 'Is an object that describes an error or unexpected behaviour.';
 
     include 'template/header.php';
-
     echo "<section>";
 ?>
 <form action="" method="POST">
     <div class="row">
-        <input type="number" class="form-control" name="age" placeholder="Enter your age">
+        <input type="number" class="form-control" name="edad" placeholder="Ingresa tu edad">
     </div>
     <div class="row">
-        <input type="submit" value="Validate" class="btn btn-success">
+        <input type="submit" value="Validar" class="btn btn-success">
     </div>
 </form>
+
 <?php 
     if ($_POST) {
-        function validate_age($age) {
-            if ($age < 18) {
-                throw new Exception("You can't vote!");
+        function validar_edad($edad) {
+            if ($edad < 18) {
+                throw new Exception("No puedes votar!");
             }
             return true;
         }
         try {
-            validate_age($_POST['age']);
+            validar_edad($_POST['edad']);
             echo '<div class="msg">
-                    You can vote!
+                    Puedes votar!
                     </div>';
         } catch (Exception $e) {
             echo '<div class="error">
@@ -35,4 +35,7 @@
     }
 ?>
 
-<?php include 'template/footer.php' ?>
+<?php 
+    echo "</section>";
+    include 'template/footer.php' 
+?>

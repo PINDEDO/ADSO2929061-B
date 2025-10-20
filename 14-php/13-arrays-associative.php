@@ -1,24 +1,29 @@
-<?php 
-    $title       = '13- Arrays Associative';
-    $description = 'Array using string keys to access corresponding value';
+<?php
 
-    include 'template/header.php';
+$title = '13- Arrays Associative';
+$description = 'Array using string keys to access corresponding value';
 
-    echo "<section>";
-    
-    $characters = array(
-        'Tanjiro Kamado'    => 16,
-        'Nezuko Kamado'     => 15,
-        'Zenitsu Agatsuma'  => 17,
-        'Inosuke Hashibira' => 18
-    );
-    $characters['Genya Shinazugawa'] = 20;
-    $characters['Kanao Tsuyuri']     = 19;
 
-    //var_dump($characters);
+include 'template/header.php';
+echo "<section>";
 
-    foreach ($characters as $key => $value) {
-        echo $key . ": " . $value . "<br>";
-    }
-    
-    include 'template/footer.php'; 
+
+$personajes = [
+    'Tanjiro Kamado' => 16,
+    'Nezuko Kamado' => 15,
+    'Zenitsu Agatsuma' => 17,
+    'Inosuke Hashibira' => 18
+];
+
+$personajes['Genya Shinazugawa'] = 20;
+$personajes['Kanao Tsuyuri'] = 19;
+
+foreach ($personajes as $nombre => $edad) {
+    echo $nombre . ": " . $edad . "<br>";
+}
+
+echo "</section>";
+
+
+include 'template/footer.php';
+?>

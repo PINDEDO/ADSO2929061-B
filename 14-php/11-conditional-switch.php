@@ -1,53 +1,49 @@
-<?php 
-    $title       = '11- Conditional switch';
-    $description = 'Select code block based on value';
+```php
+<?php
 
-    include 'template/header.php';
-    echo "<section>";
+$title = '11- Conditional switch';
+$description = 'Select code block based on value';
 
-    $monthNumber = date('m');
 
-    switch ($monthNumber) {
-        case 1:
-            echo "<h4>It's January!</h4>";
-            break;
-        case 2:
-            echo "<h4>It's February!</h4>";
-            break;
-        case 3:
-            echo "<h4>It's March!</h4>";
-            break;
-        case 4:
-            echo "<h4>It's April!</h4>";
-            break;
-        case 5:
-            echo "<h4>It's May!</h4>";
-            break;
-        case 6:
-            echo "<h4>It's June!</h4>";
-            break;
-        case 7:
-            echo "<h4>It's July!</h4>";
-            break;
-        case 8:
-            echo "<h4>It's August!</h4>";
-            break;
-        case 9:
-            echo "<h4>It's September!</h4>";
-            break;
-        case 10:
-            echo "<h4>It's October!</h4>";
-            break;
-        case 11:
-            echo "<h4>It's November!</h4>";
-            break;
-        case 12:
-            echo "<h4>It's December!</h4>";
-            break;
-        default:
-            echo "<h4>Invalid month number.</h4>";
-            break;
-    }
+include 'template/header.php';
+echo "<section>";
+
+
+$mesActual = date('m');
+
+if ($mesActual == 1) {
+    echo "<h4>Es Enero!</h4>";
+} else if ($mesActual == 2) {
+    echo "<h4>Es Febrero!</h4>";
+} else if ($mesActual == 3) {
+    echo "<h4>Es Marzo!</h4>";
+} else if ($mesActual == 4) {
+    echo "<h4>Es Abril!</h4>";
+} else if ($mesActual == 5) {
+    echo "<h4>Es Mayo!</h4>";
+} else if ($mesActual == 6) {
+    echo "<h4>Es Junio!</h4>";
+} else if ($mesActual == 7) {
+    echo "<h4>Es Julio!</h4>";
+} else if ($mesActual == 8) {
+    echo "<h4>Es Agosto!</h4>";
+} else if ($mesActual == 9) {
+    echo "<h4>Es Septiembre!</h4>";
+} else if ($mesActual == 10) {
+    echo "<h4>Es Octubre!</h4>";
+} else if ($mesActual == 11) {
+    echo "<h4>Es Noviembre!</h4>";
+} else if ($mesActual == 12) {
+    echo "<h4>Es Diciembre!</h4>";
+} else {
+
+    echo "<h4>Número de mes inválido.</h4>";
+}
+
+
+echo "</section>";
+
+
+include 'template/footer.php';
 ?>
-
-<?php  include 'template/footer.php'; ?>
+```

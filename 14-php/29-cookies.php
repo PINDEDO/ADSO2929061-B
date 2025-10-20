@@ -1,31 +1,30 @@
 <?php 
-    // Create Cookie:
-    setcookie('name', 'Jeremias Springfield', time()+60);
-    // Delete Cookie:
-    //setcookie('name', 'Jeremias Springfield', time()-60);
+    setcookie('nombre', 'Jeremias Springfield', time()+60);
 ?>
 <?php 
-    $title       = '29- Cookies';
+    $title = '29- Cookies';
     $description = 'Mechanism for storing data in the remote browser.';
 
     include 'template/header.php';
-
     echo "<section>";
 ?>
 
 <div class="msg">
-    <small> Show Cookies: Go to console/storage/cookies</small>
+    <small> Ver Cookies: Ve a consola/storage/cookies</small>
     <br>
-    <?php if (isset($_COOKIE['name'])): ?>
+    <?php if (isset($_COOKIE['nombre'])): ?>
         <p> 
-            <strong>name:</strong>
-            <?php echo $_COOKIE['name'] ?> 
+            <strong>nombre:</strong>
+            <?php echo $_COOKIE['nombre'] ?> 
         </p>
     <?php else: ?>
         <p>
-            Welcome Guest!
+            Bienvenido Invitado!
         </p>
     <?php endif ?>
 </div>
 
-<?php include 'template/footer.php' ?>
+<?php 
+    echo "</section>";
+    include 'template/footer.php' 
+?>

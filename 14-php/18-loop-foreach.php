@@ -1,18 +1,19 @@
-<?php 
-    $title       = '18- Loop foreach';
-    $description = 'Loop that iterates over each element in an array.';
+<?php
 
-    include 'template/header.php';
+$title = '18- Loop foreach';
+$description = 'Loop that iterates over each element in an array.';
 
-    echo "<section>";
+include 'template/header.php';
+echo "<section>";
+
+$signos = ['♈️ Aries', '♉️ Tauro', '♊️ Geminis', '♋️ Cancer', '♌️ Leo', '♍️ Virgo'];
 
 
-    $signs = ['♈️ Aries', '♉️ Tauro', '♊️ Geminis', '♋️ Cancer', '♌️ Leo','♍️ Virgo'];
+foreach ($signos as $signo) {
+    echo "<p>$signo</p>";
+}
 
-    //var_dump($jobs);
+echo "</section>";
 
-    foreach ($signs as $sign) {
-       echo "<p>$sign</p>";
-    }
-
-    include 'template/footer.php'; 
+include 'template/footer.php';
+?>

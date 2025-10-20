@@ -1,6 +1,5 @@
-
 <?php  
-$title  = '25- challengue-dates';
+$title = '25- challengue-dates';
 $descripcion = '';
 
 include 'template/header.php';
@@ -16,12 +15,13 @@ include 'template/header.php';
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['fecha_nacimiento'])) {
         $fecha_nacimiento = new DateTime($_POST['fecha_nacimiento']);
-        $fechaActual = new DateTime(); 
-        $edad = $fechaActual->diff($fecha_nacimiento);
-        echo "<p>Tu edad es: <strong>{$edad->y} años</strong></p>";
+        $hoy = new DateTime(); 
+        $diferencia = $hoy->diff($fecha_nacimiento);
+        echo "<p>Tu edad es: <strong>{$diferencia->y} años</strong></p>";
     }
     ?>
 </section>
 
 <?php
 include 'template/footer.php';
+?>

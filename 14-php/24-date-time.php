@@ -1,37 +1,39 @@
 <?php 
-    $title       = '24- Date & Time';
+    $title = '24- Date & Time';
     $description = 'Many ways to handle dates and times.';
 
     include 'template/header.php';
-
     echo "<section>";
 ?>
 
 <ul class="msg">
     <li>
-        <strong>hour-minutes-seconds: </strong>
+        <strong>hora-minutos-segundos: </strong>
         <?php echo date('h:i:s') ?>
     </li>
     <li>
-        <strong>day-month-year: </strong>
+        <strong>dia-mes-año: </strong>
         <?php echo date('d-m-Y') ?>
     </li>
     <li>
-        <strong>Name of Day: </strong>
+        <strong>Nombre del Día: </strong>
         <?php echo date('l') ?>
     </li>
     <li>
-        <strong>Full Year: </strong>
+        <strong>Año Completo: </strong>
         <?php echo date('Y') ?>
     </li>
     <li>
-        <strong>Time Zone: </strong>
+        <strong>Zona Horaria: </strong>
         <?php echo date('e') ?>
     </li>
     <li>
-        <strong>Time UNIX: </strong>
+        <strong>Tiempo UNIX: </strong>
         <?php echo time() ?>
     </li>
 </ul>
 
-<?php include 'template/footer.php' ?>
+<?php 
+    echo "</section>";
+    include 'template/footer.php' 
+?>

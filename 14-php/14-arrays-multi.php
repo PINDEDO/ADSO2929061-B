@@ -1,26 +1,31 @@
-<?php 
-    $title       = '14- Arrays Multidimensional';
-    $description = 'Array that contains other nested arrays.';
+<?php
 
-    include 'template/header.php';
+$title = '14- Arrays Multidimensional';
+$description = 'Array that contains other nested arrays.';
 
-    echo "<section>";
+include 'template/header.php';
+echo "<section>";
 
-    $bicycles = array(
-        'Specialized' => array('Enduro', 'Stumjumper', 'Camber'),
-        'Intense'     => array('Carbine', 'Tracer', 'Spider'),
-        'Santa Cruz'  => array('Nomad', 'Megatower', 'Hightower')
-    );
+$bicicletas = [
+    'Specialized' => ['Enduro', 'Stumjumper', 'Camber'],
+    'Intense' => ['Carbine', 'Tracer', 'Spider'],
+    'Santa Cruz' => ['Nomad', 'Megatower', 'Hightower']
+];
 
-    //var_dump($bicycles);
-    
-     foreach ($bicycles as $key => $value) {
-        echo "<h3> $key </h3>";
-        echo "<ul>";
-        foreach($value as $refer) {
-            echo "<li>" . $refer . "</li>";
-        }
-        echo "</ul>";
+foreach ($bicicletas as $marca => $modelos) {
+    echo "<h3>$marca</h3>";
+    echo "<ul>";
+
+    foreach ($modelos as $modelo) {
+        echo "<li>" . $modelo . "</li>";
     }
-    
-    include 'template/footer.php'; 
+
+    echo "</ul>";
+}
+
+
+echo "</section>";
+
+
+include 'template/footer.php';
+?>

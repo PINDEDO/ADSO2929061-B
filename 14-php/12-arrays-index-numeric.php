@@ -1,26 +1,35 @@
-<?php 
-    $title       = '12- Arrays Index Numeric';
-    $description = 'Stores multiples values accessed by index';
+<?php
 
-    include 'template/header.php';
-    echo "<section>";
+$title = '12- Arrays Index Numeric';
+$description = 'Stores multiples values accessed by index';
 
-    $fruits = array("🍎", "🍌", "🍊", "🥭");
 
-    echo "My favorite fruit is: " . $fruits[0] . "<br>"; 
-    echo "The second fruit in the list is: " . $fruits[1] . "<br>"; 
+include 'template/header.php';
+echo "<section>";
 
-    $fruits[2] = "🍇";
-    echo "The updated third fruit is: " . $fruits[2] . "<br>"; 
 
-    $fruits[] = "🍍";
-    echo "The newly added fruit is: " . $fruits[4] . "<br>";
+$frutas = ["🍎", "🍌", "🍊", "🥭"];
 
-    echo "All fruits in the array: <br>";
-    foreach ($fruits as $fruit) {
-        echo $fruit . " ";
-    }
+echo "Mi fruta favorita es: " . $frutas[0] . "<br>";
+echo "La segunda fruta de la lista es: " . $frutas[1] . "<br>";
 
+
+$frutas[2] = "🍇";
+echo "La tercera fruta actualizada es: " . $frutas[2] . "<br>";
+
+
+$frutas[] = "🍍";
+echo "La fruta recién agregada es: " . $frutas[4] . "<br>";
+
+
+echo "Todas las frutas en la lista: <br>";
+for ($i = 0; $i < count($frutas); $i++) {
+    echo $frutas[$i] . " ";
+}
+
+
+echo "</section>";
+
+
+include 'template/footer.php';
 ?>
-
-<?php  include 'template/footer.php'; ?>
