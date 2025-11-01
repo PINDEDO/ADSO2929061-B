@@ -1,31 +1,37 @@
 <?php 
-    $title = '27- File Text';
-    $description = 'Is used to open a file or URL.';
+$title = '27- Archivos de Texto';
+$description = 'Se usa para abrir un archivo o URL.';
 
-    include 'template/header.php';
-    echo "<section>";
+include 'template/header.php';
+?>
 
-    $archivo = fopen('text/lorem.txt', 'r') 
-    or exit("No se puede abrir!");
+<section>
+    <?php
+    // Leer archivo línea por línea
+    $archivo = fopen('example.txt', 'r') or exit("No se puede abrir el archivo!");
 
     while (!feof($archivo)) {
         echo fgets($archivo);
     }
+    
     fclose($archivo);
-?>
+    ?>
+
     <br><br>
+
     <div class="msg">
-    <?php 
-        $archivo = fopen('text/lorem.txt', 'r') 
-        or exit("No se puede abrir!");
+        <?php 
+        // Leer archivo carácter por carácter
+        $archivo = fopen('example.txt', 'r') or exit("No se puede abrir el archivo!");
 
         while (!feof($archivo)) {
-            echo fgetc($archivo).'🐘';
+            $caracter = fgetc($archivo);
+            echo $caracter . '😒';
         }
+        
         fclose($archivo);
-    ?>
+        ?>
     </div>
-<?php
-    echo "</section>";
-    include 'template/footer.php'; 
-?>
+</section>
+
+<?php include 'template/footer.php'; ?>

@@ -1,39 +1,37 @@
 <?php 
-    $title = '24- Date & Time';
-    $description = 'Many ways to handle dates and times.';
+$title = '24- Fecha y Hora';
+$description = 'Múltiples formas de manejar fechas y horas.';
 
-    include 'template/header.php';
-    echo "<section>";
+include 'template/header.php';
 ?>
 
-<ul class="msg">
-    <li>
-        <strong>hora-minutos-segundos: </strong>
-        <?php echo date('h:i:s') ?>
-    </li>
-    <li>
-        <strong>dia-mes-año: </strong>
-        <?php echo date('d-m-Y') ?>
-    </li>
-    <li>
-        <strong>Nombre del Día: </strong>
-        <?php echo date('l') ?>
-    </li>
-    <li>
-        <strong>Año Completo: </strong>
-        <?php echo date('Y') ?>
-    </li>
-    <li>
-        <strong>Zona Horaria: </strong>
-        <?php echo date('e') ?>
-    </li>
-    <li>
-        <strong>Tiempo UNIX: </strong>
-        <?php echo time() ?>
-    </li>
-</ul>
+<section>
+    <ul class="msg">
+        <li>
+            <strong>Hora-Minutos-Segundos:</strong>
+            <?php echo date('h:i:s'); ?>
+        </li>
+        <li>
+            <strong>Día-Mes-Año:</strong>
+            <?php echo date('d-m-Y'); ?>
+        </li>
+        <li>
+            <strong>Nombre del Día:</strong>
+            <?php echo date('l'); ?>
+        </li>
+        <li>
+            <strong>Año Completo:</strong>
+            <?php echo date('Y'); ?>
+        </li>
+        <li>
+            <strong>Zona Horaria:</strong>
+            <?php echo date('e'); ?>
+        </li>
+        <li>
+            <strong>Tiempo UNIX:</strong>
+            <?php echo time(); ?>
+        </li>
+    </ul>
+</section>
 
-<?php 
-    echo "</section>";
-    include 'template/footer.php' 
-?>
+<?php include 'template/footer.php'; ?>

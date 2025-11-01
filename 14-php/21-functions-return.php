@@ -1,18 +1,23 @@
+
+
 <?php 
-    $title = '21- Functions Return';
-    $description = 'A function that sends a value back to the code that called it.';
+$title = '21- Funciones con Retorno';
+$description = 'Una función que devuelve un valor al código que la llamó.';
 
-    include 'template/header.php';
-    echo "<section>";
+include 'template/header.php';
+?>
 
+<section>
+    <?php
     function calcularDivision($numero1, $numero2 = 5) {
-        return "$numero1 / $numero2 es igual a: " . ($numero1 / $numero2) . "<br>" ;
+        $resultado = $numero1 / $numero2;
+        return "$numero1 ÷ $numero2 es igual a: $resultado<br>";
     }
 
     echo calcularDivision(4, 10);
     echo calcularDivision(6);
     echo calcularDivision(64, 4);
+    ?>
+</section>
 
-    echo "</section>";
-    include 'template/footer.php'; 
-?>
+<?php include 'template/footer.php'; ?>

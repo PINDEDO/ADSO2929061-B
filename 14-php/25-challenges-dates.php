@@ -1,27 +1,29 @@
 <?php  
-$title = '25- challengue-dates';
-$descripcion = '';
+$title = '25- Desafío de Fechas';
+$description = 'Calculadora de edad usando fechas.';
 
 include 'template/header.php';
 ?>
 
 <section style="margin-top: 2rem;">
-    <form method="post">
+    <form method="POST">
         <label for="fecha_nacimiento">Fecha de nacimiento:</label>
         <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" required>
         <input type="submit" value="Calcular Edad">
     </form>
 
     <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['fecha_nacimiento'])) {
-        $fecha_nacimiento = new DateTime($_POST['fecha_nacimiento']);
-        $hoy = new DateTime(); 
-        $diferencia = $hoy->diff($fecha_nacimiento);
-        echo "<p>Tu edad es: <strong>{$diferencia->y} años</strong></p>";
-    }
-    ?>
+    $esPostRequest = $_SERVER['REQUEST_METHOD'] === 'POST';
+    $hayFechaNacimiento = !empty($_POST['fecha_nacimiento']);
+    
+    if ($esPostRequest && $hayFechaNacimiento) {
+        $fechaNacimiento = new DateTime($_POST['fecha_nacimiento']);
+        $fechaActual = new DateTime();
+        $diferencia = $fechaActual->diff($fechaNacimiento);
+        $edad = $diferencia->y;
+        ?>
+        <p>Tu edad es: <strong><?php echo $edad; ?> años</strong></p>
+    <?php } ?>
 </section>
 
-<?php
-include 'template/footer.php';
-?>
+<?php include 'template/footer.php'; ?>

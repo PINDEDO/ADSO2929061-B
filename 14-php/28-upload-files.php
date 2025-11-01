@@ -1,11 +1,11 @@
 <?php 
-    $title = '28- Upload Files';
-    $description = 'Moves the files from /tmp to the given TO directory.';
+$title = '28- Subir Archivos';
+$description = 'Mueve archivos desde /tmp al directorio especificado.';
 
-    include 'template/header.php';
-    echo "<section>";
+include 'template/header.php';
 ?>
 
+<section>
     <form action="" method="POST" enctype="multipart/form-data">
         <div class="row">
             <figure class="figure">
@@ -31,47 +31,60 @@
         </div>
     </form>
 
-    <?php if ($_FILES): ?>
-        <?php if ($_FILES['foto']['error'] > 0): ?>
+    <?php 
+    $hayArchivo = !empty($_FILES);
+    
+    if ($hayArchivo) {
+        $tieneError = $_FILES['foto']['error'] > 0;
+        
+        if ($tieneError) { ?>
             <div class="error">
-                <strong>Error:</strong> Debes seleccionar una Foto.
+                <strong>Error:</strong> Debes seleccionar una foto.
             </div>
-        <?php else: ?>
-            <?php move_uploaded_file($_FILES['foto']['tmp_name'], 'uploads/'.$_FILES['foto']['name']) ?>
-            <div class="msg">
-                <strong>
-                    La Foto ha sido subida exitosamente!
-                </strong>
-                <div>
-                    <strong> Nombre:</strong> <?php echo $_FILES['foto']['name'] ?>
+        <?php } else {
+            $nombreArchivo = $_FILES['foto']['name'];
+            $tipoArchivo = $_FILES['foto']['type'];
+            $tamañoKB = round($_FILES['foto']['size'] / 1024);
+            $archivoTemporal = $_FILES['foto']['tmp_name'];
+            $destinoArchivo = 'uploads/' . $nombreArchivo;
+            
+            $archivoMovido = move_uploaded_file($archivoTemporal, $destinoArchivo);
+            
+            if ($archivoMovido) { ?>
+                <div class="msg">
+                    <strong>¡La foto ha sido subida exitosamente!</strong>
+                    <div>
+                        <strong>Nombre:</strong> <?php echo $nombreArchivo; ?>
+                    </div>
+                    <div>
+                        <strong>Tipo:</strong> <?php echo $tipoArchivo; ?>
+                    </div>
+                    <div>
+                        <strong>Tamaño:</strong> <?php echo $tamañoKB; ?> KB
+                    </div>
                 </div>
-                <div>
-                    <strong> Tipo:</strong> <?php echo $_FILES['foto']['type'] ?>
-                </div>
-                <div>
-                    <strong> Tamaño:</strong> <?php echo round($_FILES['foto']['size'] / 1024) ?> KB
-                </div>
-            </div>	
-        <?php endif ?>
-    <?php endif ?>
+            <?php }
+        }
+    } ?>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.btn-upload').click(function() {
                 $('#foto').click();
             });
+            
             $('#foto').change(function(event) {
-                let lector = new FileReader()
+                let lector = new FileReader();
+                
                 lector.onload = function(event) {
                     $('#prevista').attr('src', event.target.result);
-                }
+                };
+                
                 lector.readAsDataURL(this.files[0]);
-            })
+            });
         });
     </script>
+</section>
 
-<?php 
-    echo "</section>";
-    include 'template/footer.php' 
-?>
+<?php include 'template/footer.php'; ?>

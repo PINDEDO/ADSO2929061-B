@@ -1,44 +1,52 @@
 <?php 
-    $title = '31- Send Mail';
-    $description = 'Function for sending emails directly from the server.';
+$title = '31- Enviar Correo';
+$description = 'Función para enviar correos electrónicos directamente desde el servidor.';
 
-    include 'template/header.php';
-    echo "<section>";
+include 'template/header.php';
 ?>
-<form action="" method="POST">
-    <div class="row">
-        <input type="email" name="correo" placeholder="Correo">
-    </div>
-    <div class="row">
-        <input type="text" name="asunto" placeholder="Asunto">
-    </div>
-    <div class="row">
-        <textarea name="mensaje" rows="4" placeholder="Mensaje"></textarea>
-    </div>
-    <div class="row">
-        <input type="submit" value="Enviar" class="btn btn-outline-success">
-        <input type="reset" value="Limpiar Formulario" class="btn btn-outline-secondary">
-    </div>
-</form>
 
-<?php 
-    if ($_POST) {
-        $correo = $_POST['correo'];
-        $asunto = $_POST['asunto'];
-        $mensaje = $_POST['mensaje'];
-?>
-<?php if (mail('ofaczero@gmail.com', "Asunto: $asunto", "Mensaje: $mensaje", "From: $correo")): ?>
-    <div class="msg">
-        El correo ha sido enviado exitosamente!
-    </div>
-<?php else: ?>
-    <div class="error">
-        El correo no pudo ser enviado!
-    </div>
-<?php endif ?>
-<?php } ?>
+<section>
+    <form action="" method="POST">
+        <div class="row">
+            <input type="email" name="correo" placeholder="Correo" required>
+        </div>
+        <div class="row">
+            <input type="text" name="asunto" placeholder="Asunto" required>
+        </div>
+        <div class="row">
+            <textarea name="mensaje" rows="4" placeholder="Mensaje" required></textarea>
+        </div>
+        <div class="row">
+            <input type="submit" value="Enviar" class="btn btn-outline-success">
+            <input type="reset" value="Limpiar Formulario" class="btn btn-outline-secondary">
+        </div>
+    </form>
 
-<?php 
-    echo "</section>";
-    include 'template/footer.php' 
-?>
+    <?php 
+    $formularioEnviado = !empty($_POST);
+    
+    if ($formularioEnviado) {
+        $correoRemitente = filter_var($_POST['correo'], FILTER_SANITIZE_EMAIL);
+        $asunto = htmlspecialchars($_POST['asunto']);
+        $mensaje = htmlspecialchars($_POST['mensaje']);
+        
+        $correoDestino = 'pinedo7u7@gmail.com';
+        $asuntoCompleto = "Asunto: $asunto";
+        $mensajeCompleto = "Mensaje: $mensaje";
+        $encabezados = "From: $correoRemitente";
+        
+        $correoEnviado = mail($correoDestino, $asuntoCompleto, $mensajeCompleto, $encabezados);
+        
+        if ($correoEnviado) { ?>
+            <div class="msg">
+                ¡El correo ha sido enviado exitosamente!
+            </div>
+        <?php } else { ?>
+            <div class="error">
+                ¡El correo no pudo ser enviado!
+            </div>
+        <?php }
+    } ?>
+</section>
+
+<?php include 'template/footer.php'; ?>
