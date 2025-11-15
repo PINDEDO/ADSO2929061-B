@@ -6,9 +6,9 @@ const personalData : [string, number] = ["hornet", 100];
 const dynamicVariable: any = "This can be anything";
 
 
-const output = document.getElementById('output');
-if(output){
-    output.innerHTML = 
+const output01 = document.getElementById('output');
+if(output01){
+    output01.innerHTML = 
     '<li><strong><Character:</stong> ${characterName}</li>'
     '<li><strong><Character:</stong> ${health}</li>'
     '<li><strong><Character:</stong> ${canDoubleJump}</li>'

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 - Basic Types | TypeScript</title>
+    <link rel="stylesheet" href="css/master.css">
+</head>
+
+<body>
+    <!-- HEADER CON NAVEGACIÓN -->
+    <nav class="controls">
+        <a href="index.html" title="Back to menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/>
+            </svg>
+        </a>
+    </nav>
+
+    <main>
+        <!-- HEADER DE LA PÁGINA -->
+        <header>
+            <h1>01 - Basic Types</h1>
+            <h2>Understanding the fundamental types in TypeScript</h2>
+        </header>
+
+        <!-- CONTENIDO DE LA PÁGINA -->
+        <section>
+            <h3>String Type</h3>
+            <p>
+                The <strong>string</strong> type represents textual data in TypeScript.
+            </p>
+            <xmp>
+let message: string = "Hello TypeScript!";
+let name: string = 'John Doe';
+let template: string = `Welcome ${name}`;
+
+console.log(message);
+            </xmp>
+        </section>
+
+        <section>
+            <h3>Number Type</h3>
+            <p>
+                TypeScript uses the <strong>number</strong> type for all numeric values, 
+                including integers, floats, hexadecimal, binary, and octal.
+            </p>
+            <xmp>
+let decimal: number = 42;
+let float: number = 3.14;
+let hex: number = 0xf00d;
+let binary: number = 0b1010;
+let octal: number = 0o744;
+
+console.log(decimal + float);
+            </xmp>
+        </section>
+
+        <section>
+            <h3>Boolean Type</h3>
+            <p>
+                The <strong>boolean</strong> type represents logical values: true or false.
+            </p>
+            <xmp>
+let isActive: boolean = true;
+let isCompleted: boolean = false;
+
+if (isActive) {
+    console.log("System is active");
+}
+            </xmp>
+        </section>
+
+        <section>
+            <h3>Array Types</h3>
+            <p>
+                Arrays can be typed in two ways in TypeScript.
+            </p>
+            <xmp>
+// Method 1: Using square brackets
+let numbers: number[] = [1, 2, 3, 4, 5];
+
+// Method 2: Using Array generic
+let fruits: Array<string> = ["apple", "banana", "orange"];
+
+console.log(numbers[0]);
+console.log(fruits[1]);
+            </xmp>
+        </section>
+
+        <!-- FOOTER DE NAVEGACIÓN -->
+        <footer>
+            <a href="index.html" class="btn-home">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                    <path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/>
+                </svg>
+                <span>Back to Menu</span>
+            </a>
+            <div class="navigation">
+                <a href="02-interfaces.html" class="btn-next">
+                    <span>Next: Interfaces</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
+                    </svg>
+                </a>
+            </div>
+        </footer>
+    </main>
+
+</body>
+
+</html>

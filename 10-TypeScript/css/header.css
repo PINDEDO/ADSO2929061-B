@@ -1,0 +1,171 @@
+/* ESTILOS ADICIONALES PARA HEADER Y FOOTER - Agregar al master.css */
+
+/* HEADER DE PÁGINAS INTERNAS */
+main > header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+main > header h1 {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 3rem;
+    font-weight: 400;
+    text-align: center;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+main > header h2 {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-align: center;
+    margin: 0;
+    max-width: 600px;
+}
+
+/* SECCIONES DE CONTENIDO */
+section {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+section h3 {
+    border-bottom: 2px solid blueviolet;
+    color: rgba(0, 0, 0, 0.9);
+    font-size: 1.8rem;
+    margin: 0 0 15px 0;
+    padding-bottom: 10px;
+    width: fit-content;
+}
+
+section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 10px 0;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+section p strong {
+    color: blueviolet;
+    font-weight: 600;
+}
+
+section xmp {
+    border-radius: 8px;
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    padding: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    overflow-x: auto;
+    margin: 15px 0;
+    border-left: 4px solid blueviolet;
+}
+
+/* FOOTER DE NAVEGACIÓN */
+footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 700px;
+    margin-top: 2rem;
+    padding: 20px 0;
+}
+
+footer .btn-home,
+footer .btn-next {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50px;
+    display: flex;
+    color: rgba(255, 255, 255, 0.95);
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    transition: all 0.4s ease-in;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+footer .btn-home svg,
+footer .btn-next svg {
+    width: 24px;
+    height: 24px;
+    fill: rgba(255, 255, 255, 0.95);
+    transition: all 0.4s ease-in;
+}
+
+footer .btn-home:hover,
+footer .btn-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+footer .btn-home:hover svg {
+    transform: translateX(-5px);
+}
+
+footer .btn-next:hover svg {
+    transform: translateX(5px);
+}
+
+footer .navigation {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+footer .btn-home {
+    background-color: blueviolet;
+}
+
+footer .btn-home:hover {
+    background-color: #7b2cbf;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    main > header h1 {
+        font-size: 2.5rem;
+    }
+
+    main > header h2 {
+        font-size: 1rem;
+    }
+
+    section {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    section h3 {
+        font-size: 1.5rem;
+    }
+
+    section p {
+        font-size: 1rem;
+    }
+
+    footer {
+        max-width: 90%;
+    }
+
+    footer .btn-home,
+    footer .btn-next {
+        font-size: 1rem;
+        padding: 0.8rem 1.2rem;
+    }
+}
