@@ -1,279 +1,336 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Montserrat:wght@100;300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;800&display=swap');
 
-/* Colores inspirados en el logo OOP - Negro, gris oscuro, azul profundo */
+/* --- Variables de Color --- */
 :root {
-    --primary-bg: #0a0a0a;
-    --secondary-bg: #1a1a1a;
-    --accent-color: #2d5f8d;
-    --accent-light: #4a90d9;
-    --text-primary: #e0e0e0;
-    --text-secondary: #a0a0a0;
-    --border-color: #333333;
-    --hover-bg: #252525;
-    --code-bg: #0d0d0d;
+    --color-bg-dark: #0A192F; /* Azul oscuro primario */
+    --color-bg-light: #172A45; /* Azul oscuro secundario */
+    --color-accent: #64FFDA; /* Turquesa/Cian brillante para acentos */
+    --color-text-light: #CCD6F6; /* Gris claro para texto principal */
+    --color-text-fade: #8892B0; /* Gris más apagado para texto secundario */
+    --color-black-fade: rgba(0, 0, 0, 0.7);
 }
 
-body.oop {
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+body {
+    /* Fondo con un patrón sutil de ondas oscuras (SVG) */
+    background-color: var(--color-bg-dark);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23172A45' stroke-width='6.4' stroke-opacity='0.16' %3E%3Cpath fill='none' d='M-800 400C-800 621 34 800 400 800C766 800 800 621 800 400C800 179 766 0 400 0C34 0 -800 179 -800 400z'/%3E%3Cpath fill='none' d='M-1000 400C-1000 564.9 14 700 300 700C586 700 700 564.9 700 400C700 235.1 586 100 300 100C14 100 -1000 235.1 -1000 400z'/%3E%3Cpath fill='none' d='M-1200 400C-1200 507.4 14 600 200 600C386 600 600 507.4 600 400C600 292.6 386 200 200 200C14 200 -1200 292.6 -1200 400z'/%3E%3Cpath fill='none' d='M-1400 400C-1400 450 14 500 100 500C186 500 500 450 500 400C500 350 186 300 100 300C14 300 -1400 350 -1400 400z'/%3E%3Cpath fill='none' d='M-1600 400C-1600 415 14 430 0 430C-14 430 400 415 400 400C400 385 -14 370 0 370C14 370 -1600 385 -1600 400z'/%3E%3C/g%3E%3C/svg%3E");
     background-attachment: fixed;
-    font-family: 'Montserrat', sans-serif;
-    color: var(--text-primary);
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-text-light); /* Texto claro */
     margin: 0;
     padding: 0;
-    min-height: 100vh;
 }
 
-/* Navegación */
+/* --- Navegación de Controles (Similar a 'nav.controls' del original) --- */
 nav.controls {
     position: fixed;
     top: 20px;
     left: 20px;
-    z-index: 1000;
+    z-index: 1000; /* Asegura que esté por encima de todo */
 }
 
 nav.controls a:is(:link, :visited) {
-    border-radius: 50%;
+    border-radius: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(45, 95, 141, 0.8);
-    backdrop-filter: blur(10px);
-    height: 50px;
-    width: 50px;
-    padding: 10px;
-    transition: all 0.3s ease-in-out;
-    border: 2px solid rgba(74, 144, 217, 0.3);
+    background-color: var(--color-black-fade);
+    height: 40px;
+    width: 40px;
     opacity: 0.8;
+    padding: 10px;
+    transition: all 0.4s ease-in;
+    color: var(--color-accent); /* Iconos en color acento */
 }
 
-nav.controls a:hover {
+nav.controls a:is(:hover) {
     opacity: 1;
     transform: scale(1.1);
-    background-color: var(--accent-light);
-    box-shadow: 0 0 20px rgba(74, 144, 217, 0.5);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
-nav.controls svg {
-    width: 30px;
-    height: 30px;
-}
-
-/* Main container */
+/* --- Estructura Principal del Contenido (main) --- */
 main {
-    align-items: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 3rem;
     min-height: 100vh;
-    padding: 4rem 2rem;
+    gap: 3rem;
+    padding: 20px;
+    text-align: center;
 }
 
-/* Header */
-header {
+/* --- Estilos del Encabezado (header) --- */
+main header {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 1.5rem;
 }
 
-header h1 {
-    font-size: 4rem;
-    font-weight: 900;
+main header h1 {
+    color: var(--color-text-light);
+    font-size: 3.4rem;
+    font-weight: 800; /* Más pesado para el título principal */
     margin: 0;
-    color: var(--text-primary);
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    text-shadow: 0 0 30px rgba(74, 144, 217, 0.6),
-                 0 0 60px rgba(45, 95, 141, 0.4);
-    font-family: 'Fira Code', monospace;
 }
 
-header h1 strong {
-    background: linear-gradient(135deg, #4a90d9 0%, #2d5f8d 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-header p {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    max-width: 500px;
-    line-height: 1.6;
+main header h2 {
+    color: var(--color-accent); /* Descripción en color de acento */
+    font-size: 1.4rem;
     font-weight: 300;
+    margin: 0.5rem 0 0 0;
 }
 
-header img {
-    width: 180px;
-    height: 180px;
-    border-radius: 20px;
-    border: 4px solid var(--accent-color);
-    padding: 20px;
-    background-color: var(--secondary-bg);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5),
-                0 0 40px rgba(45, 95, 141, 0.3);
-    transition: all 0.3s ease;
+main header img {
+    border-radius: 50%;
+    width: 160px;
+    /* Borde en color acento y un poco transparente */
+    border: 8px solid rgba(100, 255, 218, 0.6); 
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.3); /* Sombra para resaltar */
+    margin-bottom: 20px;
 }
 
-header img:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6),
-                0 0 60px rgba(74, 144, 217, 0.5);
-}
-
-/* Menu */
+/* --- Estilos del Menú/Links (menu) --- */
 menu {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
     padding: 0;
-    margin: 0;
-    max-width: 800px;
-    width: 100%;
+    list-style: none; /* Quita viñetas */
+    gap: 0.8rem; /* Espaciado entre links */
 }
 
 menu a:is(:link, :visited) {
-    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--primary-bg) 100%);
-    border: 2px solid var(--border-color);
-    border-radius: 15px;
+    background-color: var(--color-bg-light); /* Fondo del link más claro */
+    border-radius: 50px;
     display: flex;
-    color: var(--text-primary);
+    color: var(--color-text-light);
     gap: 1rem;
     align-items: center;
-    padding: 1.2rem 1.5rem;
+    padding: 1rem 1.5rem;
     text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    font-weight: 400;
-    font-family: 'Fira Code', monospace;
-    position: relative;
-    overflow: hidden;
+    transition: all 0.5s ease-in;
+    width: 280px;
 }
 
-menu a::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(74, 144, 217, 0.2), transparent);
-    transition: left 0.5s ease;
+menu a:is(:hover) {
+    transform: translate(-5px);
+    background-color: #2E4C7B; /* Un poco más oscuro al pasar el ratón */
+    color: var(--color-accent);
 }
 
-menu a:hover::before {
-    left: 100%;
-}
-
-menu a:hover {
-    transform: translateX(-8px);
-    background: linear-gradient(135deg, var(--hover-bg) 0%, var(--secondary-bg) 100%);
-    border-color: var(--accent-color);
-    box-shadow: 0 8px 25px rgba(45, 95, 141, 0.3);
-}
-
-menu a:hover span {
-    transform: scale(1.15);
-    background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent-color) 100%);
-    box-shadow: 0 0 20px rgba(74, 144, 217, 0.6);
-}
-
-menu span {
-    background: linear-gradient(135deg, var(--accent-color) 0%, #1e4a6d 100%);
-    border-radius: 10px;
-    color: #ffffff;
+menu i {
+    background-color: var(--color-accent);
+    border-radius: 50%; /* Icono circular */
+    color: var(--color-bg-dark); /* Color oscuro para el icono dentro del fondo acento */
     font-style: normal;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    height: 40px;
-    width: 40px;
-    min-width: 40px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    font-family: 'Fira Code', monospace;
-    box-shadow: 0 4px 15px rgba(45, 95, 141, 0.3);
+    transition: all 0.5s ease-in;
+    height: 38px;
+    width: 38px;
+    font-weight: 800;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    menu {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-    }
-    
-    header h1 {
-        font-size: 3rem;
-    }
-    
-    header img {
-        width: 140px;
-        height: 140px;
-    }
-    
-    nav.controls {
-        top: 10px;
-        left: 10px;
-    }
-    
-    nav.controls a:is(:link, :visited) {
-        height: 45px;
-        width: 45px;
-    }
+menu a:is(:hover) i {
+    transform: scale(1.1);
 }
 
-/* Sección de contenido (para páginas internas) */
+
+/* --- Estilos de la Sección de Contenido (section) --- */
 section {
-    border-radius: 15px;
-    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--border-color);
-    color: var(--text-primary);
-    padding: 2rem;
-    max-width: 600px;
+    border-radius: 10px;
+    background-color: rgba(23, 42, 69, 0.95); /* Fondo semitransparente oscuro */
+    color: var(--color-text-light);
+    padding: 30px;
     width: 100%;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    max-width: 600px; /* Limitar el ancho para mejor lectura */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px); /* Efecto de desenfoque sutil */
+    -webkit-backdrop-filter: blur(5px);
 }
 
 section h3 {
-    border-bottom: 3px solid var(--accent-color);
-    color: var(--accent-light);
+    border-bottom: 2px solid rgba(100, 255, 218, 0.3); /* Línea inferior acentuada */
+    color: var(--color-accent);
     font-size: 1.8rem;
-    margin: 0 0 1.5rem 0;
-    padding-bottom: 0.5rem;
+    margin: 0 0 15px 0;
+    padding-bottom: 10px;
     width: fit-content;
-    font-family: 'Fira Code', monospace;
-    text-shadow: 0 0 10px rgba(74, 144, 217, 0.3);
 }
 
 section p {
     font-size: 1.1rem;
-    margin: 1rem 0;
-    line-height: 1.7;
-    color: var(--text-secondary);
+    margin: 15px 0;
+    color: var(--color-text-fade);
 }
 
-section xmp,
-section pre {
-    border-radius: 10px;
-    background-color: var(--code-bg);
-    border: 1px solid var(--border-color);
-    color: #4a90d9;
-    padding: 1.5rem;
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9rem;
+section xmp {
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #F8F8F2; /* Color de código claro */
+    padding: 15px;
     overflow-x: auto;
-    line-height: 1.6;
-    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
-section code {
-    background-color: var(--code-bg);
+/* --- Estilos del Pie de Página (footer) --- */
+footer {
+    padding: 20px;
+    text-align: center;
+    color: var(--color-text-fade);
+    font-size: 0.9rem;
+    background-color: var(--color-bg-dark); /* Color de fondo igual al body */
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: var(--color-text-light);
+}
+/* Contenedor principal de la tabla */
+.pokemon-container {
+    max-width: 90%;
+    width: 1200px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%);
+    backdrop-filter: blur(5px);
+    border: 2px solid var(--accent-color);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(45, 95, 141, 0.3);
+}
+
+/* Estilo de la tabla */
+.pokemon-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Espacio entre filas */
+}
+
+/* Encabezados de la tabla (solo 3 columnas) */
+.pokemon-table th {
+    background-color: var(--accent-color);
+    color: var(--text-primary);
+    padding: 15px 10px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.pokemon-table th:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.pokemon-table th:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Filas de la tabla */
+.pokemon-table tr:not(:first-child) {
+    background-color: var(--secondary-bg);
+    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: default;
+}
+
+.pokemon-table tr:hover {
+    background-color: var(--hover-bg);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Celdas de la tabla */
+.pokemon-table td {
+    padding: 15px 10px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 300;
+}
+
+.pokemon-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Estilo específico para el ID */
+.pokemon-table td:first-child {
     color: var(--accent-light);
-    padding: 0.2rem 0.5rem;
-    border-radius: 5px;
     font-family: 'Fira Code', monospace;
-    font-size: 0.9em;
+    font-weight: 500;
+}
+
+/* Estilo para el Tipo (destacado) */
+.pokemon-table .tipo-cell {
+    font-weight: 600;
+    color: #ffd700; /* Un color que contraste para el tipo */
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+}
+
+/* Estilos de Responsive Design */
+@media (max-width: 800px) {
+    .pokemon-container {
+        padding: 10px;
+    }
+    
+    .pokemon-table, 
+    .pokemon-table thead, 
+    .pokemon-table tbody, 
+    .pokemon-table th, 
+    .pokemon-table td, 
+    .pokemon-table tr {
+        display: block;
+    }
+
+    .pokemon-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    .pokemon-table tr {
+        margin-bottom: 15px;
+    }
+
+    .pokemon-table td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    .pokemon-table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 700;
+        color: var(--accent-light);
+    }
+    
+    /* Restaurar el estilo de tres columnas para mostrar solo la información principal */
+    .pokemon-table td {
+        /* Se usa para ocultar las celdas de stats extra en móvil, mostrando solo las principales */
+        display: block; 
+    }
 }

@@ -92,7 +92,7 @@ echo $car2->getInfo(); // Output: 2024 Honda Civic
             <div class="output">
                 <?php
                 // AQUÍ VA TU CÓDIGO PHP EJECUTABLE
-                class car {
+                class Car {
                     public $brand;
                     public $model;
                     public $year;
