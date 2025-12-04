@@ -1,20 +1,20 @@
-const characterName: string = "Hornet"
-const health: number = 100;
-const canDoubleJump: boolean = false;
-const tools: string[] = ["tracks", "Curveclaw", "Cogly"]
-const personalData : [string, number] = ["hornet", 100];
-const dynamicVariable: any = "This can be anything";
+// Basic Types: string, number, boolean
+const characterName:    string              = "Hornet";
+const health:           number              = 100;
+const canBoubleJump:    boolean             = false;
+const tools:            string[]            = ["Tacks", "Curveclaw", "Cogly"];
+const memoryLockeds:    [number, string]    = [1, 'Bone Botton'];
+const firstSkill:       any                 = "Dash"
 
-
-const output01 = document.getElementById('output');
+// Display in browser
+const output01 = document.getElementById('output01');
 if(output01){
-    output01.innerHTML = 
-    '<li><strong><Character:</stong> ${characterName}</li>'
-    '<li><strong><Character:</stong> ${health}</li>'
-    '<li><strong><Character:</stong> ${canDoubleJump}</li>'
-    '<li><strong><Character:</stong> ${tools}</li>'
-    '<li><strong><Character:</stong> ${personalData}</li>'
-    '<li><strong><Character:</stong> ${dynamicVariable}</li>'
-    
+    output01.innerHTML = `
+        <li><strong>Character:</strong> ${characterName}</li>
+        <li><strong>Health:</strong> ${health}</li>
+        <li><strong>Can Double Jump:</strong> ${canBoubleJump}</li>
+        <li><strong>Tools:</strong> ${tools}</li>
+        <li><strong>Memory Locked:</strong> ${memoryLockeds}</li>
+        <li><strong>Dinamic:</strong> ${firstSkill}</li>
+    `;
 }
-

@@ -1,48 +1,52 @@
-<?php 
-$title     = "01-class";
-$description = "";
+<?php
 
-echo "<section>";
+    $tittle = "01 - Class";
+    $descripcion = "Blueprint for creating objects with shared properties and behaviors.";
 
-class Vehicle {
-    # Attributes
-    public $brand;
-    public $refer;
-    public $color;
-    public $modelo;
+include 'template/header.php';
+    echo '<section>';
 
-    # Methods
+    class Vehicle {
+        # Attributes
+        public $brand;
+        public $refer;
+        public $color;
+        public $model;
 
-    public function setAttributes($brand, $refer, $color, $modelo) {
-        $this->brand = $brand;
-        $this->refer = $refer;
-        $this->color = $color;
-        $this->modelo = $modelo;
+        # Methods
+        public function setAttributes($b, $r, $c, $m) {
+            $this->brand = $b;
+            $this->refer = $r;
+            $this->color = $c;
+            $this->model = $m;
+        }
 
+        public function getAttributes() {
+            return "<ul>
+                        <li>Brand: $this->brand</li>
+                        <li>Reference: $this->refer</li>
+                        <li>Color: $this->color</li>
+                        <li>Model: $this->model</li>
+                    </ul>";
+        }
     }
-    public function getAttributs() {
-        return "<ul>
-                    <li>Brand $this->brand  </li>
-                    <li>Refer $this->refer  </li>
-                    <li>Color $this->color  </li>
-                    <li>Model $this->modelo </li>
-                <ul> ";
-        
-    }
 
+    $vh1 = new Vehicle();
+    $vh1->setAttributes("Volkswagen", "Golf", "Black", 2020);
+    echo $vh1->getAttributes();
 
-}
+    $vh2 = new Vehicle();
+    $vh2->setAttributes("Nissan", "Murano", "Gray", 2022);
+    $vh2->refer = "Kicks";
+    echo $vh2->getAttributes();
 
-$Vehicle1 = new Vehicle();
-$Vehicle1->setAttributes('Volkswagen', 'Golf', 'Black', 2020);
-echo $Vehicle1->getAttributs();
+    $vh3 = new Vehicle();
+    $vh3->brand = "Toyota";
+    $vh3->refer = "Foreruner";
+    $vh3->color = "Orange";
+    $vh3->model = 2010;
+    echo $vh3->getAttributes();
 
-$Vehicle2 = new Vehicle();
-$Vehicle2->setAttributes('Nissan', 'SkyLand', 'Red', 1992);
-$Vehicle2->brand = 'Mercedez';
-echo $Vehicle1->getAttributs();
+    echo '</section>';
 
-$Vehicle3 = new Vehicle();
-$Vehicle3->
-$Vehicle3->brand = 'Mazda';
-echo $Vehicle1->getAttributs();
+include 'template/footer.php';

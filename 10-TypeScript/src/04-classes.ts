@@ -1,29 +1,28 @@
 class Enemy {
-    name: string;
-    health: number;
+    name : string;
+    health : number;
 
-    constructor(name: string, health: number){
+    constructor(name: string, health: number) {
         this.name = name;
         this.health = health;
-    
-
     }
 
-    takeDamage(damage: number): void{
+    takeDamage(damage: number): void {
         this.health -= damage;
-
     }
 }
- 
-const mosskin = new Enemy('Mosskin', 30);
+
+const mosskin = new Enemy('Mosskin', 100);
+mosskin.takeDamage(10);
+mosskin.takeDamage(10);
 mosskin.takeDamage(10);
 
-const output04 = document.getElementById('output');
 
-
-if(output04){
-    output04.innerHTML= 
-    '<li><strong><base Damage: </stong>15</li>'
-    '<li><strong><multiplier: </stong>2</li>'
-    '<li><strong><Total Attack: </stong> ${attack}</li>'
+// Display in browser
+const output04 = document.getElementById('output04');
+if (output04) {
+    output04.innerHTML = `
+            <li><strong>Enemy:</strong> ${mosskin.name}</li>
+            <li><strong>Health:</strong> ${mosskin.health}</li>
+        `;
 }
