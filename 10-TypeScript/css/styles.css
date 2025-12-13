@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;800&display=swap');
+
+/* --- Variables y Estilos Base --- */
+:root {
+    --ts-primary: #007acc; /* Azul de TypeScript */
+    --ts-secondary: #fff;
+    --ts-background-dark: #252526; /* Un color oscuro para contraste */
+    --ts-text-light: #fff;
+    --ts-text-dark: #333;
+    --link-bg: rgba(0, 122, 204, 0.7); /* Azul con transparencia */
+    --link-hover-bg: #007acc;
+    --link-hover-shadow: 0 0 15px rgba(0, 122, 204, 0.5);
+}
+
+body {
+    background-color: var(--ts-background-dark);
+    /* Fondo con diseño geométrico sutil */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%233866a1' stroke-width='25.6'%3E%3Cpolyline fill='none' points='1600 160 1280 480 960 160 640 480 320 160 0 480'/%3E%3Cpolyline fill='none' points='0 160 320 480 640 160 960 480 1280 160 1600 480'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    color: var(--ts-text-light);
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+
+    a {
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--link-bg);
+        height: 50px;
+        width: 50px;
+        transition: all 0.4s ease-in;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+        svg {
+            width: 25px;
+            height: 25px;
+            fill: var(--ts-secondary);
+        }
+    }
+
+    a:hover {
+        background-color: var(--link-hover-bg);
+        transform: scale(1.1);
+        box-shadow: var(--link-hover-shadow);
+    }
+}
+
+main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    min-height: 100vh;
+    padding: 20px;
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        
+        h1, h2 {
+            color: var(--ts-secondary);
+            margin: 0;
+        }
+        h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 5px var(--ts-primary);
+        }
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 300;
+        }
+        p {
+            color: var(--ts-secondary);
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        img {
+            border-radius: 50%;
+            width: 160px;
+            border: 8px solid var(--ts-primary);
+            box-shadow: 0 0 20px rgba(0, 122, 204, 0.7);
+            margin-bottom: 20px;
+        }
+    }
+}
+
+/* --- Estilos del Menú (Index) --- */
+menu {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 0.6rem;
+    list-style: none;
+
+    a:is(:link, :visited) {
+        background-color: var(--link-bg);
+        border-radius: 10px;
+        display: flex;
+        color: var(--ts-secondary);
+        gap: 1.2rem;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        width: 280px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+
+        span {
+            background-color: var(--ts-primary);
+            border-radius: 5px;
+            color: var(--ts-secondary);
+            font-style: normal;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease-in-out;
+            height: 30px;
+            width: 30px;
+            font-weight: 800;
+        }
+    }
+
+    a:hover {
+        transform: translate(-5px);
+        background-color: var(--link-hover-bg);
+        box-shadow: var(--link-hover-shadow);
+    }
+
+    a:hover span {
+        transform: scale(1.1);
+        background-color: var(--ts-secondary);
+        color: var(--ts-primary);
+    }
+}

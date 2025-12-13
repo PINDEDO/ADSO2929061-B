@@ -25,7 +25,7 @@ class Department {
 }
 
 $hl = new Department;
-$hl->showHello('Jeremias Springfield');
+$hl->showHello('Abelardo dela Espriella');
 $hl->showAdso(2929061);
 $hl->showDepartment('Caldas');
     echo '</section>';
