@@ -23,12 +23,27 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        // Elegir género aleatorio
+        $gender = fake()->randomElement(['Male', 'Female']);
+
+        // Generar nombre que coincida con el género
+        $firstName = $gender === 'Male'
+            ? fake()->firstName('male')
+            : fake()->firstName('female');
+
+        $fullname = $firstName . ' ' . fake()->lastName();
+
         return [
-            'name' => fake()->name(),
+            'document' => fake()->unique()->numberBetween(10000000, 99999999),
+            'fullname' => $fullname,
+            'gender' => $gender,
+            'birthdate' => fake()->dateTimeBetween('1976-01-01', '2006-12-31')->format('Y-m-d'),
+            'photo' => 'images/users/default.png',
+            'phone' => fake()->numerify('3#########'),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'password' => static::$password ??= Hash::make('12345'),
+            'active' => fake()->boolean(85),
+            'role' => fake()->randomElement(['Admin', 'Customer', 'Customer', 'Customer']),
         ];
     }
 
@@ -37,8 +52,8 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
+        return $this->state(fn(array $attributes) => [
+        'email_verified_at' => null,
         ]);
     }
 }

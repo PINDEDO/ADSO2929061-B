@@ -7,12 +7,6 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
-
-
-
-
-
-
 class UserSeeder extends Seeder
 {
     /**
@@ -20,8 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-
+        // Registro manual: Admin
         $user = new User;
         $user->document = 75000001;
         $user->fullname = 'John Wick';
@@ -33,8 +26,9 @@ class UserSeeder extends Seeder
         $user->role = 'admin';
         $user->save();
 
+        // Registro manual: Customer
         DB::table('users')->insert(
-            [
+        [
             'document' => 123456789,
             'fullname' => 'Lara Croft',
             'gender' => 'Female',
@@ -42,8 +36,10 @@ class UserSeeder extends Seeder
             'phone' => 3100000002,
             'email' => 'larac@mail.com',
             'password' => bcrypt('12345'),
-    
-            ]
+        ]
         );
+
+        // Generar 50 registros con la factory
+        User::factory()->count(50)->create();
     }
 }
