@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+return new class extends Migration 
 {
     /**
      * Run the migrations.
@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('kind');
             $table->double('weight');
             $table->integer('age');
-            $table->string('bread');
+            $table->string('breed');
             $table->string('location');
             $table->text('description');
             $table->boolean('active')->default(1);
