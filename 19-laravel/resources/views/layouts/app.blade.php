@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
@@ -13,6 +14,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -31,6 +33,9 @@
             <main>
                 {{ $slot }}
             </main>
+            <footer class="container" style="margin-top: auto; padding: 2rem 0; color: var(--text-muted); font-size: 0.875rem; text-align: center;">
+        &copy; {{ date('Y') }} PetAdoption Module. Premium Design by Antigravity.
+    </footer>   
         </div>
     </body>
 </html>
