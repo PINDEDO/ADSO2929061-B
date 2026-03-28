@@ -13,56 +13,56 @@ class PetSeeder extends Seeder
      */
     public function run(): void
     {
+        // Eloquent : ORM
         $pet = new Pet;
-        $pet->name = "chando";
+        $pet->name = 'Rocko';
         $pet->kind = 'dog';
-        $pet->weight = 14;
+        $pet->weight = 4;
+        $pet->age = 6;
+        $pet->breed = 'creole';
+        $pet->location = 'villamaria caldas';
+        $pet->description = 'He is a calm dog and is friendly to everyone.';
+        
+        $pet->save();
+
+        $pet =new Pet;
+        $pet->name = 'Tiger';
+        $pet->kind = 'cat';
+        $pet->weight = 2;
         $pet->age = 8;
-        $pet->breed = "nea";
-        $pet->location = 'Apartado';
-        $pet->description = 'chando quedate quieto';
+        $pet->breed = 'orange';
+        $pet->location = 'villamaria caldas';
+        $pet->description = 'He is a calm and sleepy cat.';
         $pet->save();
 
         $pet = new Pet;
-        $pet->name = "Tiger";
-        $pet->kind = 'Felino';
-        $pet->weight = 70;
-        $pet->age = 46;
-        $pet->breed = "Patriota";
-        $pet->location = 'Monteria';
-        $pet->description = 'Firmes por la patria';
+        $pet->name = 'Juan';
+        $pet->kind = 'Horse';
+        $pet->weight = 16;
+        $pet->age = 2;
+        $pet->breed = 'friesian';
+        $pet->location = 'Llanitos villamaria Caldas';
+        $pet->description = 'He is a beautiful and calm horse who loves to trot all over the countryside, happy with life.';
         $pet->save();
 
         $pet = new Pet;
-        $pet->name = "Flowerman";
-        $pet->kind = 'software developer';
-        $pet->weight = 75;
-        $pet->age = 21;
-        $pet->breed = "valluno";
-        $pet->location = 'Cartago';
-        $pet->description = 'Manito';
+        $pet->name = 'Roberto';
+        $pet->kind = 'pig';
+        $pet->weight = 5;
+        $pet->age = 1;
+        $pet->breed = 'mini pig';
+        $pet->location = 'buenaventura Valle del cauca';
+        $pet->description = 'Its a pig that eats people and loves pork.';
         $pet->save();
 
         $pet = new Pet;
-        $pet->name = "Carlitos";
-        $pet->kind = 'Senador';
-        $pet->weight = 68;
-        $pet->age = 50;
-        $pet->breed = "pseudo-Liberal";
-        $pet->location = 'Marquetalia';
-        $pet->description = 'Manito mi dios me lo bendiga';
+        $pet->name = 'chilindrina';
+        $pet->kind = 'cow';
+        $pet->weight = 15;
+        $pet->age = 3;
+        $pet->breed = 'angus';
+        $pet->location = 'Bereira risaralda';
+        $pet->description = 'Shes a quiet cow, bored of living in Bereira.';
         $pet->save();
-
-        $pet = new Pet;
-        $pet->name = "OfacZero";
-        $pet->kind = 'Abstracto';
-        $pet->weight = 80;
-        $pet->age = 45;
-        $pet->breed = "Instructor";
-        $pet->location = 'Sena regional caldas';
-        $pet->description = 'Solo worldskills';
-        $pet->save();
-
-
     }
 }

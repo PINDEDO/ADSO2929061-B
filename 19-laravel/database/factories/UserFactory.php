@@ -23,27 +23,37 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        // Elegir género aleatorio
-        $gender = fake()->randomElement(['Male', 'Female']);
-
-        // Generar nombre que coincida con el género
-        $firstName = $gender === 'Male'
-            ? fake()->firstName('male')
-            : fake()->firstName('female');
-
-        $fullname = $firstName . ' ' . fake()->lastName();
+        // return [
+        //     'document' => fake()->numerify('75#######'),
+        //     'fullname' => fake()->firstname().' '.fake()->lastName(),
+        //     'gender'=> fake()->randomElement(['Female', 'Male']),
+        //     'birthdate' => fake()->date(),
+        //     'phone' => fake()->numerify('320#######'),
+        //     'email' => fake()->unique()->safeEmail(),
+        //     'email_verified_at' => now(),
+        //     'password' => bcrypt('123456'),
+        //     'remember_token' => Str::random(10),
+        // ];
+        $gender = fake()->randomElement(array('Female', 'Male'));
+        $name = ($gender == 'Female') ? $name = fake()->firstNameFemale()
+                                      : $name = fake()->firstNameMale();
+        ($gender == 'Female') ? $g = 'women' : $g = 'men';
+        $id = fake()->numerify('75######');
+        $tnd = fake()->numberBetween(1,99);
+        copy('https://randomuser.me/api/portraits/'.$g.'/'.$tnd.'.jpg', public_path('images/'.$id.'.png'));
+        $email = Str::slug(strtolower($name)).fake()->numerify('###'. '@mail.com');
 
         return [
-            'document' => fake()->unique()->numberBetween(10000000, 99999999),
-            'fullname' => $fullname,
-            'gender' => $gender,
-            'birthdate' => fake()->dateTimeBetween('1976-01-01', '2006-12-31')->format('Y-m-d'),
-            'photo' => 'images/users/default.png',
-            'phone' => fake()->numerify('3#########'),
-            'email' => fake()->unique()->safeEmail(),
+            'document'=> $id,
+            'fullname'=> $name . " " . fake()->lastName(),
+            'gender'=> $gender,
+            'birthdate' => fake()->dateTimeBetween('1976-01-01','2006-12-31'),
+            'photo' => $id . '.png',
+            'email' => $email,
+            'phone' => fake()->numerify('310#######'),
+            'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('12345'),
-            'active' => fake()->boolean(85),
-            'role' => fake()->randomElement(['Admin', 'Customer', 'Customer', 'Customer']),
+            'remember_token' => Str::random(10),
         ];
     }
 
@@ -52,8 +62,8 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn(array $attributes) => [
-        'email_verified_at' => null,
+        return $this->state(fn (array $attributes) => [
+            'email_verified_at' => null,
         ]);
     }
 }

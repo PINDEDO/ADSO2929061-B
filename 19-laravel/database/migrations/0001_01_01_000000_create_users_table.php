@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('birthdate');
             $table->string('photo')->default('no-photo.png');
             $table->string('phone');
-            $table->string('email')->unique();  
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('active')->default(1);
